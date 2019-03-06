@@ -6,12 +6,12 @@ from __future__ import division
 from __future__ import unicode_literals
 from __future__ import absolute_import
 
-from .base import DAPMessage, DAPObject
+from .base import DAPBaseMessage, DAPObject
 
 __undefined__ = object()
 
 
-class DAPProtocolMessage(DAPMessage):
+class DAPProtocolMessage(DAPBaseMessage):
     """
     Base class of requests, responses, and events.
     """
@@ -20,7 +20,7 @@ class DAPProtocolMessage(DAPMessage):
         return DAPProtocolMessage(seq, type)
     
     def __init__(self, seq, type):
-        DAPMessage.__init__(self)
+        DAPBaseMessage.__init__(self)
         self.seq = seq
         self.type = type
     
@@ -39,18 +39,18 @@ class DAPProtocolMessage(DAPMessage):
         return self
     
     def _serialize(self, me, override):
-        DAPMessage._serialize(self, me, ['seq', 'type'])
+        DAPBaseMessage._serialize(self, me, ['seq', 'type'])
         
         # property: seq
         if "seq" not in override:
-            me["seq"] = self.serialize_scalar(me, "seq", self.seq)
+            self.serialize_scalar(me, "seq", self.seq)
         # property: type
         if "type" not in override:
-            me["type"] = self.serialize_scalar(me, "type", self.type)
+            self.serialize_scalar(me, "type", self.type)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPMessage._deserialize(args, kwargs, used_args, me, ['seq', 'type'])
+        DAPBaseMessage._deserialize(args, kwargs, used_args, me, ['seq', 'type'])
         
         # property: seq
         if "seq" not in override:
@@ -103,14 +103,14 @@ class DAPRequest(DAPProtocolMessage):
         
         # property: type
         if "type" not in override:
-            me["type"] = self.serialize_scalar(me, "type", self.type)
+            self.serialize_scalar(me, "type", self.type)
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             if self.arguments is not __undefined__:
-                me["arguments"] = self.serialize_scalar(me, "arguments", self.arguments)
+                self.serialize_scalar(me, "arguments", self.arguments)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -172,14 +172,14 @@ class DAPEvent(DAPProtocolMessage):
         
         # property: type
         if "type" not in override:
-            me["type"] = self.serialize_scalar(me, "type", self.type)
+            self.serialize_scalar(me, "type", self.type)
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             if self.body is not __undefined__:
-                me["body"] = self.serialize_scalar(me, "body", self.body)
+                self.serialize_scalar(me, "body", self.body)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -274,24 +274,24 @@ class DAPResponse(DAPProtocolMessage):
         
         # property: type
         if "type" not in override:
-            me["type"] = self.serialize_scalar(me, "type", self.type)
+            self.serialize_scalar(me, "type", self.type)
         # property: request_seq
         if "request_seq" not in override:
-            me["request_seq"] = self.serialize_scalar(me, "request_seq", self.request_seq)
+            self.serialize_scalar(me, "request_seq", self.request_seq)
         # property: success
         if "success" not in override:
-            me["success"] = self.serialize_scalar(me, "success", self.success)
+            self.serialize_scalar(me, "success", self.success)
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: message
         if "message" not in override:
             if self.message is not __undefined__:
-                me["message"] = self.serialize_scalar(me, "message", self.message)
+                self.serialize_scalar(me, "message", self.message)
         # property: body
         if "body" not in override:
             if self.body is not __undefined__:
-                me["body"] = self.serialize_scalar(me, "body", self.body)
+                self.serialize_scalar(me, "body", self.body)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -395,7 +395,7 @@ class DAPErrorResponseBody(DAPObject):
         # property: error
         if "error" not in override:
             if self.error is not __undefined__:
-                me["error"] = self.error.serialize()
+                e["error"] = self.error.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -425,7 +425,7 @@ class DAPInitializedEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -461,7 +461,7 @@ class DAPStoppedEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -589,27 +589,27 @@ class DAPStoppedEventBody(DAPObject):
         
         # property: reason
         if "reason" not in override:
-            me["reason"] = self.serialize_scalar(me, "reason", self.reason)
+            self.serialize_scalar(me, "reason", self.reason)
         # property: description
         if "description" not in override:
             if self.description is not __undefined__:
-                me["description"] = self.serialize_scalar(me, "description", self.description)
+                self.serialize_scalar(me, "description", self.description)
         # property: threadId
         if "threadId" not in override:
             if self.threadId is not __undefined__:
-                me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+                self.serialize_scalar(me, "threadId", self.threadId)
         # property: preserveFocusHint
         if "preserveFocusHint" not in override:
             if self.preserveFocusHint is not __undefined__:
-                me["preserveFocusHint"] = self.serialize_scalar(me, "preserveFocusHint", self.preserveFocusHint)
+                self.serialize_scalar(me, "preserveFocusHint", self.preserveFocusHint)
         # property: text
         if "text" not in override:
             if self.text is not __undefined__:
-                me["text"] = self.serialize_scalar(me, "text", self.text)
+                self.serialize_scalar(me, "text", self.text)
         # property: allThreadsStopped
         if "allThreadsStopped" not in override:
             if self.allThreadsStopped is not __undefined__:
-                me["allThreadsStopped"] = self.serialize_scalar(me, "allThreadsStopped", self.allThreadsStopped)
+                self.serialize_scalar(me, "allThreadsStopped", self.allThreadsStopped)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -671,7 +671,7 @@ class DAPContinuedEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -731,11 +731,11 @@ class DAPContinuedEventBody(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
         # property: allThreadsContinued
         if "allThreadsContinued" not in override:
             if self.allThreadsContinued is not __undefined__:
-                me["allThreadsContinued"] = self.serialize_scalar(me, "allThreadsContinued", self.allThreadsContinued)
+                self.serialize_scalar(me, "allThreadsContinued", self.allThreadsContinued)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -777,7 +777,7 @@ class DAPExitedEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -820,7 +820,7 @@ class DAPExitedEventBody(DAPObject):
         
         # property: exitCode
         if "exitCode" not in override:
-            me["exitCode"] = self.serialize_scalar(me, "exitCode", self.exitCode)
+            self.serialize_scalar(me, "exitCode", self.exitCode)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -849,11 +849,11 @@ class DAPTerminatedEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             if self.body is not __undefined__:
-                me["body"] = self.body.serialize()
+                e["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -904,7 +904,7 @@ class DAPTerminatedEventBody(DAPObject):
         # property: restart
         if "restart" not in override:
             if self.restart is not __undefined__:
-                me["restart"] = self.serialize_scalar(me, "restart", self.restart)
+                self.serialize_scalar(me, "restart", self.restart)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -942,7 +942,7 @@ class DAPThreadEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -993,10 +993,10 @@ class DAPThreadEventBody(DAPObject):
         
         # property: reason
         if "reason" not in override:
-            me["reason"] = self.serialize_scalar(me, "reason", self.reason)
+            self.serialize_scalar(me, "reason", self.reason)
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -1037,7 +1037,7 @@ class DAPOutputEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -1183,30 +1183,30 @@ class DAPOutputEventBody(DAPObject):
         # property: category
         if "category" not in override:
             if self.category is not __undefined__:
-                me["category"] = self.serialize_scalar(me, "category", self.category)
+                self.serialize_scalar(me, "category", self.category)
         # property: output
         if "output" not in override:
-            me["output"] = self.serialize_scalar(me, "output", self.output)
+            self.serialize_scalar(me, "output", self.output)
         # property: variablesReference
         if "variablesReference" not in override:
             if self.variablesReference is not __undefined__:
-                me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+                self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: source
         if "source" not in override:
             if self.source is not __undefined__:
-                me["source"] = self.source.serialize()
+                e["source"] = self.source.serialize()
         # property: line
         if "line" not in override:
             if self.line is not __undefined__:
-                me["line"] = self.serialize_scalar(me, "line", self.line)
+                self.serialize_scalar(me, "line", self.line)
         # property: column
         if "column" not in override:
             if self.column is not __undefined__:
-                me["column"] = self.serialize_scalar(me, "column", self.column)
+                self.serialize_scalar(me, "column", self.column)
         # property: data
         if "data" not in override:
             if self.data is not __undefined__:
-                me["data"] = self.serialize_scalar(me, "data", self.data)
+                self.serialize_scalar(me, "data", self.data)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -1273,7 +1273,7 @@ class DAPBreakpointEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -1324,7 +1324,7 @@ class DAPBreakpointEventBody(DAPObject):
         
         # property: reason
         if "reason" not in override:
-            me["reason"] = self.serialize_scalar(me, "reason", self.reason)
+            self.serialize_scalar(me, "reason", self.reason)
         # property: breakpoint
         if "breakpoint" not in override:
             me["breakpoint"] = self.breakpoint.serialize()
@@ -1368,7 +1368,7 @@ class DAPModuleEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -1419,7 +1419,7 @@ class DAPModuleEventBody(DAPObject):
         
         # property: reason
         if "reason" not in override:
-            me["reason"] = self.serialize_scalar(me, "reason", self.reason)
+            self.serialize_scalar(me, "reason", self.reason)
         # property: module
         if "module" not in override:
             me["module"] = self.module.serialize()
@@ -1463,7 +1463,7 @@ class DAPLoadedSourceEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -1514,7 +1514,7 @@ class DAPLoadedSourceEventBody(DAPObject):
         
         # property: reason
         if "reason" not in override:
-            me["reason"] = self.serialize_scalar(me, "reason", self.reason)
+            self.serialize_scalar(me, "reason", self.reason)
         # property: source
         if "source" not in override:
             me["source"] = self.source.serialize()
@@ -1558,7 +1558,7 @@ class DAPProcessEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -1652,19 +1652,19 @@ class DAPProcessEventBody(DAPObject):
         
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
         # property: systemProcessId
         if "systemProcessId" not in override:
             if self.systemProcessId is not __undefined__:
-                me["systemProcessId"] = self.serialize_scalar(me, "systemProcessId", self.systemProcessId)
+                self.serialize_scalar(me, "systemProcessId", self.systemProcessId)
         # property: isLocalProcess
         if "isLocalProcess" not in override:
             if self.isLocalProcess is not __undefined__:
-                me["isLocalProcess"] = self.serialize_scalar(me, "isLocalProcess", self.isLocalProcess)
+                self.serialize_scalar(me, "isLocalProcess", self.isLocalProcess)
         # property: startMethod
         if "startMethod" not in override:
             if self.startMethod is not __undefined__:
-                me["startMethod"] = self.serialize_scalar(me, "startMethod", self.startMethod)
+                self.serialize_scalar(me, "startMethod", self.startMethod)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -1716,7 +1716,7 @@ class DAPCapabilitiesEvent(DAPEvent):
         
         # property: event
         if "event" not in override:
-            me["event"] = self.serialize_scalar(me, "event", self.event)
+            self.serialize_scalar(me, "event", self.event)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
@@ -1796,7 +1796,7 @@ class DAPRunInTerminalRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -1899,21 +1899,21 @@ class DAPRunInTerminalRequestArguments(DAPObject):
         # property: kind
         if "kind" not in override:
             if self.kind is not __undefined__:
-                me["kind"] = self.serialize_scalar(me, "kind", self.kind)
+                self.serialize_scalar(me, "kind", self.kind)
         # property: title
         if "title" not in override:
             if self.title is not __undefined__:
-                me["title"] = self.serialize_scalar(me, "title", self.title)
+                self.serialize_scalar(me, "title", self.title)
         # property: cwd
         if "cwd" not in override:
-            me["cwd"] = self.serialize_scalar(me, "cwd", self.cwd)
+            self.serialize_scalar(me, "cwd", self.cwd)
         # property: args
         if "args" not in override:
-            me["args"] = self.serialize_scalar(me, "args", self.args)
+            self.serialize_scalar(me, "args", self.args)
         # property: env
         if "env" not in override:
             if self.env is not __undefined__:
-                me["env"] = self.env.serialize()
+                e["env"] = self.env.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2061,11 +2061,11 @@ class DAPRunInTerminalResponseBody(DAPObject):
         # property: processId
         if "processId" not in override:
             if self.processId is not __undefined__:
-                me["processId"] = self.serialize_scalar(me, "processId", self.processId)
+                self.serialize_scalar(me, "processId", self.processId)
         # property: shellProcessId
         if "shellProcessId" not in override:
             if self.shellProcessId is not __undefined__:
-                me["shellProcessId"] = self.serialize_scalar(me, "shellProcessId", self.shellProcessId)
+                self.serialize_scalar(me, "shellProcessId", self.shellProcessId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2108,7 +2108,7 @@ class DAPInitializeRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -2305,42 +2305,42 @@ class DAPInitializeRequestArguments(DAPObject):
         # property: clientID
         if "clientID" not in override:
             if self.clientID is not __undefined__:
-                me["clientID"] = self.serialize_scalar(me, "clientID", self.clientID)
+                self.serialize_scalar(me, "clientID", self.clientID)
         # property: clientName
         if "clientName" not in override:
             if self.clientName is not __undefined__:
-                me["clientName"] = self.serialize_scalar(me, "clientName", self.clientName)
+                self.serialize_scalar(me, "clientName", self.clientName)
         # property: adapterID
         if "adapterID" not in override:
-            me["adapterID"] = self.serialize_scalar(me, "adapterID", self.adapterID)
+            self.serialize_scalar(me, "adapterID", self.adapterID)
         # property: locale
         if "locale" not in override:
             if self.locale is not __undefined__:
-                me["locale"] = self.serialize_scalar(me, "locale", self.locale)
+                self.serialize_scalar(me, "locale", self.locale)
         # property: linesStartAt1
         if "linesStartAt1" not in override:
             if self.linesStartAt1 is not __undefined__:
-                me["linesStartAt1"] = self.serialize_scalar(me, "linesStartAt1", self.linesStartAt1)
+                self.serialize_scalar(me, "linesStartAt1", self.linesStartAt1)
         # property: columnsStartAt1
         if "columnsStartAt1" not in override:
             if self.columnsStartAt1 is not __undefined__:
-                me["columnsStartAt1"] = self.serialize_scalar(me, "columnsStartAt1", self.columnsStartAt1)
+                self.serialize_scalar(me, "columnsStartAt1", self.columnsStartAt1)
         # property: pathFormat
         if "pathFormat" not in override:
             if self.pathFormat is not __undefined__:
-                me["pathFormat"] = self.serialize_scalar(me, "pathFormat", self.pathFormat)
+                self.serialize_scalar(me, "pathFormat", self.pathFormat)
         # property: supportsVariableType
         if "supportsVariableType" not in override:
             if self.supportsVariableType is not __undefined__:
-                me["supportsVariableType"] = self.serialize_scalar(me, "supportsVariableType", self.supportsVariableType)
+                self.serialize_scalar(me, "supportsVariableType", self.supportsVariableType)
         # property: supportsVariablePaging
         if "supportsVariablePaging" not in override:
             if self.supportsVariablePaging is not __undefined__:
-                me["supportsVariablePaging"] = self.serialize_scalar(me, "supportsVariablePaging", self.supportsVariablePaging)
+                self.serialize_scalar(me, "supportsVariablePaging", self.supportsVariablePaging)
         # property: supportsRunInTerminalRequest
         if "supportsRunInTerminalRequest" not in override:
             if self.supportsRunInTerminalRequest is not __undefined__:
-                me["supportsRunInTerminalRequest"] = self.serialize_scalar(me, "supportsRunInTerminalRequest", self.supportsRunInTerminalRequest)
+                self.serialize_scalar(me, "supportsRunInTerminalRequest", self.supportsRunInTerminalRequest)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2414,7 +2414,7 @@ class DAPInitializeResponse(DAPResponse):
         # property: body
         if "body" not in override:
             if self.body is not __undefined__:
-                me["body"] = self.body.serialize()
+                e["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2443,11 +2443,11 @@ class DAPConfigurationDoneRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             if self.arguments is not __undefined__:
-                me["arguments"] = self.arguments.serialize()
+                e["arguments"] = self.arguments.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2530,7 +2530,7 @@ class DAPLaunchRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -2600,11 +2600,11 @@ class DAPLaunchRequestArguments(DAPObject):
         # property: noDebug
         if "noDebug" not in override:
             if self.noDebug is not __undefined__:
-                me["noDebug"] = self.serialize_scalar(me, "noDebug", self.noDebug)
+                self.serialize_scalar(me, "noDebug", self.noDebug)
         # property: __restart
         if "__restart" not in override:
             if self.__restart is not __undefined__:
-                me["__restart"] = self.serialize_scalar(me, "__restart", self.__restart)
+                self.serialize_scalar(me, "__restart", self.__restart)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2667,7 +2667,7 @@ class DAPAttachRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -2720,7 +2720,7 @@ class DAPAttachRequestArguments(DAPObject):
         # property: __restart
         if "__restart" not in override:
             if self.__restart is not __undefined__:
-                me["__restart"] = self.serialize_scalar(me, "__restart", self.__restart)
+                self.serialize_scalar(me, "__restart", self.__restart)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2770,11 +2770,11 @@ class DAPRestartRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             if self.arguments is not __undefined__:
-                me["arguments"] = self.arguments.serialize()
+                e["arguments"] = self.arguments.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2849,11 +2849,11 @@ class DAPDisconnectRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             if self.arguments is not __undefined__:
-                me["arguments"] = self.arguments.serialize()
+                e["arguments"] = self.arguments.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2921,11 +2921,11 @@ class DAPDisconnectArguments(DAPObject):
         # property: restart
         if "restart" not in override:
             if self.restart is not __undefined__:
-                me["restart"] = self.serialize_scalar(me, "restart", self.restart)
+                self.serialize_scalar(me, "restart", self.restart)
         # property: terminateDebuggee
         if "terminateDebuggee" not in override:
             if self.terminateDebuggee is not __undefined__:
-                me["terminateDebuggee"] = self.serialize_scalar(me, "terminateDebuggee", self.terminateDebuggee)
+                self.serialize_scalar(me, "terminateDebuggee", self.terminateDebuggee)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -2980,11 +2980,11 @@ class DAPTerminateRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             if self.arguments is not __undefined__:
-                me["arguments"] = self.arguments.serialize()
+                e["arguments"] = self.arguments.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3035,7 +3035,7 @@ class DAPTerminateArguments(DAPObject):
         # property: restart
         if "restart" not in override:
             if self.restart is not __undefined__:
-                me["restart"] = self.serialize_scalar(me, "restart", self.restart)
+                self.serialize_scalar(me, "restart", self.restart)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3093,7 +3093,7 @@ class DAPSetBreakpointsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -3191,15 +3191,15 @@ class DAPSetBreakpointsArguments(DAPObject):
         # property: breakpoints
         if "breakpoints" not in override:
             if self.breakpoints is not __undefined__:
-                me["breakpoints"] = self.serialize_scalar(me, "breakpoints", self.breakpoints)
+                self.serialize_scalar(me, "breakpoints", self.breakpoints)
         # property: lines
         if "lines" not in override:
             if self.lines is not __undefined__:
-                me["lines"] = self.serialize_scalar(me, "lines", self.lines)
+                self.serialize_scalar(me, "lines", self.lines)
         # property: sourceModified
         if "sourceModified" not in override:
             if self.sourceModified is not __undefined__:
-                me["sourceModified"] = self.serialize_scalar(me, "sourceModified", self.sourceModified)
+                self.serialize_scalar(me, "sourceModified", self.sourceModified)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3286,7 +3286,7 @@ class DAPSetBreakpointsResponseBody(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            me["breakpoints"] = self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3323,7 +3323,7 @@ class DAPSetFunctionBreakpointsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -3366,7 +3366,7 @@ class DAPSetFunctionBreakpointsArguments(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            me["breakpoints"] = self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3438,7 +3438,7 @@ class DAPSetFunctionBreakpointsResponseBody(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            me["breakpoints"] = self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3475,7 +3475,7 @@ class DAPSetExceptionBreakpointsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -3535,11 +3535,11 @@ class DAPSetExceptionBreakpointsArguments(DAPObject):
         
         # property: filters
         if "filters" not in override:
-            me["filters"] = self.serialize_scalar(me, "filters", self.filters)
+            self.serialize_scalar(me, "filters", self.filters)
         # property: exceptionOptions
         if "exceptionOptions" not in override:
             if self.exceptionOptions is not __undefined__:
-                me["exceptionOptions"] = self.serialize_scalar(me, "exceptionOptions", self.exceptionOptions)
+                self.serialize_scalar(me, "exceptionOptions", self.exceptionOptions)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3601,7 +3601,7 @@ class DAPDataBreakpointInfoRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -3662,10 +3662,10 @@ class DAPDataBreakpointInfoArguments(DAPObject):
         # property: variablesReference
         if "variablesReference" not in override:
             if self.variablesReference is not __undefined__:
-                me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+                self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3784,18 +3784,18 @@ class DAPDataBreakpointInfoResponseBody(DAPObject):
         
         # property: dataId
         if "dataId" not in override:
-            me["dataId"] = self.serialize_scalar(me, "dataId", self.dataId)
+            self.serialize_scalar(me, "dataId", self.dataId)
         # property: description
         if "description" not in override:
-            me["description"] = self.serialize_scalar(me, "description", self.description)
+            self.serialize_scalar(me, "description", self.description)
         # property: accessTypes
         if "accessTypes" not in override:
             if self.accessTypes is not __undefined__:
-                me["accessTypes"] = self.serialize_scalar(me, "accessTypes", self.accessTypes)
+                self.serialize_scalar(me, "accessTypes", self.accessTypes)
         # property: canPersist
         if "canPersist" not in override:
             if self.canPersist is not __undefined__:
-                me["canPersist"] = self.serialize_scalar(me, "canPersist", self.canPersist)
+                self.serialize_scalar(me, "canPersist", self.canPersist)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3846,7 +3846,7 @@ class DAPSetDataBreakpointsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -3889,7 +3889,7 @@ class DAPSetDataBreakpointsArguments(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            me["breakpoints"] = self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3961,7 +3961,7 @@ class DAPSetDataBreakpointsResponseBody(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            me["breakpoints"] = self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3998,7 +3998,7 @@ class DAPContinueRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4041,7 +4041,7 @@ class DAPContinueArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4123,7 +4123,7 @@ class DAPContinueResponseBody(DAPObject):
         # property: allThreadsContinued
         if "allThreadsContinued" not in override:
             if self.allThreadsContinued is not __undefined__:
-                me["allThreadsContinued"] = self.serialize_scalar(me, "allThreadsContinued", self.allThreadsContinued)
+                self.serialize_scalar(me, "allThreadsContinued", self.allThreadsContinued)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4161,7 +4161,7 @@ class DAPNextRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4204,7 +4204,7 @@ class DAPNextArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4261,7 +4261,7 @@ class DAPSetStepGranularityRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4304,7 +4304,7 @@ class DAPSetStepGranularityArguments(DAPObject):
         
         # property: granularity
         if "granularity" not in override:
-            me["granularity"] = self.serialize_scalar(me, "granularity", self.granularity)
+            self.serialize_scalar(me, "granularity", self.granularity)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4376,7 +4376,7 @@ class DAPSetStepGranularityResponseBody(DAPObject):
         
         # property: granularity
         if "granularity" not in override:
-            me["granularity"] = self.serialize_scalar(me, "granularity", self.granularity)
+            self.serialize_scalar(me, "granularity", self.granularity)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4413,7 +4413,7 @@ class DAPStepInRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4473,11 +4473,11 @@ class DAPStepInArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
         # property: targetId
         if "targetId" not in override:
             if self.targetId is not __undefined__:
-                me["targetId"] = self.serialize_scalar(me, "targetId", self.targetId)
+                self.serialize_scalar(me, "targetId", self.targetId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4539,7 +4539,7 @@ class DAPStepOutRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4582,7 +4582,7 @@ class DAPStepOutArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4639,7 +4639,7 @@ class DAPStepBackRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4682,7 +4682,7 @@ class DAPStepBackArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4739,7 +4739,7 @@ class DAPReverseContinueRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4782,7 +4782,7 @@ class DAPReverseContinueArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4839,7 +4839,7 @@ class DAPRestartFrameRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4882,7 +4882,7 @@ class DAPRestartFrameArguments(DAPObject):
         
         # property: frameId
         if "frameId" not in override:
-            me["frameId"] = self.serialize_scalar(me, "frameId", self.frameId)
+            self.serialize_scalar(me, "frameId", self.frameId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4939,7 +4939,7 @@ class DAPGotoRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -4990,10 +4990,10 @@ class DAPGotoArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
         # property: targetId
         if "targetId" not in override:
-            me["targetId"] = self.serialize_scalar(me, "targetId", self.targetId)
+            self.serialize_scalar(me, "targetId", self.targetId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5054,7 +5054,7 @@ class DAPPauseRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -5097,7 +5097,7 @@ class DAPPauseArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5154,7 +5154,7 @@ class DAPStackTraceRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -5248,19 +5248,19 @@ class DAPStackTraceArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
         # property: startFrame
         if "startFrame" not in override:
             if self.startFrame is not __undefined__:
-                me["startFrame"] = self.serialize_scalar(me, "startFrame", self.startFrame)
+                self.serialize_scalar(me, "startFrame", self.startFrame)
         # property: levels
         if "levels" not in override:
             if self.levels is not __undefined__:
-                me["levels"] = self.serialize_scalar(me, "levels", self.levels)
+                self.serialize_scalar(me, "levels", self.levels)
         # property: format
         if "format" not in override:
             if self.format is not __undefined__:
-                me["format"] = self.format.serialize()
+                e["format"] = self.format.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5364,11 +5364,11 @@ class DAPStackTraceResponseBody(DAPObject):
         
         # property: stackFrames
         if "stackFrames" not in override:
-            me["stackFrames"] = self.serialize_scalar(me, "stackFrames", self.stackFrames)
+            self.serialize_scalar(me, "stackFrames", self.stackFrames)
         # property: totalFrames
         if "totalFrames" not in override:
             if self.totalFrames is not __undefined__:
-                me["totalFrames"] = self.serialize_scalar(me, "totalFrames", self.totalFrames)
+                self.serialize_scalar(me, "totalFrames", self.totalFrames)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5410,7 +5410,7 @@ class DAPScopesRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -5453,7 +5453,7 @@ class DAPScopesArguments(DAPObject):
         
         # property: frameId
         if "frameId" not in override:
-            me["frameId"] = self.serialize_scalar(me, "frameId", self.frameId)
+            self.serialize_scalar(me, "frameId", self.frameId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5525,7 +5525,7 @@ class DAPScopesResponseBody(DAPObject):
         
         # property: scopes
         if "scopes" not in override:
-            me["scopes"] = self.serialize_scalar(me, "scopes", self.scopes)
+            self.serialize_scalar(me, "scopes", self.scopes)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5562,7 +5562,7 @@ class DAPVariablesRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -5673,23 +5673,23 @@ class DAPVariablesArguments(DAPObject):
         
         # property: variablesReference
         if "variablesReference" not in override:
-            me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+            self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: filter
         if "filter" not in override:
             if self.filter is not __undefined__:
-                me["filter"] = self.serialize_scalar(me, "filter", self.filter)
+                self.serialize_scalar(me, "filter", self.filter)
         # property: start
         if "start" not in override:
             if self.start is not __undefined__:
-                me["start"] = self.serialize_scalar(me, "start", self.start)
+                self.serialize_scalar(me, "start", self.start)
         # property: count
         if "count" not in override:
             if self.count is not __undefined__:
-                me["count"] = self.serialize_scalar(me, "count", self.count)
+                self.serialize_scalar(me, "count", self.count)
         # property: format
         if "format" not in override:
             if self.format is not __undefined__:
-                me["format"] = self.format.serialize()
+                e["format"] = self.format.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5781,7 +5781,7 @@ class DAPVariablesResponseBody(DAPObject):
         
         # property: variables
         if "variables" not in override:
-            me["variables"] = self.serialize_scalar(me, "variables", self.variables)
+            self.serialize_scalar(me, "variables", self.variables)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -5818,7 +5818,7 @@ class DAPSetVariableRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -5894,17 +5894,17 @@ class DAPSetVariableArguments(DAPObject):
         
         # property: variablesReference
         if "variablesReference" not in override:
-            me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+            self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
         # property: value
         if "value" not in override:
-            me["value"] = self.serialize_scalar(me, "value", self.value)
+            self.serialize_scalar(me, "value", self.value)
         # property: format
         if "format" not in override:
             if self.format is not __undefined__:
-                me["format"] = self.format.serialize()
+                e["format"] = self.format.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6057,23 +6057,23 @@ class DAPSetVariableResponseBody(DAPObject):
         
         # property: value
         if "value" not in override:
-            me["value"] = self.serialize_scalar(me, "value", self.value)
+            self.serialize_scalar(me, "value", self.value)
         # property: type
         if "type" not in override:
             if self.type is not __undefined__:
-                me["type"] = self.serialize_scalar(me, "type", self.type)
+                self.serialize_scalar(me, "type", self.type)
         # property: variablesReference
         if "variablesReference" not in override:
             if self.variablesReference is not __undefined__:
-                me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+                self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: namedVariables
         if "namedVariables" not in override:
             if self.namedVariables is not __undefined__:
-                me["namedVariables"] = self.serialize_scalar(me, "namedVariables", self.namedVariables)
+                self.serialize_scalar(me, "namedVariables", self.namedVariables)
         # property: indexedVariables
         if "indexedVariables" not in override:
             if self.indexedVariables is not __undefined__:
-                me["indexedVariables"] = self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
+                self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6130,7 +6130,7 @@ class DAPSourceRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -6191,10 +6191,10 @@ class DAPSourceArguments(DAPObject):
         # property: source
         if "source" not in override:
             if self.source is not __undefined__:
-                me["source"] = self.source.serialize()
+                e["source"] = self.source.serialize()
         # property: sourceReference
         if "sourceReference" not in override:
-            me["sourceReference"] = self.serialize_scalar(me, "sourceReference", self.sourceReference)
+            self.serialize_scalar(me, "sourceReference", self.sourceReference)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6288,11 +6288,11 @@ class DAPSourceResponseBody(DAPObject):
         
         # property: content
         if "content" not in override:
-            me["content"] = self.serialize_scalar(me, "content", self.content)
+            self.serialize_scalar(me, "content", self.content)
         # property: mimeType
         if "mimeType" not in override:
             if self.mimeType is not __undefined__:
-                me["mimeType"] = self.serialize_scalar(me, "mimeType", self.mimeType)
+                self.serialize_scalar(me, "mimeType", self.mimeType)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6326,7 +6326,7 @@ class DAPThreadsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6398,7 +6398,7 @@ class DAPThreadsResponseBody(DAPObject):
         
         # property: threads
         if "threads" not in override:
-            me["threads"] = self.serialize_scalar(me, "threads", self.threads)
+            self.serialize_scalar(me, "threads", self.threads)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6435,7 +6435,7 @@ class DAPTerminateThreadsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -6488,7 +6488,7 @@ class DAPTerminateThreadsArguments(DAPObject):
         # property: threadIds
         if "threadIds" not in override:
             if self.threadIds is not __undefined__:
-                me["threadIds"] = self.serialize_scalar(me, "threadIds", self.threadIds)
+                self.serialize_scalar(me, "threadIds", self.threadIds)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6546,7 +6546,7 @@ class DAPModulesRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -6616,11 +6616,11 @@ class DAPModulesArguments(DAPObject):
         # property: startModule
         if "startModule" not in override:
             if self.startModule is not __undefined__:
-                me["startModule"] = self.serialize_scalar(me, "startModule", self.startModule)
+                self.serialize_scalar(me, "startModule", self.startModule)
         # property: moduleCount
         if "moduleCount" not in override:
             if self.moduleCount is not __undefined__:
-                me["moduleCount"] = self.serialize_scalar(me, "moduleCount", self.moduleCount)
+                self.serialize_scalar(me, "moduleCount", self.moduleCount)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6715,11 +6715,11 @@ class DAPModulesResponseBody(DAPObject):
         
         # property: modules
         if "modules" not in override:
-            me["modules"] = self.serialize_scalar(me, "modules", self.modules)
+            self.serialize_scalar(me, "modules", self.modules)
         # property: totalModules
         if "totalModules" not in override:
             if self.totalModules is not __undefined__:
-                me["totalModules"] = self.serialize_scalar(me, "totalModules", self.totalModules)
+                self.serialize_scalar(me, "totalModules", self.totalModules)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6753,11 +6753,11 @@ class DAPLoadedSourcesRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             if self.arguments is not __undefined__:
-                me["arguments"] = self.arguments.serialize()
+                e["arguments"] = self.arguments.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6855,7 +6855,7 @@ class DAPLoadedSourcesResponseBody(DAPObject):
         
         # property: sources
         if "sources" not in override:
-            me["sources"] = self.serialize_scalar(me, "sources", self.sources)
+            self.serialize_scalar(me, "sources", self.sources)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6892,7 +6892,7 @@ class DAPEvaluateRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -6986,19 +6986,19 @@ class DAPEvaluateArguments(DAPObject):
         
         # property: expression
         if "expression" not in override:
-            me["expression"] = self.serialize_scalar(me, "expression", self.expression)
+            self.serialize_scalar(me, "expression", self.expression)
         # property: frameId
         if "frameId" not in override:
             if self.frameId is not __undefined__:
-                me["frameId"] = self.serialize_scalar(me, "frameId", self.frameId)
+                self.serialize_scalar(me, "frameId", self.frameId)
         # property: context
         if "context" not in override:
             if self.context is not __undefined__:
-                me["context"] = self.serialize_scalar(me, "context", self.context)
+                self.serialize_scalar(me, "context", self.context)
         # property: format
         if "format" not in override:
             if self.format is not __undefined__:
-                me["format"] = self.format.serialize()
+                e["format"] = self.format.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7161,26 +7161,26 @@ class DAPEvaluateResponseBody(DAPObject):
         
         # property: result
         if "result" not in override:
-            me["result"] = self.serialize_scalar(me, "result", self.result)
+            self.serialize_scalar(me, "result", self.result)
         # property: type
         if "type" not in override:
             if self.type is not __undefined__:
-                me["type"] = self.serialize_scalar(me, "type", self.type)
+                self.serialize_scalar(me, "type", self.type)
         # property: presentationHint
         if "presentationHint" not in override:
             if self.presentationHint is not __undefined__:
-                me["presentationHint"] = self.presentationHint.serialize()
+                e["presentationHint"] = self.presentationHint.serialize()
         # property: variablesReference
         if "variablesReference" not in override:
-            me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+            self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: namedVariables
         if "namedVariables" not in override:
             if self.namedVariables is not __undefined__:
-                me["namedVariables"] = self.serialize_scalar(me, "namedVariables", self.namedVariables)
+                self.serialize_scalar(me, "namedVariables", self.namedVariables)
         # property: indexedVariables
         if "indexedVariables" not in override:
             if self.indexedVariables is not __undefined__:
-                me["indexedVariables"] = self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
+                self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7241,7 +7241,7 @@ class DAPSetExpressionRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -7326,18 +7326,18 @@ class DAPSetExpressionArguments(DAPObject):
         
         # property: expression
         if "expression" not in override:
-            me["expression"] = self.serialize_scalar(me, "expression", self.expression)
+            self.serialize_scalar(me, "expression", self.expression)
         # property: value
         if "value" not in override:
-            me["value"] = self.serialize_scalar(me, "value", self.value)
+            self.serialize_scalar(me, "value", self.value)
         # property: frameId
         if "frameId" not in override:
             if self.frameId is not __undefined__:
-                me["frameId"] = self.serialize_scalar(me, "frameId", self.frameId)
+                self.serialize_scalar(me, "frameId", self.frameId)
         # property: format
         if "format" not in override:
             if self.format is not __undefined__:
-                me["format"] = self.format.serialize()
+                e["format"] = self.format.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7508,27 +7508,27 @@ class DAPSetExpressionResponseBody(DAPObject):
         
         # property: value
         if "value" not in override:
-            me["value"] = self.serialize_scalar(me, "value", self.value)
+            self.serialize_scalar(me, "value", self.value)
         # property: type
         if "type" not in override:
             if self.type is not __undefined__:
-                me["type"] = self.serialize_scalar(me, "type", self.type)
+                self.serialize_scalar(me, "type", self.type)
         # property: presentationHint
         if "presentationHint" not in override:
             if self.presentationHint is not __undefined__:
-                me["presentationHint"] = self.presentationHint.serialize()
+                e["presentationHint"] = self.presentationHint.serialize()
         # property: variablesReference
         if "variablesReference" not in override:
             if self.variablesReference is not __undefined__:
-                me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+                self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: namedVariables
         if "namedVariables" not in override:
             if self.namedVariables is not __undefined__:
-                me["namedVariables"] = self.serialize_scalar(me, "namedVariables", self.namedVariables)
+                self.serialize_scalar(me, "namedVariables", self.namedVariables)
         # property: indexedVariables
         if "indexedVariables" not in override:
             if self.indexedVariables is not __undefined__:
-                me["indexedVariables"] = self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
+                self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7590,7 +7590,7 @@ class DAPStepInTargetsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -7633,7 +7633,7 @@ class DAPStepInTargetsArguments(DAPObject):
         
         # property: frameId
         if "frameId" not in override:
-            me["frameId"] = self.serialize_scalar(me, "frameId", self.frameId)
+            self.serialize_scalar(me, "frameId", self.frameId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7705,7 +7705,7 @@ class DAPStepInTargetsResponseBody(DAPObject):
         
         # property: targets
         if "targets" not in override:
-            me["targets"] = self.serialize_scalar(me, "targets", self.targets)
+            self.serialize_scalar(me, "targets", self.targets)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7742,7 +7742,7 @@ class DAPGotoTargetsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -7813,11 +7813,11 @@ class DAPGotoTargetsArguments(DAPObject):
             me["source"] = self.source.serialize()
         # property: line
         if "line" not in override:
-            me["line"] = self.serialize_scalar(me, "line", self.line)
+            self.serialize_scalar(me, "line", self.line)
         # property: column
         if "column" not in override:
             if self.column is not __undefined__:
-                me["column"] = self.serialize_scalar(me, "column", self.column)
+                self.serialize_scalar(me, "column", self.column)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7898,7 +7898,7 @@ class DAPGotoTargetsResponseBody(DAPObject):
         
         # property: targets
         if "targets" not in override:
-            me["targets"] = self.serialize_scalar(me, "targets", self.targets)
+            self.serialize_scalar(me, "targets", self.targets)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7935,7 +7935,7 @@ class DAPCompletionsRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -8021,17 +8021,17 @@ class DAPCompletionsArguments(DAPObject):
         # property: frameId
         if "frameId" not in override:
             if self.frameId is not __undefined__:
-                me["frameId"] = self.serialize_scalar(me, "frameId", self.frameId)
+                self.serialize_scalar(me, "frameId", self.frameId)
         # property: text
         if "text" not in override:
-            me["text"] = self.serialize_scalar(me, "text", self.text)
+            self.serialize_scalar(me, "text", self.text)
         # property: column
         if "column" not in override:
-            me["column"] = self.serialize_scalar(me, "column", self.column)
+            self.serialize_scalar(me, "column", self.column)
         # property: line
         if "line" not in override:
             if self.line is not __undefined__:
-                me["line"] = self.serialize_scalar(me, "line", self.line)
+                self.serialize_scalar(me, "line", self.line)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -8117,7 +8117,7 @@ class DAPCompletionsResponseBody(DAPObject):
         
         # property: targets
         if "targets" not in override:
-            me["targets"] = self.serialize_scalar(me, "targets", self.targets)
+            self.serialize_scalar(me, "targets", self.targets)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -8154,7 +8154,7 @@ class DAPExceptionInfoRequest(DAPRequest):
         
         # property: command
         if "command" not in override:
-            me["command"] = self.serialize_scalar(me, "command", self.command)
+            self.serialize_scalar(me, "command", self.command)
         # property: arguments
         if "arguments" not in override:
             me["arguments"] = self.arguments.serialize()
@@ -8197,7 +8197,7 @@ class DAPExceptionInfoArguments(DAPObject):
         
         # property: threadId
         if "threadId" not in override:
-            me["threadId"] = self.serialize_scalar(me, "threadId", self.threadId)
+            self.serialize_scalar(me, "threadId", self.threadId)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -8311,18 +8311,18 @@ class DAPExceptionInfoResponseBody(DAPObject):
         
         # property: exceptionId
         if "exceptionId" not in override:
-            me["exceptionId"] = self.serialize_scalar(me, "exceptionId", self.exceptionId)
+            self.serialize_scalar(me, "exceptionId", self.exceptionId)
         # property: description
         if "description" not in override:
             if self.description is not __undefined__:
-                me["description"] = self.serialize_scalar(me, "description", self.description)
+                self.serialize_scalar(me, "description", self.description)
         # property: breakMode
         if "breakMode" not in override:
             me["breakMode"] = self.breakMode.serialize()
         # property: details
         if "details" not in override:
             if self.details is not __undefined__:
-                me["details"] = self.details.serialize()
+                e["details"] = self.details.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -8825,111 +8825,111 @@ class DAPCapabilities(DAPObject):
         # property: supportsConfigurationDoneRequest
         if "supportsConfigurationDoneRequest" not in override:
             if self.supportsConfigurationDoneRequest is not __undefined__:
-                me["supportsConfigurationDoneRequest"] = self.serialize_scalar(me, "supportsConfigurationDoneRequest", self.supportsConfigurationDoneRequest)
+                self.serialize_scalar(me, "supportsConfigurationDoneRequest", self.supportsConfigurationDoneRequest)
         # property: supportsFunctionBreakpoints
         if "supportsFunctionBreakpoints" not in override:
             if self.supportsFunctionBreakpoints is not __undefined__:
-                me["supportsFunctionBreakpoints"] = self.serialize_scalar(me, "supportsFunctionBreakpoints", self.supportsFunctionBreakpoints)
+                self.serialize_scalar(me, "supportsFunctionBreakpoints", self.supportsFunctionBreakpoints)
         # property: supportsConditionalBreakpoints
         if "supportsConditionalBreakpoints" not in override:
             if self.supportsConditionalBreakpoints is not __undefined__:
-                me["supportsConditionalBreakpoints"] = self.serialize_scalar(me, "supportsConditionalBreakpoints", self.supportsConditionalBreakpoints)
+                self.serialize_scalar(me, "supportsConditionalBreakpoints", self.supportsConditionalBreakpoints)
         # property: supportsHitConditionalBreakpoints
         if "supportsHitConditionalBreakpoints" not in override:
             if self.supportsHitConditionalBreakpoints is not __undefined__:
-                me["supportsHitConditionalBreakpoints"] = self.serialize_scalar(me, "supportsHitConditionalBreakpoints", self.supportsHitConditionalBreakpoints)
+                self.serialize_scalar(me, "supportsHitConditionalBreakpoints", self.supportsHitConditionalBreakpoints)
         # property: supportsEvaluateForHovers
         if "supportsEvaluateForHovers" not in override:
             if self.supportsEvaluateForHovers is not __undefined__:
-                me["supportsEvaluateForHovers"] = self.serialize_scalar(me, "supportsEvaluateForHovers", self.supportsEvaluateForHovers)
+                self.serialize_scalar(me, "supportsEvaluateForHovers", self.supportsEvaluateForHovers)
         # property: exceptionBreakpointFilters
         if "exceptionBreakpointFilters" not in override:
             if self.exceptionBreakpointFilters is not __undefined__:
-                me["exceptionBreakpointFilters"] = self.serialize_scalar(me, "exceptionBreakpointFilters", self.exceptionBreakpointFilters)
+                self.serialize_scalar(me, "exceptionBreakpointFilters", self.exceptionBreakpointFilters)
         # property: supportsStepBack
         if "supportsStepBack" not in override:
             if self.supportsStepBack is not __undefined__:
-                me["supportsStepBack"] = self.serialize_scalar(me, "supportsStepBack", self.supportsStepBack)
+                self.serialize_scalar(me, "supportsStepBack", self.supportsStepBack)
         # property: supportsSetVariable
         if "supportsSetVariable" not in override:
             if self.supportsSetVariable is not __undefined__:
-                me["supportsSetVariable"] = self.serialize_scalar(me, "supportsSetVariable", self.supportsSetVariable)
+                self.serialize_scalar(me, "supportsSetVariable", self.supportsSetVariable)
         # property: supportsRestartFrame
         if "supportsRestartFrame" not in override:
             if self.supportsRestartFrame is not __undefined__:
-                me["supportsRestartFrame"] = self.serialize_scalar(me, "supportsRestartFrame", self.supportsRestartFrame)
+                self.serialize_scalar(me, "supportsRestartFrame", self.supportsRestartFrame)
         # property: supportsGotoTargetsRequest
         if "supportsGotoTargetsRequest" not in override:
             if self.supportsGotoTargetsRequest is not __undefined__:
-                me["supportsGotoTargetsRequest"] = self.serialize_scalar(me, "supportsGotoTargetsRequest", self.supportsGotoTargetsRequest)
+                self.serialize_scalar(me, "supportsGotoTargetsRequest", self.supportsGotoTargetsRequest)
         # property: supportsStepInTargetsRequest
         if "supportsStepInTargetsRequest" not in override:
             if self.supportsStepInTargetsRequest is not __undefined__:
-                me["supportsStepInTargetsRequest"] = self.serialize_scalar(me, "supportsStepInTargetsRequest", self.supportsStepInTargetsRequest)
+                self.serialize_scalar(me, "supportsStepInTargetsRequest", self.supportsStepInTargetsRequest)
         # property: supportsCompletionsRequest
         if "supportsCompletionsRequest" not in override:
             if self.supportsCompletionsRequest is not __undefined__:
-                me["supportsCompletionsRequest"] = self.serialize_scalar(me, "supportsCompletionsRequest", self.supportsCompletionsRequest)
+                self.serialize_scalar(me, "supportsCompletionsRequest", self.supportsCompletionsRequest)
         # property: supportsModulesRequest
         if "supportsModulesRequest" not in override:
             if self.supportsModulesRequest is not __undefined__:
-                me["supportsModulesRequest"] = self.serialize_scalar(me, "supportsModulesRequest", self.supportsModulesRequest)
+                self.serialize_scalar(me, "supportsModulesRequest", self.supportsModulesRequest)
         # property: additionalModuleColumns
         if "additionalModuleColumns" not in override:
             if self.additionalModuleColumns is not __undefined__:
-                me["additionalModuleColumns"] = self.serialize_scalar(me, "additionalModuleColumns", self.additionalModuleColumns)
+                self.serialize_scalar(me, "additionalModuleColumns", self.additionalModuleColumns)
         # property: supportedChecksumAlgorithms
         if "supportedChecksumAlgorithms" not in override:
             if self.supportedChecksumAlgorithms is not __undefined__:
-                me["supportedChecksumAlgorithms"] = self.serialize_scalar(me, "supportedChecksumAlgorithms", self.supportedChecksumAlgorithms)
+                self.serialize_scalar(me, "supportedChecksumAlgorithms", self.supportedChecksumAlgorithms)
         # property: supportsRestartRequest
         if "supportsRestartRequest" not in override:
             if self.supportsRestartRequest is not __undefined__:
-                me["supportsRestartRequest"] = self.serialize_scalar(me, "supportsRestartRequest", self.supportsRestartRequest)
+                self.serialize_scalar(me, "supportsRestartRequest", self.supportsRestartRequest)
         # property: supportsExceptionOptions
         if "supportsExceptionOptions" not in override:
             if self.supportsExceptionOptions is not __undefined__:
-                me["supportsExceptionOptions"] = self.serialize_scalar(me, "supportsExceptionOptions", self.supportsExceptionOptions)
+                self.serialize_scalar(me, "supportsExceptionOptions", self.supportsExceptionOptions)
         # property: supportsValueFormattingOptions
         if "supportsValueFormattingOptions" not in override:
             if self.supportsValueFormattingOptions is not __undefined__:
-                me["supportsValueFormattingOptions"] = self.serialize_scalar(me, "supportsValueFormattingOptions", self.supportsValueFormattingOptions)
+                self.serialize_scalar(me, "supportsValueFormattingOptions", self.supportsValueFormattingOptions)
         # property: supportsExceptionInfoRequest
         if "supportsExceptionInfoRequest" not in override:
             if self.supportsExceptionInfoRequest is not __undefined__:
-                me["supportsExceptionInfoRequest"] = self.serialize_scalar(me, "supportsExceptionInfoRequest", self.supportsExceptionInfoRequest)
+                self.serialize_scalar(me, "supportsExceptionInfoRequest", self.supportsExceptionInfoRequest)
         # property: supportTerminateDebuggee
         if "supportTerminateDebuggee" not in override:
             if self.supportTerminateDebuggee is not __undefined__:
-                me["supportTerminateDebuggee"] = self.serialize_scalar(me, "supportTerminateDebuggee", self.supportTerminateDebuggee)
+                self.serialize_scalar(me, "supportTerminateDebuggee", self.supportTerminateDebuggee)
         # property: supportsDelayedStackTraceLoading
         if "supportsDelayedStackTraceLoading" not in override:
             if self.supportsDelayedStackTraceLoading is not __undefined__:
-                me["supportsDelayedStackTraceLoading"] = self.serialize_scalar(me, "supportsDelayedStackTraceLoading", self.supportsDelayedStackTraceLoading)
+                self.serialize_scalar(me, "supportsDelayedStackTraceLoading", self.supportsDelayedStackTraceLoading)
         # property: supportsLoadedSourcesRequest
         if "supportsLoadedSourcesRequest" not in override:
             if self.supportsLoadedSourcesRequest is not __undefined__:
-                me["supportsLoadedSourcesRequest"] = self.serialize_scalar(me, "supportsLoadedSourcesRequest", self.supportsLoadedSourcesRequest)
+                self.serialize_scalar(me, "supportsLoadedSourcesRequest", self.supportsLoadedSourcesRequest)
         # property: supportsLogPoints
         if "supportsLogPoints" not in override:
             if self.supportsLogPoints is not __undefined__:
-                me["supportsLogPoints"] = self.serialize_scalar(me, "supportsLogPoints", self.supportsLogPoints)
+                self.serialize_scalar(me, "supportsLogPoints", self.supportsLogPoints)
         # property: supportsTerminateThreadsRequest
         if "supportsTerminateThreadsRequest" not in override:
             if self.supportsTerminateThreadsRequest is not __undefined__:
-                me["supportsTerminateThreadsRequest"] = self.serialize_scalar(me, "supportsTerminateThreadsRequest", self.supportsTerminateThreadsRequest)
+                self.serialize_scalar(me, "supportsTerminateThreadsRequest", self.supportsTerminateThreadsRequest)
         # property: supportsSetExpression
         if "supportsSetExpression" not in override:
             if self.supportsSetExpression is not __undefined__:
-                me["supportsSetExpression"] = self.serialize_scalar(me, "supportsSetExpression", self.supportsSetExpression)
+                self.serialize_scalar(me, "supportsSetExpression", self.supportsSetExpression)
         # property: supportsTerminateRequest
         if "supportsTerminateRequest" not in override:
             if self.supportsTerminateRequest is not __undefined__:
-                me["supportsTerminateRequest"] = self.serialize_scalar(me, "supportsTerminateRequest", self.supportsTerminateRequest)
+                self.serialize_scalar(me, "supportsTerminateRequest", self.supportsTerminateRequest)
         # property: supportsDataBreakpoints
         if "supportsDataBreakpoints" not in override:
             if self.supportsDataBreakpoints is not __undefined__:
-                me["supportsDataBreakpoints"] = self.serialize_scalar(me, "supportsDataBreakpoints", self.supportsDataBreakpoints)
+                self.serialize_scalar(me, "supportsDataBreakpoints", self.supportsDataBreakpoints)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9121,14 +9121,14 @@ class DAPExceptionBreakpointsFilter(DAPObject):
         
         # property: filter
         if "filter" not in override:
-            me["filter"] = self.serialize_scalar(me, "filter", self.filter)
+            self.serialize_scalar(me, "filter", self.filter)
         # property: label
         if "label" not in override:
-            me["label"] = self.serialize_scalar(me, "label", self.label)
+            self.serialize_scalar(me, "label", self.label)
         # property: default
         if "default" not in override:
             if self.default is not __undefined__:
-                me["default"] = self.serialize_scalar(me, "default", self.default)
+                self.serialize_scalar(me, "default", self.default)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9266,30 +9266,30 @@ class DAPMessage(DAPObject):
         
         # property: id
         if "id" not in override:
-            me["id"] = self.serialize_scalar(me, "id", self.id)
+            self.serialize_scalar(me, "id", self.id)
         # property: format
         if "format" not in override:
-            me["format"] = self.serialize_scalar(me, "format", self.format)
+            self.serialize_scalar(me, "format", self.format)
         # property: variables
         if "variables" not in override:
             if self.variables is not __undefined__:
-                me["variables"] = self.variables.serialize()
+                e["variables"] = self.variables.serialize()
         # property: sendTelemetry
         if "sendTelemetry" not in override:
             if self.sendTelemetry is not __undefined__:
-                me["sendTelemetry"] = self.serialize_scalar(me, "sendTelemetry", self.sendTelemetry)
+                self.serialize_scalar(me, "sendTelemetry", self.sendTelemetry)
         # property: showUser
         if "showUser" not in override:
             if self.showUser is not __undefined__:
-                me["showUser"] = self.serialize_scalar(me, "showUser", self.showUser)
+                self.serialize_scalar(me, "showUser", self.showUser)
         # property: url
         if "url" not in override:
             if self.url is not __undefined__:
-                me["url"] = self.serialize_scalar(me, "url", self.url)
+                self.serialize_scalar(me, "url", self.url)
         # property: urlLabel
         if "urlLabel" not in override:
             if self.urlLabel is not __undefined__:
-                me["urlLabel"] = self.serialize_scalar(me, "urlLabel", self.urlLabel)
+                self.serialize_scalar(me, "urlLabel", self.urlLabel)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9535,42 +9535,42 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
         
         # property: id
         if "id" not in override:
-            me["id"] = self.serialize_scalar(me, "id", self.id)
+            self.serialize_scalar(me, "id", self.id)
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
         # property: path
         if "path" not in override:
             if self.path is not __undefined__:
-                me["path"] = self.serialize_scalar(me, "path", self.path)
+                self.serialize_scalar(me, "path", self.path)
         # property: isOptimized
         if "isOptimized" not in override:
             if self.isOptimized is not __undefined__:
-                me["isOptimized"] = self.serialize_scalar(me, "isOptimized", self.isOptimized)
+                self.serialize_scalar(me, "isOptimized", self.isOptimized)
         # property: isUserCode
         if "isUserCode" not in override:
             if self.isUserCode is not __undefined__:
-                me["isUserCode"] = self.serialize_scalar(me, "isUserCode", self.isUserCode)
+                self.serialize_scalar(me, "isUserCode", self.isUserCode)
         # property: version
         if "version" not in override:
             if self.version is not __undefined__:
-                me["version"] = self.serialize_scalar(me, "version", self.version)
+                self.serialize_scalar(me, "version", self.version)
         # property: symbolStatus
         if "symbolStatus" not in override:
             if self.symbolStatus is not __undefined__:
-                me["symbolStatus"] = self.serialize_scalar(me, "symbolStatus", self.symbolStatus)
+                self.serialize_scalar(me, "symbolStatus", self.symbolStatus)
         # property: symbolFilePath
         if "symbolFilePath" not in override:
             if self.symbolFilePath is not __undefined__:
-                me["symbolFilePath"] = self.serialize_scalar(me, "symbolFilePath", self.symbolFilePath)
+                self.serialize_scalar(me, "symbolFilePath", self.symbolFilePath)
         # property: dateTimeStamp
         if "dateTimeStamp" not in override:
             if self.dateTimeStamp is not __undefined__:
-                me["dateTimeStamp"] = self.serialize_scalar(me, "dateTimeStamp", self.dateTimeStamp)
+                self.serialize_scalar(me, "dateTimeStamp", self.dateTimeStamp)
         # property: addressRange
         if "addressRange" not in override:
             if self.addressRange is not __undefined__:
-                me["addressRange"] = self.serialize_scalar(me, "addressRange", self.addressRange)
+                self.serialize_scalar(me, "addressRange", self.addressRange)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9710,22 +9710,22 @@ It is only used if the underlying UI actually supports this level of customizati
         
         # property: attributeName
         if "attributeName" not in override:
-            me["attributeName"] = self.serialize_scalar(me, "attributeName", self.attributeName)
+            self.serialize_scalar(me, "attributeName", self.attributeName)
         # property: label
         if "label" not in override:
-            me["label"] = self.serialize_scalar(me, "label", self.label)
+            self.serialize_scalar(me, "label", self.label)
         # property: format
         if "format" not in override:
             if self.format is not __undefined__:
-                me["format"] = self.serialize_scalar(me, "format", self.format)
+                self.serialize_scalar(me, "format", self.format)
         # property: type
         if "type" not in override:
             if self.type is not __undefined__:
-                me["type"] = self.serialize_scalar(me, "type", self.type)
+                self.serialize_scalar(me, "type", self.type)
         # property: width
         if "width" not in override:
             if self.width is not __undefined__:
-                me["width"] = self.serialize_scalar(me, "width", self.width)
+                self.serialize_scalar(me, "width", self.width)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9781,7 +9781,7 @@ For now it only specifies the columns to be shown in the modules view.
         
         # property: columns
         if "columns" not in override:
-            me["columns"] = self.serialize_scalar(me, "columns", self.columns)
+            self.serialize_scalar(me, "columns", self.columns)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9825,10 +9825,10 @@ class DAPThread(DAPObject):
         
         # property: id
         if "id" not in override:
-            me["id"] = self.serialize_scalar(me, "id", self.id)
+            self.serialize_scalar(me, "id", self.id)
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9997,35 +9997,35 @@ class DAPSource(DAPObject):
         # property: name
         if "name" not in override:
             if self.name is not __undefined__:
-                me["name"] = self.serialize_scalar(me, "name", self.name)
+                self.serialize_scalar(me, "name", self.name)
         # property: path
         if "path" not in override:
             if self.path is not __undefined__:
-                me["path"] = self.serialize_scalar(me, "path", self.path)
+                self.serialize_scalar(me, "path", self.path)
         # property: sourceReference
         if "sourceReference" not in override:
             if self.sourceReference is not __undefined__:
-                me["sourceReference"] = self.serialize_scalar(me, "sourceReference", self.sourceReference)
+                self.serialize_scalar(me, "sourceReference", self.sourceReference)
         # property: presentationHint
         if "presentationHint" not in override:
             if self.presentationHint is not __undefined__:
-                me["presentationHint"] = self.serialize_scalar(me, "presentationHint", self.presentationHint)
+                self.serialize_scalar(me, "presentationHint", self.presentationHint)
         # property: origin
         if "origin" not in override:
             if self.origin is not __undefined__:
-                me["origin"] = self.serialize_scalar(me, "origin", self.origin)
+                self.serialize_scalar(me, "origin", self.origin)
         # property: sources
         if "sources" not in override:
             if self.sources is not __undefined__:
-                me["sources"] = self.serialize_scalar(me, "sources", self.sources)
+                self.serialize_scalar(me, "sources", self.sources)
         # property: adapterData
         if "adapterData" not in override:
             if self.adapterData is not __undefined__:
-                me["adapterData"] = self.serialize_scalar(me, "adapterData", self.adapterData)
+                self.serialize_scalar(me, "adapterData", self.adapterData)
         # property: checksums
         if "checksums" not in override:
             if self.checksums is not __undefined__:
-                me["checksums"] = self.serialize_scalar(me, "checksums", self.checksums)
+                self.serialize_scalar(me, "checksums", self.checksums)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -10107,7 +10107,7 @@ class DAPSubsource(DAPObject):
         # property: sources
         if "sources" not in override:
             if self.sources is not __undefined__:
-                me["sources"] = self.serialize_scalar(me, "sources", self.sources)
+                self.serialize_scalar(me, "sources", self.sources)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -10178,15 +10178,15 @@ class DAPSubsourceElement(DAPObject):
         
         # property: text
         if "text" not in override:
-            me["text"] = self.serialize_scalar(me, "text", self.text)
+            self.serialize_scalar(me, "text", self.text)
         # property: line
         if "line" not in override:
             if self.line is not __undefined__:
-                me["line"] = self.serialize_scalar(me, "line", self.line)
+                self.serialize_scalar(me, "line", self.line)
         # property: Source
         if "Source" not in override:
             if self.Source is not __undefined__:
-                me["Source"] = self.Source.serialize()
+                e["Source"] = self.Source.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -10375,44 +10375,44 @@ class DAPStackFrame(DAPObject):
         
         # property: id
         if "id" not in override:
-            me["id"] = self.serialize_scalar(me, "id", self.id)
+            self.serialize_scalar(me, "id", self.id)
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
         # property: source
         if "source" not in override:
             if self.source is not __undefined__:
-                me["source"] = self.source.serialize()
+                e["source"] = self.source.serialize()
         # property: subsource
         if "subsource" not in override:
             if self.subsource is not __undefined__:
-                me["subsource"] = self.subsource.serialize()
+                e["subsource"] = self.subsource.serialize()
         # property: line
         if "line" not in override:
-            me["line"] = self.serialize_scalar(me, "line", self.line)
+            self.serialize_scalar(me, "line", self.line)
         # property: column
         if "column" not in override:
-            me["column"] = self.serialize_scalar(me, "column", self.column)
+            self.serialize_scalar(me, "column", self.column)
         # property: endLine
         if "endLine" not in override:
             if self.endLine is not __undefined__:
-                me["endLine"] = self.serialize_scalar(me, "endLine", self.endLine)
+                self.serialize_scalar(me, "endLine", self.endLine)
         # property: endColumn
         if "endColumn" not in override:
             if self.endColumn is not __undefined__:
-                me["endColumn"] = self.serialize_scalar(me, "endColumn", self.endColumn)
+                self.serialize_scalar(me, "endColumn", self.endColumn)
         # property: moduleId
         if "moduleId" not in override:
             if self.moduleId is not __undefined__:
-                me["moduleId"] = self.serialize_scalar(me, "moduleId", self.moduleId)
+                self.serialize_scalar(me, "moduleId", self.moduleId)
         # property: subsourceElement
         if "subsourceElement" not in override:
             if self.subsourceElement is not __undefined__:
-                me["subsourceElement"] = self.serialize_scalar(me, "subsourceElement", self.subsourceElement)
+                self.serialize_scalar(me, "subsourceElement", self.subsourceElement)
         # property: presentationHint
         if "presentationHint" not in override:
             if self.presentationHint is not __undefined__:
-                me["presentationHint"] = self.serialize_scalar(me, "presentationHint", self.presentationHint)
+                self.serialize_scalar(me, "presentationHint", self.presentationHint)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -10630,41 +10630,41 @@ class DAPScope(DAPObject):
         
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
         # property: variablesReference
         if "variablesReference" not in override:
-            me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+            self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: namedVariables
         if "namedVariables" not in override:
             if self.namedVariables is not __undefined__:
-                me["namedVariables"] = self.serialize_scalar(me, "namedVariables", self.namedVariables)
+                self.serialize_scalar(me, "namedVariables", self.namedVariables)
         # property: indexedVariables
         if "indexedVariables" not in override:
             if self.indexedVariables is not __undefined__:
-                me["indexedVariables"] = self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
+                self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
         # property: expensive
         if "expensive" not in override:
-            me["expensive"] = self.serialize_scalar(me, "expensive", self.expensive)
+            self.serialize_scalar(me, "expensive", self.expensive)
         # property: source
         if "source" not in override:
             if self.source is not __undefined__:
-                me["source"] = self.source.serialize()
+                e["source"] = self.source.serialize()
         # property: line
         if "line" not in override:
             if self.line is not __undefined__:
-                me["line"] = self.serialize_scalar(me, "line", self.line)
+                self.serialize_scalar(me, "line", self.line)
         # property: column
         if "column" not in override:
             if self.column is not __undefined__:
-                me["column"] = self.serialize_scalar(me, "column", self.column)
+                self.serialize_scalar(me, "column", self.column)
         # property: endLine
         if "endLine" not in override:
             if self.endLine is not __undefined__:
-                me["endLine"] = self.serialize_scalar(me, "endLine", self.endLine)
+                self.serialize_scalar(me, "endLine", self.endLine)
         # property: endColumn
         if "endColumn" not in override:
             if self.endColumn is not __undefined__:
-                me["endColumn"] = self.serialize_scalar(me, "endColumn", self.endColumn)
+                self.serialize_scalar(me, "endColumn", self.endColumn)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -10849,33 +10849,33 @@ The client can use this optional information to present the children in a paged 
         
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
         # property: value
         if "value" not in override:
-            me["value"] = self.serialize_scalar(me, "value", self.value)
+            self.serialize_scalar(me, "value", self.value)
         # property: type
         if "type" not in override:
             if self.type is not __undefined__:
-                me["type"] = self.serialize_scalar(me, "type", self.type)
+                self.serialize_scalar(me, "type", self.type)
         # property: presentationHint
         if "presentationHint" not in override:
             if self.presentationHint is not __undefined__:
-                me["presentationHint"] = self.presentationHint.serialize()
+                e["presentationHint"] = self.presentationHint.serialize()
         # property: evaluateName
         if "evaluateName" not in override:
             if self.evaluateName is not __undefined__:
-                me["evaluateName"] = self.serialize_scalar(me, "evaluateName", self.evaluateName)
+                self.serialize_scalar(me, "evaluateName", self.evaluateName)
         # property: variablesReference
         if "variablesReference" not in override:
-            me["variablesReference"] = self.serialize_scalar(me, "variablesReference", self.variablesReference)
+            self.serialize_scalar(me, "variablesReference", self.variablesReference)
         # property: namedVariables
         if "namedVariables" not in override:
             if self.namedVariables is not __undefined__:
-                me["namedVariables"] = self.serialize_scalar(me, "namedVariables", self.namedVariables)
+                self.serialize_scalar(me, "namedVariables", self.namedVariables)
         # property: indexedVariables
         if "indexedVariables" not in override:
             if self.indexedVariables is not __undefined__:
-                me["indexedVariables"] = self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
+                self.serialize_scalar(me, "indexedVariables", self.indexedVariables)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -10988,15 +10988,15 @@ class DAPVariablePresentationHint(DAPObject):
         # property: kind
         if "kind" not in override:
             if self.kind is not __undefined__:
-                me["kind"] = self.serialize_scalar(me, "kind", self.kind)
+                self.serialize_scalar(me, "kind", self.kind)
         # property: attributes
         if "attributes" not in override:
             if self.attributes is not __undefined__:
-                me["attributes"] = self.serialize_scalar(me, "attributes", self.attributes)
+                self.serialize_scalar(me, "attributes", self.attributes)
         # property: visibility
         if "visibility" not in override:
             if self.visibility is not __undefined__:
-                me["visibility"] = self.serialize_scalar(me, "visibility", self.visibility)
+                self.serialize_scalar(me, "visibility", self.visibility)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11111,23 +11111,23 @@ class DAPSourceBreakpoint(DAPObject):
         
         # property: line
         if "line" not in override:
-            me["line"] = self.serialize_scalar(me, "line", self.line)
+            self.serialize_scalar(me, "line", self.line)
         # property: column
         if "column" not in override:
             if self.column is not __undefined__:
-                me["column"] = self.serialize_scalar(me, "column", self.column)
+                self.serialize_scalar(me, "column", self.column)
         # property: condition
         if "condition" not in override:
             if self.condition is not __undefined__:
-                me["condition"] = self.serialize_scalar(me, "condition", self.condition)
+                self.serialize_scalar(me, "condition", self.condition)
         # property: hitCondition
         if "hitCondition" not in override:
             if self.hitCondition is not __undefined__:
-                me["hitCondition"] = self.serialize_scalar(me, "hitCondition", self.hitCondition)
+                self.serialize_scalar(me, "hitCondition", self.hitCondition)
         # property: logMessage
         if "logMessage" not in override:
             if self.logMessage is not __undefined__:
-                me["logMessage"] = self.serialize_scalar(me, "logMessage", self.logMessage)
+                self.serialize_scalar(me, "logMessage", self.logMessage)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11217,15 +11217,15 @@ class DAPFunctionBreakpoint(DAPObject):
         
         # property: name
         if "name" not in override:
-            me["name"] = self.serialize_scalar(me, "name", self.name)
+            self.serialize_scalar(me, "name", self.name)
         # property: condition
         if "condition" not in override:
             if self.condition is not __undefined__:
-                me["condition"] = self.serialize_scalar(me, "condition", self.condition)
+                self.serialize_scalar(me, "condition", self.condition)
         # property: hitCondition
         if "hitCondition" not in override:
             if self.hitCondition is not __undefined__:
-                me["hitCondition"] = self.serialize_scalar(me, "hitCondition", self.hitCondition)
+                self.serialize_scalar(me, "hitCondition", self.hitCondition)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11343,19 +11343,19 @@ class DAPDataBreakpoint(DAPObject):
         
         # property: dataId
         if "dataId" not in override:
-            me["dataId"] = self.serialize_scalar(me, "dataId", self.dataId)
+            self.serialize_scalar(me, "dataId", self.dataId)
         # property: accessType
         if "accessType" not in override:
             if self.accessType is not __undefined__:
-                me["accessType"] = self.accessType.serialize()
+                e["accessType"] = self.accessType.serialize()
         # property: condition
         if "condition" not in override:
             if self.condition is not __undefined__:
-                me["condition"] = self.serialize_scalar(me, "condition", self.condition)
+                self.serialize_scalar(me, "condition", self.condition)
         # property: hitCondition
         if "hitCondition" not in override:
             if self.hitCondition is not __undefined__:
-                me["hitCondition"] = self.serialize_scalar(me, "hitCondition", self.hitCondition)
+                self.serialize_scalar(me, "hitCondition", self.hitCondition)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11526,34 +11526,34 @@ class DAPBreakpoint(DAPObject):
         # property: id
         if "id" not in override:
             if self.id is not __undefined__:
-                me["id"] = self.serialize_scalar(me, "id", self.id)
+                self.serialize_scalar(me, "id", self.id)
         # property: verified
         if "verified" not in override:
-            me["verified"] = self.serialize_scalar(me, "verified", self.verified)
+            self.serialize_scalar(me, "verified", self.verified)
         # property: message
         if "message" not in override:
             if self.message is not __undefined__:
-                me["message"] = self.serialize_scalar(me, "message", self.message)
+                self.serialize_scalar(me, "message", self.message)
         # property: source
         if "source" not in override:
             if self.source is not __undefined__:
-                me["source"] = self.source.serialize()
+                e["source"] = self.source.serialize()
         # property: line
         if "line" not in override:
             if self.line is not __undefined__:
-                me["line"] = self.serialize_scalar(me, "line", self.line)
+                self.serialize_scalar(me, "line", self.line)
         # property: column
         if "column" not in override:
             if self.column is not __undefined__:
-                me["column"] = self.serialize_scalar(me, "column", self.column)
+                self.serialize_scalar(me, "column", self.column)
         # property: endLine
         if "endLine" not in override:
             if self.endLine is not __undefined__:
-                me["endLine"] = self.serialize_scalar(me, "endLine", self.endLine)
+                self.serialize_scalar(me, "endLine", self.endLine)
         # property: endColumn
         if "endColumn" not in override:
             if self.endColumn is not __undefined__:
-                me["endColumn"] = self.serialize_scalar(me, "endColumn", self.endColumn)
+                self.serialize_scalar(me, "endColumn", self.endColumn)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11632,10 +11632,10 @@ class DAPStepInTarget(DAPObject):
         
         # property: id
         if "id" not in override:
-            me["id"] = self.serialize_scalar(me, "id", self.id)
+            self.serialize_scalar(me, "id", self.id)
         # property: label
         if "label" not in override:
-            me["label"] = self.serialize_scalar(me, "label", self.label)
+            self.serialize_scalar(me, "label", self.label)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11743,25 +11743,25 @@ The possible goto targets can be determined via the 'gotoTargets' request.
         
         # property: id
         if "id" not in override:
-            me["id"] = self.serialize_scalar(me, "id", self.id)
+            self.serialize_scalar(me, "id", self.id)
         # property: label
         if "label" not in override:
-            me["label"] = self.serialize_scalar(me, "label", self.label)
+            self.serialize_scalar(me, "label", self.label)
         # property: line
         if "line" not in override:
-            me["line"] = self.serialize_scalar(me, "line", self.line)
+            self.serialize_scalar(me, "line", self.line)
         # property: column
         if "column" not in override:
             if self.column is not __undefined__:
-                me["column"] = self.serialize_scalar(me, "column", self.column)
+                self.serialize_scalar(me, "column", self.column)
         # property: endLine
         if "endLine" not in override:
             if self.endLine is not __undefined__:
-                me["endLine"] = self.serialize_scalar(me, "endLine", self.endLine)
+                self.serialize_scalar(me, "endLine", self.endLine)
         # property: endColumn
         if "endColumn" not in override:
             if self.endColumn is not __undefined__:
-                me["endColumn"] = self.serialize_scalar(me, "endColumn", self.endColumn)
+                self.serialize_scalar(me, "endColumn", self.endColumn)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11888,23 +11888,23 @@ class DAPCompletionItem(DAPObject):
         
         # property: label
         if "label" not in override:
-            me["label"] = self.serialize_scalar(me, "label", self.label)
+            self.serialize_scalar(me, "label", self.label)
         # property: text
         if "text" not in override:
             if self.text is not __undefined__:
-                me["text"] = self.serialize_scalar(me, "text", self.text)
+                self.serialize_scalar(me, "text", self.text)
         # property: type
         if "type" not in override:
             if self.type is not __undefined__:
-                me["type"] = self.type.serialize()
+                e["type"] = self.type.serialize()
         # property: start
         if "start" not in override:
             if self.start is not __undefined__:
-                me["start"] = self.serialize_scalar(me, "start", self.start)
+                self.serialize_scalar(me, "start", self.start)
         # property: length
         if "length" not in override:
             if self.length is not __undefined__:
-                me["length"] = self.serialize_scalar(me, "length", self.length)
+                self.serialize_scalar(me, "length", self.length)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -12013,7 +12013,7 @@ class DAPChecksum(DAPObject):
             me["algorithm"] = self.algorithm.serialize()
         # property: checksum
         if "checksum" not in override:
-            me["checksum"] = self.serialize_scalar(me, "checksum", self.checksum)
+            self.serialize_scalar(me, "checksum", self.checksum)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -12063,7 +12063,7 @@ class DAPValueFormat(DAPObject):
         # property: hex
         if "hex" not in override:
             if self.hex is not __undefined__:
-                me["hex"] = self.serialize_scalar(me, "hex", self.hex)
+                self.serialize_scalar(me, "hex", self.hex)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -12212,31 +12212,31 @@ class DAPStackFrameFormat(DAPValueFormat):
         # property: parameters
         if "parameters" not in override:
             if self.parameters is not __undefined__:
-                me["parameters"] = self.serialize_scalar(me, "parameters", self.parameters)
+                self.serialize_scalar(me, "parameters", self.parameters)
         # property: parameterTypes
         if "parameterTypes" not in override:
             if self.parameterTypes is not __undefined__:
-                me["parameterTypes"] = self.serialize_scalar(me, "parameterTypes", self.parameterTypes)
+                self.serialize_scalar(me, "parameterTypes", self.parameterTypes)
         # property: parameterNames
         if "parameterNames" not in override:
             if self.parameterNames is not __undefined__:
-                me["parameterNames"] = self.serialize_scalar(me, "parameterNames", self.parameterNames)
+                self.serialize_scalar(me, "parameterNames", self.parameterNames)
         # property: parameterValues
         if "parameterValues" not in override:
             if self.parameterValues is not __undefined__:
-                me["parameterValues"] = self.serialize_scalar(me, "parameterValues", self.parameterValues)
+                self.serialize_scalar(me, "parameterValues", self.parameterValues)
         # property: line
         if "line" not in override:
             if self.line is not __undefined__:
-                me["line"] = self.serialize_scalar(me, "line", self.line)
+                self.serialize_scalar(me, "line", self.line)
         # property: module
         if "module" not in override:
             if self.module is not __undefined__:
-                me["module"] = self.serialize_scalar(me, "module", self.module)
+                self.serialize_scalar(me, "module", self.module)
         # property: includeAll
         if "includeAll" not in override:
             if self.includeAll is not __undefined__:
-                me["includeAll"] = self.serialize_scalar(me, "includeAll", self.includeAll)
+                self.serialize_scalar(me, "includeAll", self.includeAll)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -12321,7 +12321,7 @@ class DAPExceptionOptions(DAPObject):
         # property: path
         if "path" not in override:
             if self.path is not __undefined__:
-                me["path"] = self.serialize_scalar(me, "path", self.path)
+                self.serialize_scalar(me, "path", self.path)
         # property: breakMode
         if "breakMode" not in override:
             me["breakMode"] = self.breakMode.serialize()
@@ -12408,10 +12408,10 @@ class DAPExceptionPathSegment(DAPObject):
         # property: negate
         if "negate" not in override:
             if self.negate is not __undefined__:
-                me["negate"] = self.serialize_scalar(me, "negate", self.negate)
+                self.serialize_scalar(me, "negate", self.negate)
         # property: names
         if "names" not in override:
-            me["names"] = self.serialize_scalar(me, "names", self.names)
+            self.serialize_scalar(me, "names", self.names)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -12547,27 +12547,27 @@ class DAPExceptionDetails(DAPObject):
         # property: message
         if "message" not in override:
             if self.message is not __undefined__:
-                me["message"] = self.serialize_scalar(me, "message", self.message)
+                self.serialize_scalar(me, "message", self.message)
         # property: typeName
         if "typeName" not in override:
             if self.typeName is not __undefined__:
-                me["typeName"] = self.serialize_scalar(me, "typeName", self.typeName)
+                self.serialize_scalar(me, "typeName", self.typeName)
         # property: fullTypeName
         if "fullTypeName" not in override:
             if self.fullTypeName is not __undefined__:
-                me["fullTypeName"] = self.serialize_scalar(me, "fullTypeName", self.fullTypeName)
+                self.serialize_scalar(me, "fullTypeName", self.fullTypeName)
         # property: evaluateName
         if "evaluateName" not in override:
             if self.evaluateName is not __undefined__:
-                me["evaluateName"] = self.serialize_scalar(me, "evaluateName", self.evaluateName)
+                self.serialize_scalar(me, "evaluateName", self.evaluateName)
         # property: stackTrace
         if "stackTrace" not in override:
             if self.stackTrace is not __undefined__:
-                me["stackTrace"] = self.serialize_scalar(me, "stackTrace", self.stackTrace)
+                self.serialize_scalar(me, "stackTrace", self.stackTrace)
         # property: innerException
         if "innerException" not in override:
             if self.innerException is not __undefined__:
-                me["innerException"] = self.serialize_scalar(me, "innerException", self.innerException)
+                self.serialize_scalar(me, "innerException", self.innerException)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -12714,4 +12714,4 @@ def _determine_root_factory(data):
 DAPObject.determine_root_factory = _determine_root_factory
 
 
-__all__ = ['DAPSetFunctionBreakpointsRequest', 'DAPTerminateThreadsArguments', 'DAPDataBreakpoint', 'DAPDataBreakpointInfoArguments', 'DAPConfigurationDoneResponse', 'DAPTerminatedEventBody', 'DAPColumnDescriptor', 'DAPStepInTargetsResponseBody', 'DAPThreadsResponse', 'DAPFunctionBreakpoint', 'DAPGotoArguments', 'DAPRestartResponse', 'DAPSetExceptionBreakpointsResponse', 'DAPRunInTerminalRequestArguments', 'DAPSource', 'DAPGotoTargetsRequest', 'DAPSubsourceElement', 'DAPScopesArguments', 'DAPCompletionsResponse', 'DAPExceptionOptions', 'DAPLoadedSourcesResponseBody', 'DAPSetVariableArguments', 'DAPVariable', 'DAPStepInTargetsRequest', 'DAPTerminatedEvent', 'DAPScopesRequest', 'DAPReverseContinueRequest', 'DAPLaunchRequest', 'DAPStackTraceResponse', 'DAPSetExpressionRequest', 'DAPContinueResponse', 'DAPCompletionsArguments', 'DAPSetFunctionBreakpointsArguments', 'DAPSetBreakpointsRequest', 'DAPGotoRequest', 'DAPExceptionInfoResponse', 'DAPGotoTarget', 'DAPChecksum', 'DAPSetStepGranularityArguments', 'DAPSetStepGranularityResponse', 'DAPStackTraceArguments', 'DAPStoppedEvent', 'DAPModulesArguments', 'DAPChecksumAlgorithm', 'DAPExceptionBreakpointsFilter', 'DAPInitializeResponse', 'DAPDisconnectRequest', 'DAPTerminateThreadsRequest', 'DAPThreadsResponseBody', 'DAPValueFormat', 'DAPErrorResponse', 'DAPInitializedEvent', 'DAPPauseRequest', 'DAPRestartArguments', 'DAPEvaluateResponseBody', 'DAPCompletionsRequest', 'DAPReverseContinueArguments', 'DAPSetDataBreakpointsRequest', 'DAPStepInTargetsArguments', 'DAPReverseContinueResponse', 'DAPAttachResponse', 'DAPExceptionInfoRequest', 'DAPDataBreakpointInfoResponse', 'DAPOutputEvent', 'DAPProcessEventBody', 'DAPBreakpointEvent', 'DAPSetVariableResponseBody', 'DAPSourceResponse', 'DAPStepInTargetsResponse', 'DAPEvaluateRequest', 'DAPPauseResponse', 'DAPCapabilitiesEvent', 'DAPEvaluateArguments', 'DAPRunInTerminalResponseBody', 'DAPLoadedSourceEvent', 'DAPExitedEvent', 'DAPConfigurationDoneRequest', 'DAPStepOutArguments', 'DAPThreadsRequest', 'DAPThread', 'DAPSetFunctionBreakpointsResponseBody', 'DAPExceptionPathSegment', 'DAPNextArguments', 'DAPStepOutResponse', 'DAPModulesViewDescriptor', 'DAPGotoResponse', 'DAPLoadedSourcesRequest', 'DAPMessageVariables', 'DAPRestartFrameResponse', 'DAPContinueRequest', 'DAPSetDataBreakpointsArguments', 'DAPSetVariableResponse', 'DAPRunInTerminalRequestArgumentsEnv', 'DAPModuleEventBody', 'DAPEvaluateResponse', 'DAPSetExpressionResponse', 'DAPGotoTargetsResponse', 'DAPSubsource', 'DAPOutputEventBody', 'DAPVariablePresentationHint', 'DAPModuleEvent', 'DAPRunInTerminalResponse', 'DAPAttachRequest', 'DAPConfigurationDoneArguments', 'DAPRestartRequest', 'DAPStepInArguments', 'DAPDataBreakpointInfoResponseBody', 'DAPTerminateRequest', 'DAPStackTraceResponseBody', 'DAPSetVariableRequest', 'DAPRequest', 'DAPPauseArguments', 'DAPBreakpointEventBody', 'DAPLoadedSourcesResponse', 'DAPSetExceptionBreakpointsRequest', 'DAPVariablesRequest', 'DAPCompletionItemType', 'DAPSourceArguments', 'DAPSetStepGranularityRequest', 'DAPStepBackArguments', 'DAPStackFrame', 'DAPSetBreakpointsResponse', 'DAPTerminateThreadsResponse', 'DAPTerminateResponse', 'DAPNextRequest', 'DAPDisconnectArguments', 'DAPStepOutRequest', 'DAPScopesResponse', 'DAPGotoTargetsArguments', 'DAPCompletionItem', 'DAPStepBackRequest', 'DAPSetDataBreakpointsResponseBody', 'DAPTerminateArguments', 'DAPErrorResponseBody', 'DAPStepInTarget', 'DAPProtocolMessage', 'DAPExceptionDetails', 'DAPVariablesArguments', 'DAPGotoTargetsResponseBody', 'DAPMessage', 'DAPSourceResponseBody', 'DAPSetBreakpointsResponseBody', 'DAPInitializeRequest', 'DAPInitializeRequestArguments', 'DAPModulesRequest', 'DAPSetExpressionResponseBody', 'DAPLoadedSourceEventBody', 'DAPBreakpoint', 'DAPContinuedEventBody', 'DAPNextResponse', 'DAPDisconnectResponse', 'DAPSourceBreakpoint', 'DAPRestartFrameRequest', 'DAPSetFunctionBreakpointsResponse', 'DAPContinueArguments', 'DAPEvent', 'DAPSetDataBreakpointsResponse', 'DAPVariablesResponseBody', 'DAPExceptionInfoArguments', 'DAPExitedEventBody', 'DAPStepBackResponse', 'DAPAttachRequestArguments', 'DAPScope', 'DAPResponse', 'DAPSetBreakpointsArguments', 'DAPStoppedEventBody', 'DAPModulesResponseBody', 'DAPStepInRequest', 'DAPStackFrameFormat', 'DAPModulesResponse', 'DAPLoadedSourcesArguments', 'DAPScopesResponseBody', 'DAPVariablesResponse', 'DAPStepInResponse', 'DAPContinuedEvent', 'DAPRunInTerminalRequest', 'DAPCapabilitiesEventBody', 'DAPExceptionBreakMode', 'DAPSetStepGranularityResponseBody', 'DAPProcessEvent', 'DAPDataBreakpointAccessType', 'DAPThreadEventBody', 'DAPExceptionInfoResponseBody', 'DAPLaunchResponse', 'DAPThreadEvent', 'DAPCapabilities', 'DAPSetExceptionBreakpointsArguments', 'DAPModule', 'DAPLaunchRequestArguments', 'DAPContinueResponseBody', 'DAPRestartFrameArguments', 'DAPDataBreakpointInfoRequest', 'DAPStackTraceRequest', 'DAPSourceRequest', 'DAPSetExpressionArguments', 'DAPCompletionsResponseBody']
+__all__ = ['DAPLoadedSourceEvent', 'DAPSetFunctionBreakpointsArguments', 'DAPStepOutArguments', 'DAPTerminateThreadsArguments', 'DAPExceptionBreakpointsFilter', 'DAPVariable', 'DAPColumnDescriptor', 'DAPSetExpressionArguments', 'DAPStepBackRequest', 'DAPInitializeResponse', 'DAPConfigurationDoneResponse', 'DAPProtocolMessage', 'DAPThreadsResponse', 'DAPGotoTargetsResponseBody', 'DAPResponse', 'DAPContinueResponse', 'DAPLoadedSourcesResponseBody', 'DAPCapabilities', 'DAPBreakpointEvent', 'DAPLaunchRequest', 'DAPCompletionsArguments', 'DAPTerminatedEvent', 'DAPSetDataBreakpointsRequest', 'DAPSetExpressionRequest', 'DAPTerminateArguments', 'DAPCapabilitiesEventBody', 'DAPStepInTargetsResponseBody', 'DAPSetDataBreakpointsResponseBody', 'DAPThreadEvent', 'DAPSetBreakpointsRequest', 'DAPScopesArguments', 'DAPStackTraceRequest', 'DAPStackTraceResponseBody', 'DAPEvaluateRequest', 'DAPBreakpoint', 'DAPTerminatedEventBody', 'DAPCompletionsResponse', 'DAPCompletionItem', 'DAPReverseContinueResponse', 'DAPGotoRequest', 'DAPSubsourceElement', 'DAPLoadedSourcesArguments', 'DAPPauseArguments', 'DAPModulesViewDescriptor', 'DAPSetBreakpointsArguments', 'DAPOutputEvent', 'DAPScopesResponse', 'DAPContinueRequest', 'DAPLoadedSourceEventBody', 'DAPStepInTargetsRequest', 'DAPStackTraceArguments', 'DAPCapabilitiesEvent', 'DAPSetVariableResponseBody', 'DAPChecksumAlgorithm', 'DAPStoppedEvent', 'DAPExceptionInfoResponse', 'DAPDataBreakpointInfoArguments', 'DAPModulesRequest', 'DAPExceptionDetails', 'DAPRunInTerminalResponse', 'DAPSetExceptionBreakpointsArguments', 'DAPRunInTerminalResponseBody', 'DAPAttachRequestArguments', 'DAPTerminateResponse', 'DAPLoadedSourcesRequest', 'DAPEvaluateArguments', 'DAPGotoTargetsRequest', 'DAPDisconnectArguments', 'DAPExceptionBreakMode', 'DAPGotoTarget', 'DAPSetExceptionBreakpointsRequest', 'DAPTerminateThreadsResponse', 'DAPGotoArguments', 'DAPInitializeRequest', 'DAPSetBreakpointsResponseBody', 'DAPTerminateRequest', 'DAPSetDataBreakpointsResponse', 'DAPSetBreakpointsResponse', 'DAPSetFunctionBreakpointsResponse', 'DAPContinueArguments', 'DAPStackFrameFormat', 'DAPLoadedSourcesResponse', 'DAPLaunchRequestArguments', 'DAPExceptionOptions', 'DAPSourceResponse', 'DAPModulesArguments', 'DAPAttachRequest', 'DAPStepInTargetsArguments', 'DAPCompletionsResponseBody', 'DAPSourceBreakpoint', 'DAPRestartFrameResponse', 'DAPThread', 'DAPGotoResponse', 'DAPSetVariableRequest', 'DAPExitedEventBody', 'DAPProcessEvent', 'DAPRunInTerminalRequestArgumentsEnv', 'DAPScopesResponseBody', 'DAPInitializedEvent', 'DAPCompletionsRequest', 'DAPRunInTerminalRequest', 'DAPDataBreakpointInfoRequest', 'DAPStepInArguments', 'DAPDisconnectResponse', 'DAPSetStepGranularityResponseBody', 'DAPTerminateThreadsRequest', 'DAPSource', 'DAPSetVariableArguments', 'DAPAttachResponse', 'DAPThreadsRequest', 'DAPRequest', 'DAPInitializeRequestArguments', 'DAPSetStepGranularityArguments', 'DAPSetExpressionResponseBody', 'DAPStackFrame', 'DAPRestartResponse', 'DAPRestartFrameArguments', 'DAPNextArguments', 'DAPStepOutResponse', 'DAPReverseContinueArguments', 'DAPRestartFrameRequest', 'DAPStackTraceResponse', 'DAPVariablesRequest', 'DAPConfigurationDoneRequest', 'DAPLaunchResponse', 'DAPModuleEventBody', 'DAPErrorResponseBody', 'DAPDataBreakpointInfoResponseBody', 'DAPSetFunctionBreakpointsResponseBody', 'DAPGotoTargetsArguments', 'DAPEvaluateResponse', 'DAPSetStepGranularityRequest', 'DAPStepInTargetsResponse', 'DAPExceptionInfoArguments', 'DAPStepBackArguments', 'DAPContinuedEventBody', 'DAPRunInTerminalRequestArguments', 'DAPDisconnectRequest', 'DAPScopesRequest', 'DAPRestartRequest', 'DAPExceptionInfoRequest', 'DAPCompletionItemType', 'DAPStepInTarget', 'DAPThreadsResponseBody', 'DAPBreakpointEventBody', 'DAPMessageVariables', 'DAPSourceRequest', 'DAPErrorResponse', 'DAPFunctionBreakpoint', 'DAPSetStepGranularityResponse', 'DAPSetExpressionResponse', 'DAPStoppedEventBody', 'DAPMessage', 'DAPSubsource', 'DAPModulesResponseBody', 'DAPRestartArguments', 'DAPContinuedEvent', 'DAPExceptionPathSegment', 'DAPDataBreakpointAccessType', 'DAPChecksum', 'DAPVariablesResponse', 'DAPOutputEventBody', 'DAPPauseRequest', 'DAPModuleEvent', 'DAPSetDataBreakpointsArguments', 'DAPStepOutRequest', 'DAPThreadEventBody', 'DAPStepInRequest', 'DAPPauseResponse', 'DAPDataBreakpointInfoResponse', 'DAPSourceResponseBody', 'DAPNextRequest', 'DAPConfigurationDoneArguments', 'DAPGotoTargetsResponse', 'DAPScope', 'DAPSetVariableResponse', 'DAPContinueResponseBody', 'DAPVariablePresentationHint', 'DAPModulesResponse', 'DAPReverseContinueRequest', 'DAPSourceArguments', 'DAPValueFormat', 'DAPDataBreakpoint', 'DAPNextResponse', 'DAPStepInResponse', 'DAPEvent', 'DAPVariablesArguments', 'DAPSetExceptionBreakpointsResponse', 'DAPProcessEventBody', 'DAPEvaluateResponseBody', 'DAPModule', 'DAPExitedEvent', 'DAPVariablesResponseBody', 'DAPStepBackResponse', 'DAPExceptionInfoResponseBody', 'DAPSetFunctionBreakpointsRequest']

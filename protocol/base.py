@@ -6,10 +6,8 @@ from __future__ import absolute_import
 
 import json
 
-from collections.abc import Iterable
 
-
-__all__ = ["DAPObject", "DAPMessage"]
+__all__ = ["DAPObject", "DAPBaseMessage"]
 
 
 class DAPObject(object):
@@ -50,10 +48,10 @@ class DAPObject(object):
                     serialized[key] = value[key].serialize()
                 else:
                     self.serialize_scalar(serialized, key, value[key])
-        elif isinstance(value, Iterable):
+        elif isinstance(value, list) or isinstance(value, tuple):
             serialized = []
             for v in value:
-                if isinstance(value[key], DAPobject):
+                if isinstance(v, DAPObject):
                     serialized.append(v.serialize())
                 else:
                     self.serialize_scalar(serialized, None, v)
@@ -70,9 +68,9 @@ class DAPObject(object):
         pass
 
 
-class DAPMessage(DAPObject):
+class DAPBaseMessage(DAPObject):
     """
-    DAPMessage is base class for all debug adapter protocol messages
+    DAPBaseMessage is base class for all debug adapter protocol messages
     """
     def __init__(self):
         DAPObject.__init__(self)
@@ -80,12 +78,12 @@ class DAPMessage(DAPObject):
     @staticmethod
     def recv(socket):
         """
-        Retrieves single DAPMessage from socket
+        Retrieves single DAPBaseMessage from socket
 
         Returns None on failure
         """
 
-        body = DAPMessage.recv_raw(socket)
+        body = DAPBaseMessage.recv_raw(socket)
 
         if body is not None:
             return DAPObject.deserialize(body)
@@ -93,7 +91,7 @@ class DAPMessage(DAPObject):
     @staticmethod
     def recv_raw(socket):
         """
-        Retrieves single DAPMessage from socket in raw form (json)
+        Retrieves single DAPBaseMessage from socket in raw form (json)
 
         Returns None on failure
         """
@@ -116,7 +114,7 @@ class DAPMessage(DAPObject):
                     headers.append(cread_line)
                     cread_line = ""
 
-        headers = DAPMessage.parse_headers(headers)
+        headers = DAPBaseMessage.parse_headers(headers)
 
         content_size = int(headers["Content-Length"])
 
@@ -152,12 +150,12 @@ class DAPMessage(DAPObject):
 
         data = self.to_text()
         # print("SENT: " + str(data))
-        DAPMessage.send_text(socket, data)
+        DAPBaseMessage.send_text(socket, data)
 
     @staticmethod
     def send_text(socket, text):
         """
-        Sends the raw text message as DAPMessage
+        Sends the raw text message as DAPBaseMessage
         """
 
         socket.sendall("Content-Length: " + str(len(text)) + "\r\n")
