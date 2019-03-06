@@ -61,15 +61,14 @@ def dis(co, lasti=-1):
         de.current = i == lasti
         de.bytecode_offset = i
         de.instruction = opname[op]
-        i = i+1
+        i = i + 1
         if op >= HAVE_ARGUMENT:
-            oparg = ord(code[i]) + ord(code[i+1])*256 + extended_arg
+            oparg = ord(code[i]) + ord(code[i + 1]) * 256 + extended_arg
             extended_arg = 0
-            i = i+2
+            i = i + 2
             if op == EXTENDED_ARG:
-                extended_arg = oparg*65536L
+                extended_arg = oparg * 65536L
             de.arg = oparg
-
 
             if op in hasconst:
                 de.readable_arg = co.co_consts[oparg]
@@ -103,13 +102,13 @@ def findlabels(code):
     while i < n:
         c = code[i]
         op = ord(c)
-        i = i+1
+        i = i + 1
         if op >= HAVE_ARGUMENT:
-            oparg = ord(code[i]) + ord(code[i+1])*256
-            i = i+2
+            oparg = ord(code[i]) + ord(code[i + 1]) * 256
+            i = i + 2
             label = -1
             if op in hasjrel:
-                label = i+oparg
+                label = i + oparg
             elif op in hasjabs:
                 label = oparg
             if label >= 0:

@@ -9,13 +9,13 @@ import json
 from .utils import NoneDict
 
 __all__ = ["features", "DAPMessage", "DAPRequest", "DAPEvent", "DAPResponse", "DAPErrorResponse",
-    "DAPInitializedEvent", "DAPStoppedEvent", "DAPContinueEvent", "DAPExitedEvent",
-    "DAPTerminatedEvent", "DAPThreadEvent", "DAPOutputEvent", "DAPBreakpointEvent",
-    "DAPModuleEvent", "DAPLoadedSourceEvent", "DAPProcessEvent", "DAPCapabilitiesEvent",
-    "DAPRunInTerminalRequest", "DAPRunInTerminalResponse", "DAPSetBreakpointsResponse", "DAPSetFunctionBreakpointsResponse",
-    "DAPContinueResponse", "DAPInitializeResponse", "DAPStackTraceResponse", "DAPScopesResponse",
-    "DAPVariablesResponse", "DAPSetVariableResponse", "DAPSourceResponse", "DAPThreadsResponse",
-    "DAPEvaluateResponse"]
+           "DAPInitializedEvent", "DAPStoppedEvent", "DAPContinueEvent", "DAPExitedEvent",
+           "DAPTerminatedEvent", "DAPThreadEvent", "DAPOutputEvent", "DAPBreakpointEvent",
+           "DAPModuleEvent", "DAPLoadedSourceEvent", "DAPProcessEvent", "DAPCapabilitiesEvent",
+           "DAPRunInTerminalRequest", "DAPRunInTerminalResponse", "DAPSetBreakpointsResponse", "DAPSetFunctionBreakpointsResponse",
+           "DAPContinueResponse", "DAPInitializeResponse", "DAPStackTraceResponse", "DAPScopesResponse",
+           "DAPVariablesResponse", "DAPSetVariableResponse", "DAPSourceResponse", "DAPThreadsResponse",
+           "DAPEvaluateResponse"]
 
 # enabled features
 features = {
@@ -32,7 +32,6 @@ features = {
     "supportsConditionalBreakpoints": False,
     "supportsHitConditionalBreakpoints": False,
 }
-
 
 
 class DAPMessage(object):
@@ -102,7 +101,7 @@ class DAPMessage(object):
         data = ""
 
         while (len(data) < content_size):
-            data += socket.recv(content_size-len(data))
+            data += socket.recv(content_size - len(data))
             if data == "":
                 return None
 
@@ -484,7 +483,7 @@ class DAPRunInTerminalResponse(DAPResponse):
             body["shellProcessId"] = self.shell_process_id
 
 
-### ONLY SUPPORTED RESPONSES (and thus requests) ARE IMPLEMENTED!
+# ONLY SUPPORTED RESPONSES (and thus requests) ARE IMPLEMENTED!
 
 class DAPSetBreakpointsResponse(DAPResponse):
     def __init__(self, rqs, breakpoints):
