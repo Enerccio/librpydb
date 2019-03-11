@@ -9,21 +9,22 @@ from .gen import __all__ as gen_all
 
 from .base import *
 from .gen import *
+from ..utils import _fix_all
 
-__all__ = ["features"] + base_all + gen_all
+__all__ = _fix_all(["features"] + base_all + gen_all)
 
 # enabled features
 features = {
-    "supportsExceptionInfoRequest": False,
-    "supportTerminateDebuggee": False,
-    "supportsTerminateThreadsRequest": False,
-    "supportsDataBreakpoints": False,
-    "supportsStepInTargetsRequest": False,
-    "supportsSetExpression": False,
-    "supportsGotoTargetsRequest": False,
-    "supportsFunctionBreakpoints": False,
+    "supports_exception_info_request": False,
+    "support_terminate_debuggee": False,
+    "supports_terminate_threads_request": False,
+    "supports_data_breakpoints": False,
+    "supports_step_in_targets_request": False,
+    "supports_set_expression": False,
+    "supports_goto_targets_request": False,
+    "supports_function_breakpoints": False,
 
     # TODO
-    "supportsConditionalBreakpoints": False,
-    "supportsHitConditionalBreakpoints": False,
+    "supports_conditional_breakpoints": False,
+    "supports_hit_conditional_breakpoints": False,
 }

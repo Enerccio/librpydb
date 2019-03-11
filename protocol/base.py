@@ -6,45 +6,42 @@ from __future__ import absolute_import
 
 import json
 
+from ..utils import _fix_all, to_raw, to_str, NoneDict
 
-__all__ = ["DAPObject", "DAPBaseMessage"]
+
+__all__ = _fix_all(["DAPObject", "DAPBaseMessage"])
 
 
 class DAPObject(object):
+
+    # BASE METHODS
 
     @staticmethod
     def determine_root_factory(data):
         pass
 
-    @staticmethod
-    def deserialize(data):
-        factory = DAPObject.determine_root_factory(data)
-        return DAPObject.deserialize_as(data, factory)
+    def as_current_kwargs(self):
+        return {}
 
-    @classmethod
-    def deserialize_as(cls, data, factory):
-        args = []
-        kwargs = {}
-        factory._deserialize(args, kwargs, [], data, [])
-        return factory(*args, **kwargs)
+    def to_text(self):
+        # print("me=" + str(self) + ", txt=" + str(self.serialize()))  # debug printing
+        return json.dumps(self.serialize())
 
-    @classmethod
-    def _deserialize(cls, args, kwargs, used_args, me, override):
-        pass
+    # SERIALIZATION
 
     def serialize(self):
         me = {}
         self._serialize(me, [])
         return me
 
-    def to_text(self):
-        return json.dumps(self.serialize())
+    def _serialize(self, me, override):
+        pass
 
-    def serialize_scalar(self, target_dict, target_property, value):
+    def serialize_scalar(self, target_dict, target_property, value, hint=None):
         if isinstance(value, dict):
             serialized = {}
             for key in value:
-                if isinstance(value[key], DAPobject):
+                if isinstance(value[key], DAPObject):
                     serialized[key] = value[key].serialize()
                 else:
                     self.serialize_scalar(serialized, key, value[key])
@@ -64,8 +61,48 @@ class DAPObject(object):
         else:
             target_dict[target_property] = serialized
 
-    def _serialize(self, me, override):
+    # DESERIALIZATION
+    @staticmethod
+    def deserialize(data):
+        # print("data=" + str(data))  # debug printing
+        factory = DAPObject.determine_root_factory(data)
+        return DAPObject.deserialize_as(data, factory)
+
+    @classmethod
+    def deserialize_as(cls, data, factory):
+        args = []
+        kwargs = {}
+        factory._deserialize(args, kwargs, [], data, [])
+        return factory(*args, **kwargs)
+
+    @classmethod
+    def _deserialize(cls, args, kwargs, used_args, me, override):
         pass
+
+    @classmethod
+    def deserialize_scalar(cls, value, hint=None):
+        if isinstance(value, dict):
+            try:
+                if hint is not None:
+                    return cls.deserialize_as(value, hint)
+                return cls.deserialize(value)
+            except Exception:
+                deserialized = {}
+                for key in value:
+                    if hint is not None:
+                        deserialized[key] = cls.deserialize_as(value[key], hint)
+                    else:
+                        deserialized[key] = cls.deserialize_scalar(value[key], hint)
+        elif isinstance(value, list) or isinstance(value, tuple):
+            deserialized = []
+            for v in value:
+                if hint is not None:
+                    deserialized.append(cls.deserialize_as(v, hint))
+                else:
+                    deserialized.append(cls.deserialize_scalar(v, hint))
+        else:
+            deserialized = value
+        return deserialized
 
 
 class DAPBaseMessage(DAPObject):
@@ -102,6 +139,10 @@ class DAPBaseMessage(DAPObject):
 
         while True:
             c = socket.recv(1)
+            if c is None:
+                return None  # failure
+
+            c = to_str(c)
             if c == "":
                 # end of stream
                 return None
@@ -121,7 +162,10 @@ class DAPBaseMessage(DAPObject):
         data = ""
 
         while (len(data) < content_size):
-            data += socket.recv(content_size - len(data))
+            raw_data = socket.recv(content_size - len(data))
+            if raw_data is None:
+                return None  # failure
+            data += to_str(raw_data)
             if data == "":
                 return None
 
@@ -158,6 +202,6 @@ class DAPBaseMessage(DAPObject):
         Sends the raw text message as DAPBaseMessage
         """
 
-        socket.sendall("Content-Length: " + str(len(text)) + "\r\n")
-        socket.sendall("\r\n")
-        socket.sendall(text)
+        socket.sendall(to_raw("Content-Length: " + str(len(text)) + "\r\n"))
+        socket.sendall(to_raw("\r\n"))
+        socket.sendall(to_raw(text))
