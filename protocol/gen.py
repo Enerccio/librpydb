@@ -102,7 +102,7 @@ class DAPRequest(DAPProtocolMessage):
             raise ValueError("arguments is not defined")
         return self.arguments
     
-    def get_arguments_or_defaut(self, default=None):
+    def get_arguments_or_default(self, default=None):
         if self.arguments is __undefined__:
             return default
         return self.arguments
@@ -184,7 +184,7 @@ class DAPEvent(DAPProtocolMessage):
             raise ValueError("body is not defined")
         return self.body
     
-    def get_body_or_defaut(self, default=None):
+    def get_body_or_default(self, default=None):
         if self.body is __undefined__:
             return default
         return self.body
@@ -287,7 +287,7 @@ class DAPResponse(DAPProtocolMessage):
             raise ValueError("message is not defined")
         return self.message
     
-    def get_message_or_defaut(self, default=None):
+    def get_message_or_default(self, default=None):
         if self.message is __undefined__:
             return default
         return self.message
@@ -308,7 +308,7 @@ class DAPResponse(DAPProtocolMessage):
             raise ValueError("body is not defined")
         return self.body
     
-    def get_body_or_defaut(self, default=None):
+    def get_body_or_default(self, default=None):
         if self.body is __undefined__:
             return default
         return self.body
@@ -444,7 +444,7 @@ class DAPErrorResponseBody(DAPObject):
             raise ValueError("error is not defined")
         return self.error
     
-    def get_error_or_defaut(self, default=None):
+    def get_error_or_default(self, default=None):
         if self.error is __undefined__:
             return default
         return self.error
@@ -606,7 +606,7 @@ class DAPStoppedEventBody(DAPObject):
             raise ValueError("description is not defined")
         return self.description
     
-    def get_description_or_defaut(self, default=None):
+    def get_description_or_default(self, default=None):
         if self.description is __undefined__:
             return default
         return self.description
@@ -627,7 +627,7 @@ class DAPStoppedEventBody(DAPObject):
             raise ValueError("threadId is not defined")
         return self.threadId
     
-    def get_thread_id_or_defaut(self, default=None):
+    def get_thread_id_or_default(self, default=None):
         if self.threadId is __undefined__:
             return default
         return self.threadId
@@ -648,7 +648,7 @@ class DAPStoppedEventBody(DAPObject):
             raise ValueError("preserveFocusHint is not defined")
         return self.preserveFocusHint
     
-    def get_preserve_focus_hint_or_defaut(self, default=None):
+    def get_preserve_focus_hint_or_default(self, default=None):
         if self.preserveFocusHint is __undefined__:
             return default
         return self.preserveFocusHint
@@ -669,7 +669,7 @@ class DAPStoppedEventBody(DAPObject):
             raise ValueError("text is not defined")
         return self.text
     
-    def get_text_or_defaut(self, default=None):
+    def get_text_or_default(self, default=None):
         if self.text is __undefined__:
             return default
         return self.text
@@ -690,7 +690,7 @@ class DAPStoppedEventBody(DAPObject):
             raise ValueError("allThreadsStopped is not defined")
         return self.allThreadsStopped
     
-    def get_all_threads_stopped_or_defaut(self, default=None):
+    def get_all_threads_stopped_or_default(self, default=None):
         if self.allThreadsStopped is __undefined__:
             return default
         return self.allThreadsStopped
@@ -850,7 +850,7 @@ class DAPContinuedEventBody(DAPObject):
             raise ValueError("allThreadsContinued is not defined")
         return self.allThreadsContinued
     
-    def get_all_threads_continued_or_defaut(self, default=None):
+    def get_all_threads_continued_or_default(self, default=None):
         if self.allThreadsContinued is __undefined__:
             return default
         return self.allThreadsContinued
@@ -1051,7 +1051,7 @@ class DAPTerminatedEventBody(DAPObject):
             raise ValueError("restart is not defined")
         return self.restart
     
-    def get_restart_or_defaut(self, default=None):
+    def get_restart_or_default(self, default=None):
         if self.restart is __undefined__:
             return default
         return self.restart
@@ -1283,7 +1283,7 @@ class DAPOutputEventBody(DAPObject):
             raise ValueError("category is not defined")
         return self.category
     
-    def get_category_or_defaut(self, default=None):
+    def get_category_or_default(self, default=None):
         if self.category is __undefined__:
             return default
         return self.category
@@ -1311,7 +1311,7 @@ class DAPOutputEventBody(DAPObject):
             raise ValueError("variablesReference is not defined")
         return self.variablesReference
     
-    def get_variables_reference_or_defaut(self, default=None):
+    def get_variables_reference_or_default(self, default=None):
         if self.variablesReference is __undefined__:
             return default
         return self.variablesReference
@@ -1332,7 +1332,7 @@ class DAPOutputEventBody(DAPObject):
             raise ValueError("source is not defined")
         return self.source
     
-    def get_source_or_defaut(self, default=None):
+    def get_source_or_default(self, default=None):
         if self.source is __undefined__:
             return default
         return self.source
@@ -1353,7 +1353,7 @@ class DAPOutputEventBody(DAPObject):
             raise ValueError("line is not defined")
         return self.line
     
-    def get_line_or_defaut(self, default=None):
+    def get_line_or_default(self, default=None):
         if self.line is __undefined__:
             return default
         return self.line
@@ -1374,7 +1374,7 @@ class DAPOutputEventBody(DAPObject):
             raise ValueError("column is not defined")
         return self.column
     
-    def get_column_or_defaut(self, default=None):
+    def get_column_or_default(self, default=None):
         if self.column is __undefined__:
             return default
         return self.column
@@ -1395,7 +1395,7 @@ class DAPOutputEventBody(DAPObject):
             raise ValueError("data is not defined")
         return self.data
     
-    def get_data_or_defaut(self, default=None):
+    def get_data_or_default(self, default=None):
         if self.data is __undefined__:
             return default
         return self.data
@@ -1891,7 +1891,7 @@ class DAPProcessEventBody(DAPObject):
             raise ValueError("systemProcessId is not defined")
         return self.systemProcessId
     
-    def get_system_process_id_or_defaut(self, default=None):
+    def get_system_process_id_or_default(self, default=None):
         if self.systemProcessId is __undefined__:
             return default
         return self.systemProcessId
@@ -1912,7 +1912,7 @@ class DAPProcessEventBody(DAPObject):
             raise ValueError("isLocalProcess is not defined")
         return self.isLocalProcess
     
-    def get_is_local_process_or_defaut(self, default=None):
+    def get_is_local_process_or_default(self, default=None):
         if self.isLocalProcess is __undefined__:
             return default
         return self.isLocalProcess
@@ -1933,7 +1933,7 @@ class DAPProcessEventBody(DAPObject):
             raise ValueError("startMethod is not defined")
         return self.startMethod
     
-    def get_start_method_or_defaut(self, default=None):
+    def get_start_method_or_default(self, default=None):
         if self.startMethod is __undefined__:
             return default
         return self.startMethod
@@ -2167,7 +2167,7 @@ class DAPRunInTerminalRequestArguments(DAPObject):
             raise ValueError("kind is not defined")
         return self.kind
     
-    def get_kind_or_defaut(self, default=None):
+    def get_kind_or_default(self, default=None):
         if self.kind is __undefined__:
             return default
         return self.kind
@@ -2188,7 +2188,7 @@ class DAPRunInTerminalRequestArguments(DAPObject):
             raise ValueError("title is not defined")
         return self.title
     
-    def get_title_or_defaut(self, default=None):
+    def get_title_or_default(self, default=None):
         if self.title is __undefined__:
             return default
         return self.title
@@ -2223,7 +2223,7 @@ class DAPRunInTerminalRequestArguments(DAPObject):
             raise ValueError("env is not defined")
         return self.env
     
-    def get_env_or_defaut(self, default=None):
+    def get_env_or_default(self, default=None):
         if self.env is __undefined__:
             return default
         return self.env
@@ -2330,8 +2330,8 @@ class DAPRunInTerminalResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPRunInTerminalResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPRunInTerminalResponse(seq, "response", request_seq, success, "runInTerminal", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -2339,6 +2339,7 @@ class DAPRunInTerminalResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -2350,16 +2351,23 @@ class DAPRunInTerminalResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -2392,7 +2400,7 @@ class DAPRunInTerminalResponseBody(DAPObject):
             raise ValueError("processId is not defined")
         return self.processId
     
-    def get_process_id_or_defaut(self, default=None):
+    def get_process_id_or_default(self, default=None):
         if self.processId is __undefined__:
             return default
         return self.processId
@@ -2413,7 +2421,7 @@ class DAPRunInTerminalResponseBody(DAPObject):
             raise ValueError("shellProcessId is not defined")
         return self.shellProcessId
     
-    def get_shell_process_id_or_defaut(self, default=None):
+    def get_shell_process_id_or_default(self, default=None):
         if self.shellProcessId is __undefined__:
             return default
         return self.shellProcessId
@@ -2556,7 +2564,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("clientID is not defined")
         return self.clientID
     
-    def get_client_id_or_defaut(self, default=None):
+    def get_client_id_or_default(self, default=None):
         if self.clientID is __undefined__:
             return default
         return self.clientID
@@ -2577,7 +2585,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("clientName is not defined")
         return self.clientName
     
-    def get_client_name_or_defaut(self, default=None):
+    def get_client_name_or_default(self, default=None):
         if self.clientName is __undefined__:
             return default
         return self.clientName
@@ -2605,7 +2613,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("locale is not defined")
         return self.locale
     
-    def get_locale_or_defaut(self, default=None):
+    def get_locale_or_default(self, default=None):
         if self.locale is __undefined__:
             return default
         return self.locale
@@ -2626,7 +2634,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("linesStartAt1 is not defined")
         return self.linesStartAt1
     
-    def get_lines_start_at1_or_defaut(self, default=None):
+    def get_lines_start_at1_or_default(self, default=None):
         if self.linesStartAt1 is __undefined__:
             return default
         return self.linesStartAt1
@@ -2647,7 +2655,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("columnsStartAt1 is not defined")
         return self.columnsStartAt1
     
-    def get_columns_start_at1_or_defaut(self, default=None):
+    def get_columns_start_at1_or_default(self, default=None):
         if self.columnsStartAt1 is __undefined__:
             return default
         return self.columnsStartAt1
@@ -2668,7 +2676,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("pathFormat is not defined")
         return self.pathFormat
     
-    def get_path_format_or_defaut(self, default=None):
+    def get_path_format_or_default(self, default=None):
         if self.pathFormat is __undefined__:
             return default
         return self.pathFormat
@@ -2689,7 +2697,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("supportsVariableType is not defined")
         return self.supportsVariableType
     
-    def get_supports_variable_type_or_defaut(self, default=None):
+    def get_supports_variable_type_or_default(self, default=None):
         if self.supportsVariableType is __undefined__:
             return default
         return self.supportsVariableType
@@ -2710,7 +2718,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("supportsVariablePaging is not defined")
         return self.supportsVariablePaging
     
-    def get_supports_variable_paging_or_defaut(self, default=None):
+    def get_supports_variable_paging_or_default(self, default=None):
         if self.supportsVariablePaging is __undefined__:
             return default
         return self.supportsVariablePaging
@@ -2731,7 +2739,7 @@ class DAPInitializeRequestArguments(DAPObject):
             raise ValueError("supportsRunInTerminalRequest is not defined")
         return self.supportsRunInTerminalRequest
     
-    def get_supports_run_in_terminal_request_or_defaut(self, default=None):
+    def get_supports_run_in_terminal_request_or_default(self, default=None):
         if self.supportsRunInTerminalRequest is __undefined__:
             return default
         return self.supportsRunInTerminalRequest
@@ -2850,21 +2858,25 @@ class DAPInitializeResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPInitializeResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPInitializeResponse(seq, "response", request_seq, success, "initialize", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         if self.has_body():
             kwargs["body"] = self.get_body()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             if self.body is not __undefined__:
@@ -2872,8 +2884,12 @@ class DAPInitializeResponse(DAPResponse):
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -2955,24 +2971,32 @@ class DAPConfigurationDoneResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPConfigurationDoneResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPConfigurationDoneResponse(seq, "response", request_seq, success, "configurationDone", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPLaunchRequest(DAPRequest):
@@ -3029,20 +3053,20 @@ class DAPLaunchRequestArguments(DAPObject):
     Arguments for 'launch' request. Additional attributes are implementation specific.
     """
     @staticmethod
-    def create(no_debug=__undefined__, __restart=__undefined__):
-        return DAPLaunchRequestArguments(no_debug=no_debug, __restart=__restart)
+    def create(no_debug=__undefined__, _restart=__undefined__):
+        return DAPLaunchRequestArguments(no_debug=no_debug, _restart=_restart)
     
-    def __init__(self, no_debug=__undefined__, __restart=__undefined__):
+    def __init__(self, no_debug=__undefined__, _restart=__undefined__):
         DAPObject.__init__(self)
         self.noDebug = no_debug
-        self.__restart = __restart
+        self.__restart = _restart
     
     def as_current_kwargs(self):
         kwargs = {}
         if self.has_no_debug():
             kwargs["noDebug"] = self.get_no_debug()
-        if self.has___restart():
-            kwargs["__restart"] = self.get___restart()
+        if self.has__restart():
+            kwargs["__restart"] = self.get__restart()
         return kwargs
     
     def get_no_debug(self):
@@ -3050,7 +3074,7 @@ class DAPLaunchRequestArguments(DAPObject):
             raise ValueError("noDebug is not defined")
         return self.noDebug
     
-    def get_no_debug_or_defaut(self, default=None):
+    def get_no_debug_or_default(self, default=None):
         if self.noDebug is __undefined__:
             return default
         return self.noDebug
@@ -3066,24 +3090,24 @@ class DAPLaunchRequestArguments(DAPObject):
         self.noDebug = __undefined__
         return self
     
-    def get___restart(self):
+    def get__restart(self):
         if self.__restart is __undefined__:
             raise ValueError("__restart is not defined")
         return self.__restart
     
-    def get___restart_or_defaut(self, default=None):
+    def get__restart_or_default(self, default=None):
         if self.__restart is __undefined__:
             return default
         return self.__restart
     
-    def has___restart(self):
+    def has__restart(self):
         return self.__restart is not __undefined__
     
-    def set___restart(self, __restart):
-        self.__restart = __restart
+    def set__restart(self, _restart):
+        self.__restart = _restart
         return self
     
-    def clear___restart(self):
+    def clear__restart(self):
         self.__restart = __undefined__
         return self
     
@@ -3112,7 +3136,7 @@ class DAPLaunchRequestArguments(DAPObject):
         if "__restart" not in override:
             used_args.append("__restart")
             if me is not None and "__restart" in me:
-                kwargs["__restart"] = cls.deserialize_scalar(me["__restart"])
+                kwargs["_restart"] = cls.deserialize_scalar(me["__restart"])
 
 
 class DAPLaunchResponse(DAPResponse):
@@ -3120,24 +3144,32 @@ class DAPLaunchResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPLaunchResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPLaunchResponse(seq, "response", request_seq, success, "launch", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPAttachRequest(DAPRequest):
@@ -3194,37 +3226,37 @@ class DAPAttachRequestArguments(DAPObject):
     Arguments for 'attach' request. Additional attributes are implementation specific.
     """
     @staticmethod
-    def create(__restart=__undefined__):
-        return DAPAttachRequestArguments(__restart=__restart)
+    def create(_restart=__undefined__):
+        return DAPAttachRequestArguments(_restart=_restart)
     
-    def __init__(self, __restart=__undefined__):
+    def __init__(self, _restart=__undefined__):
         DAPObject.__init__(self)
-        self.__restart = __restart
+        self.__restart = _restart
     
     def as_current_kwargs(self):
         kwargs = {}
-        if self.has___restart():
-            kwargs["__restart"] = self.get___restart()
+        if self.has__restart():
+            kwargs["__restart"] = self.get__restart()
         return kwargs
     
-    def get___restart(self):
+    def get__restart(self):
         if self.__restart is __undefined__:
             raise ValueError("__restart is not defined")
         return self.__restart
     
-    def get___restart_or_defaut(self, default=None):
+    def get__restart_or_default(self, default=None):
         if self.__restart is __undefined__:
             return default
         return self.__restart
     
-    def has___restart(self):
+    def has__restart(self):
         return self.__restart is not __undefined__
     
-    def set___restart(self, __restart):
-        self.__restart = __restart
+    def set__restart(self, _restart):
+        self.__restart = _restart
         return self
     
-    def clear___restart(self):
+    def clear__restart(self):
         self.__restart = __undefined__
         return self
     
@@ -3244,7 +3276,7 @@ class DAPAttachRequestArguments(DAPObject):
         if "__restart" not in override:
             used_args.append("__restart")
             if me is not None and "__restart" in me:
-                kwargs["__restart"] = cls.deserialize_scalar(me["__restart"])
+                kwargs["_restart"] = cls.deserialize_scalar(me["__restart"])
 
 
 class DAPAttachResponse(DAPResponse):
@@ -3252,24 +3284,32 @@ class DAPAttachResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPAttachResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPAttachResponse(seq, "response", request_seq, success, "attach", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPRestartRequest(DAPRequest):
@@ -3346,24 +3386,32 @@ class DAPRestartResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPRestartResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPRestartResponse(seq, "response", request_seq, success, "restart", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPDisconnectRequest(DAPRequest):
@@ -3436,7 +3484,7 @@ class DAPDisconnectArguments(DAPObject):
             raise ValueError("restart is not defined")
         return self.restart
     
-    def get_restart_or_defaut(self, default=None):
+    def get_restart_or_default(self, default=None):
         if self.restart is __undefined__:
             return default
         return self.restart
@@ -3457,7 +3505,7 @@ class DAPDisconnectArguments(DAPObject):
             raise ValueError("terminateDebuggee is not defined")
         return self.terminateDebuggee
     
-    def get_terminate_debuggee_or_defaut(self, default=None):
+    def get_terminate_debuggee_or_default(self, default=None):
         if self.terminateDebuggee is __undefined__:
             return default
         return self.terminateDebuggee
@@ -3506,24 +3554,32 @@ class DAPDisconnectResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPDisconnectResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPDisconnectResponse(seq, "response", request_seq, success, "disconnect", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPTerminateRequest(DAPRequest):
@@ -3593,7 +3649,7 @@ class DAPTerminateArguments(DAPObject):
             raise ValueError("restart is not defined")
         return self.restart
     
-    def get_restart_or_defaut(self, default=None):
+    def get_restart_or_default(self, default=None):
         if self.restart is __undefined__:
             return default
         return self.restart
@@ -3633,24 +3689,32 @@ class DAPTerminateResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPTerminateResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPTerminateResponse(seq, "response", request_seq, success, "terminate", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPSetBreakpointsRequest(DAPRequest):
@@ -3740,7 +3804,7 @@ class DAPSetBreakpointsArguments(DAPObject):
             raise ValueError("breakpoints is not defined")
         return self.breakpoints
     
-    def get_breakpoints_or_defaut(self, default=None):
+    def get_breakpoints_or_default(self, default=None):
         if self.breakpoints is __undefined__:
             return default
         return self.breakpoints
@@ -3761,7 +3825,7 @@ class DAPSetBreakpointsArguments(DAPObject):
             raise ValueError("lines is not defined")
         return self.lines
     
-    def get_lines_or_defaut(self, default=None):
+    def get_lines_or_default(self, default=None):
         if self.lines is __undefined__:
             return default
         return self.lines
@@ -3782,7 +3846,7 @@ class DAPSetBreakpointsArguments(DAPObject):
             raise ValueError("sourceModified is not defined")
         return self.sourceModified
     
-    def get_source_modified_or_defaut(self, default=None):
+    def get_source_modified_or_default(self, default=None):
         if self.sourceModified is __undefined__:
             return default
         return self.sourceModified
@@ -3847,8 +3911,8 @@ class DAPSetBreakpointsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPSetBreakpointsResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPSetBreakpointsResponse(seq, "response", request_seq, success, "setBreakpoints", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -3856,6 +3920,7 @@ class DAPSetBreakpointsResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -3867,16 +3932,23 @@ class DAPSetBreakpointsResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -3912,7 +3984,7 @@ class DAPSetBreakpointsResponseBody(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints, hint=DAPBreakpoint)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -3921,7 +3993,7 @@ class DAPSetBreakpointsResponseBody(DAPObject):
         # property: breakpoints
         if "breakpoints" not in override:
             used_args.append("breakpoints")
-            args.append(cls.deserialize_scalar(me["breakpoints"]))
+            args.append(cls.deserialize_scalar(me["breakpoints"], hint=DAPBreakpoint))
 
 
 
@@ -4003,7 +4075,7 @@ class DAPSetFunctionBreakpointsArguments(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints, hint=DAPFunctionBreakpoint)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4012,7 +4084,7 @@ class DAPSetFunctionBreakpointsArguments(DAPObject):
         # property: breakpoints
         if "breakpoints" not in override:
             used_args.append("breakpoints")
-            args.append(cls.deserialize_scalar(me["breakpoints"]))
+            args.append(cls.deserialize_scalar(me["breakpoints"], hint=DAPFunctionBreakpoint))
 
 
 class DAPSetFunctionBreakpointsResponse(DAPResponse):
@@ -4020,8 +4092,8 @@ class DAPSetFunctionBreakpointsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPSetFunctionBreakpointsResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPSetFunctionBreakpointsResponse(seq, "response", request_seq, success, "setFunctionBreakpoints", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -4029,6 +4101,7 @@ class DAPSetFunctionBreakpointsResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -4040,16 +4113,23 @@ class DAPSetFunctionBreakpointsResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -4085,7 +4165,7 @@ class DAPSetFunctionBreakpointsResponseBody(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints, hint=DAPBreakpoint)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4094,7 +4174,7 @@ class DAPSetFunctionBreakpointsResponseBody(DAPObject):
         # property: breakpoints
         if "breakpoints" not in override:
             used_args.append("breakpoints")
-            args.append(cls.deserialize_scalar(me["breakpoints"]))
+            args.append(cls.deserialize_scalar(me["breakpoints"], hint=DAPBreakpoint))
 
 
 
@@ -4179,7 +4259,7 @@ class DAPSetExceptionBreakpointsArguments(DAPObject):
             raise ValueError("exceptionOptions is not defined")
         return self.exceptionOptions
     
-    def get_exception_options_or_defaut(self, default=None):
+    def get_exception_options_or_default(self, default=None):
         if self.exceptionOptions is __undefined__:
             return default
         return self.exceptionOptions
@@ -4226,24 +4306,32 @@ class DAPSetExceptionBreakpointsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPSetExceptionBreakpointsResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPSetExceptionBreakpointsResponse(seq, "response", request_seq, success, "setExceptionBreakpoints", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPDataBreakpointInfoRequest(DAPRequest):
@@ -4320,7 +4408,7 @@ class DAPDataBreakpointInfoArguments(DAPObject):
             raise ValueError("variablesReference is not defined")
         return self.variablesReference
     
-    def get_variables_reference_or_defaut(self, default=None):
+    def get_variables_reference_or_default(self, default=None):
         if self.variablesReference is __undefined__:
             return default
         return self.variablesReference
@@ -4374,8 +4462,8 @@ class DAPDataBreakpointInfoResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPDataBreakpointInfoResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPDataBreakpointInfoResponse(seq, "response", request_seq, success, "dataBreakpointInfo", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -4383,6 +4471,7 @@ class DAPDataBreakpointInfoResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -4394,16 +4483,23 @@ class DAPDataBreakpointInfoResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -4454,7 +4550,7 @@ class DAPDataBreakpointInfoResponseBody(DAPObject):
             raise ValueError("accessTypes is not defined")
         return self.accessTypes
     
-    def get_access_types_or_defaut(self, default=None):
+    def get_access_types_or_default(self, default=None):
         if self.accessTypes is __undefined__:
             return default
         return self.accessTypes
@@ -4475,7 +4571,7 @@ class DAPDataBreakpointInfoResponseBody(DAPObject):
             raise ValueError("canPersist is not defined")
         return self.canPersist
     
-    def get_can_persist_or_defaut(self, default=None):
+    def get_can_persist_or_default(self, default=None):
         if self.canPersist is __undefined__:
             return default
         return self.canPersist
@@ -4612,7 +4708,7 @@ class DAPSetDataBreakpointsArguments(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints, hint=DAPDataBreakpoint)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4621,7 +4717,7 @@ class DAPSetDataBreakpointsArguments(DAPObject):
         # property: breakpoints
         if "breakpoints" not in override:
             used_args.append("breakpoints")
-            args.append(cls.deserialize_scalar(me["breakpoints"]))
+            args.append(cls.deserialize_scalar(me["breakpoints"], hint=DAPDataBreakpoint))
 
 
 class DAPSetDataBreakpointsResponse(DAPResponse):
@@ -4629,8 +4725,8 @@ class DAPSetDataBreakpointsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPSetDataBreakpointsResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPSetDataBreakpointsResponse(seq, "response", request_seq, success, "setDataBreakpoints", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -4638,6 +4734,7 @@ class DAPSetDataBreakpointsResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -4649,16 +4746,23 @@ class DAPSetDataBreakpointsResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -4694,7 +4798,7 @@ class DAPSetDataBreakpointsResponseBody(DAPObject):
         
         # property: breakpoints
         if "breakpoints" not in override:
-            self.serialize_scalar(me, "breakpoints", self.breakpoints)
+            self.serialize_scalar(me, "breakpoints", self.breakpoints, hint=DAPBreakpoint)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -4703,7 +4807,7 @@ class DAPSetDataBreakpointsResponseBody(DAPObject):
         # property: breakpoints
         if "breakpoints" not in override:
             used_args.append("breakpoints")
-            args.append(cls.deserialize_scalar(me["breakpoints"]))
+            args.append(cls.deserialize_scalar(me["breakpoints"], hint=DAPBreakpoint))
 
 
 
@@ -4802,8 +4906,8 @@ class DAPContinueResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPContinueResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPContinueResponse(seq, "response", request_seq, success, "continue", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -4811,6 +4915,7 @@ class DAPContinueResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -4822,16 +4927,23 @@ class DAPContinueResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -4861,7 +4973,7 @@ class DAPContinueResponseBody(DAPObject):
             raise ValueError("allThreadsContinued is not defined")
         return self.allThreadsContinued
     
-    def get_all_threads_continued_or_defaut(self, default=None):
+    def get_all_threads_continued_or_default(self, default=None):
         if self.allThreadsContinued is __undefined__:
             return default
         return self.allThreadsContinued
@@ -4992,24 +5104,32 @@ class DAPNextResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPNextResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPNextResponse(seq, "response", request_seq, success, "next", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPSetStepGranularityRequest(DAPRequest):
@@ -5107,8 +5227,8 @@ class DAPSetStepGranularityResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPSetStepGranularityResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPSetStepGranularityResponse(seq, "response", request_seq, success, "setStepGranularity", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -5116,6 +5236,7 @@ class DAPSetStepGranularityResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -5127,16 +5248,23 @@ class DAPSetStepGranularityResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -5266,7 +5394,7 @@ class DAPStepInArguments(DAPObject):
             raise ValueError("targetId is not defined")
         return self.targetId
     
-    def get_target_id_or_defaut(self, default=None):
+    def get_target_id_or_default(self, default=None):
         if self.targetId is __undefined__:
             return default
         return self.targetId
@@ -5313,24 +5441,32 @@ class DAPStepInResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPStepInResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPStepInResponse(seq, "response", request_seq, success, "stepIn", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPStepOutRequest(DAPRequest):
@@ -5428,24 +5564,32 @@ class DAPStepOutResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPStepOutResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPStepOutResponse(seq, "response", request_seq, success, "stepOut", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPStepBackRequest(DAPRequest):
@@ -5543,24 +5687,32 @@ class DAPStepBackResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPStepBackResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPStepBackResponse(seq, "response", request_seq, success, "stepBack", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPReverseContinueRequest(DAPRequest):
@@ -5658,24 +5810,32 @@ class DAPReverseContinueResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPReverseContinueResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPReverseContinueResponse(seq, "response", request_seq, success, "reverseContinue", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPRestartFrameRequest(DAPRequest):
@@ -5773,24 +5933,32 @@ class DAPRestartFrameResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPRestartFrameResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPRestartFrameResponse(seq, "response", request_seq, success, "restartFrame", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPGotoRequest(DAPRequest):
@@ -5904,24 +6072,32 @@ class DAPGotoResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPGotoResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPGotoResponse(seq, "response", request_seq, success, "goto", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPPauseRequest(DAPRequest):
@@ -6019,24 +6195,32 @@ class DAPPauseResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPPauseResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPPauseResponse(seq, "response", request_seq, success, "pause", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPStackTraceRequest(DAPRequest):
@@ -6126,7 +6310,7 @@ class DAPStackTraceArguments(DAPObject):
             raise ValueError("startFrame is not defined")
         return self.startFrame
     
-    def get_start_frame_or_defaut(self, default=None):
+    def get_start_frame_or_default(self, default=None):
         if self.startFrame is __undefined__:
             return default
         return self.startFrame
@@ -6147,7 +6331,7 @@ class DAPStackTraceArguments(DAPObject):
             raise ValueError("levels is not defined")
         return self.levels
     
-    def get_levels_or_defaut(self, default=None):
+    def get_levels_or_default(self, default=None):
         if self.levels is __undefined__:
             return default
         return self.levels
@@ -6168,7 +6352,7 @@ class DAPStackTraceArguments(DAPObject):
             raise ValueError("format is not defined")
         return self.format
     
-    def get_format_or_defaut(self, default=None):
+    def get_format_or_default(self, default=None):
         if self.format is __undefined__:
             return default
         return self.format
@@ -6233,8 +6417,8 @@ class DAPStackTraceResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPStackTraceResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPStackTraceResponse(seq, "response", request_seq, success, "stackTrace", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -6242,6 +6426,7 @@ class DAPStackTraceResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -6253,16 +6438,23 @@ class DAPStackTraceResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -6301,7 +6493,7 @@ class DAPStackTraceResponseBody(DAPObject):
             raise ValueError("totalFrames is not defined")
         return self.totalFrames
     
-    def get_total_frames_or_defaut(self, default=None):
+    def get_total_frames_or_default(self, default=None):
         if self.totalFrames is __undefined__:
             return default
         return self.totalFrames
@@ -6322,7 +6514,7 @@ class DAPStackTraceResponseBody(DAPObject):
         
         # property: stackFrames
         if "stackFrames" not in override:
-            self.serialize_scalar(me, "stackFrames", self.stackFrames)
+            self.serialize_scalar(me, "stackFrames", self.stackFrames, hint=DAPStackFrame)
         # property: totalFrames
         if "totalFrames" not in override:
             if self.totalFrames is not __undefined__:
@@ -6335,7 +6527,7 @@ class DAPStackTraceResponseBody(DAPObject):
         # property: stackFrames
         if "stackFrames" not in override:
             used_args.append("stackFrames")
-            args.append(cls.deserialize_scalar(me["stackFrames"]))
+            args.append(cls.deserialize_scalar(me["stackFrames"], hint=DAPStackFrame))
         # property: totalFrames
         if "totalFrames" not in override:
             used_args.append("totalFrames")
@@ -6439,8 +6631,8 @@ class DAPScopesResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPScopesResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPScopesResponse(seq, "response", request_seq, success, "scopes", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -6448,6 +6640,7 @@ class DAPScopesResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -6459,16 +6652,23 @@ class DAPScopesResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -6504,7 +6704,7 @@ class DAPScopesResponseBody(DAPObject):
         
         # property: scopes
         if "scopes" not in override:
-            self.serialize_scalar(me, "scopes", self.scopes)
+            self.serialize_scalar(me, "scopes", self.scopes, hint=DAPScope)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6513,7 +6713,7 @@ class DAPScopesResponseBody(DAPObject):
         # property: scopes
         if "scopes" not in override:
             used_args.append("scopes")
-            args.append(cls.deserialize_scalar(me["scopes"]))
+            args.append(cls.deserialize_scalar(me["scopes"], hint=DAPScope))
 
 
 
@@ -6607,7 +6807,7 @@ class DAPVariablesArguments(DAPObject):
             raise ValueError("filter is not defined")
         return self.filter
     
-    def get_filter_or_defaut(self, default=None):
+    def get_filter_or_default(self, default=None):
         if self.filter is __undefined__:
             return default
         return self.filter
@@ -6628,7 +6828,7 @@ class DAPVariablesArguments(DAPObject):
             raise ValueError("start is not defined")
         return self.start
     
-    def get_start_or_defaut(self, default=None):
+    def get_start_or_default(self, default=None):
         if self.start is __undefined__:
             return default
         return self.start
@@ -6649,7 +6849,7 @@ class DAPVariablesArguments(DAPObject):
             raise ValueError("count is not defined")
         return self.count
     
-    def get_count_or_defaut(self, default=None):
+    def get_count_or_default(self, default=None):
         if self.count is __undefined__:
             return default
         return self.count
@@ -6670,7 +6870,7 @@ class DAPVariablesArguments(DAPObject):
             raise ValueError("format is not defined")
         return self.format
     
-    def get_format_or_defaut(self, default=None):
+    def get_format_or_default(self, default=None):
         if self.format is __undefined__:
             return default
         return self.format
@@ -6744,8 +6944,8 @@ class DAPVariablesResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPVariablesResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPVariablesResponse(seq, "response", request_seq, success, "variables", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -6753,6 +6953,7 @@ class DAPVariablesResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -6764,16 +6965,23 @@ class DAPVariablesResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -6809,7 +7017,7 @@ class DAPVariablesResponseBody(DAPObject):
         
         # property: variables
         if "variables" not in override:
-            self.serialize_scalar(me, "variables", self.variables)
+            self.serialize_scalar(me, "variables", self.variables, hint=DAPVariable)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -6818,7 +7026,7 @@ class DAPVariablesResponseBody(DAPObject):
         # property: variables
         if "variables" not in override:
             used_args.append("variables")
-            args.append(cls.deserialize_scalar(me["variables"]))
+            args.append(cls.deserialize_scalar(me["variables"], hint=DAPVariable))
 
 
 
@@ -6921,7 +7129,7 @@ class DAPSetVariableArguments(DAPObject):
             raise ValueError("format is not defined")
         return self.format
     
-    def get_format_or_defaut(self, default=None):
+    def get_format_or_default(self, default=None):
         if self.format is __undefined__:
             return default
         return self.format
@@ -6982,8 +7190,8 @@ class DAPSetVariableResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPSetVariableResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPSetVariableResponse(seq, "response", request_seq, success, "setVariable", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -6991,6 +7199,7 @@ class DAPSetVariableResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -7002,16 +7211,23 @@ class DAPSetVariableResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -7059,7 +7275,7 @@ class DAPSetVariableResponseBody(DAPObject):
             raise ValueError("type is not defined")
         return self.type
     
-    def get_type_or_defaut(self, default=None):
+    def get_type_or_default(self, default=None):
         if self.type is __undefined__:
             return default
         return self.type
@@ -7080,7 +7296,7 @@ class DAPSetVariableResponseBody(DAPObject):
             raise ValueError("variablesReference is not defined")
         return self.variablesReference
     
-    def get_variables_reference_or_defaut(self, default=None):
+    def get_variables_reference_or_default(self, default=None):
         if self.variablesReference is __undefined__:
             return default
         return self.variablesReference
@@ -7101,7 +7317,7 @@ class DAPSetVariableResponseBody(DAPObject):
             raise ValueError("namedVariables is not defined")
         return self.namedVariables
     
-    def get_named_variables_or_defaut(self, default=None):
+    def get_named_variables_or_default(self, default=None):
         if self.namedVariables is __undefined__:
             return default
         return self.namedVariables
@@ -7122,7 +7338,7 @@ class DAPSetVariableResponseBody(DAPObject):
             raise ValueError("indexedVariables is not defined")
         return self.indexedVariables
     
-    def get_indexed_variables_or_defaut(self, default=None):
+    def get_indexed_variables_or_default(self, default=None):
         if self.indexedVariables is __undefined__:
             return default
         return self.indexedVariables
@@ -7266,7 +7482,7 @@ class DAPSourceArguments(DAPObject):
             raise ValueError("source is not defined")
         return self.source
     
-    def get_source_or_defaut(self, default=None):
+    def get_source_or_default(self, default=None):
         if self.source is __undefined__:
             return default
         return self.source
@@ -7320,8 +7536,8 @@ class DAPSourceResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPSourceResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPSourceResponse(seq, "response", request_seq, success, "sourceReference", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -7329,6 +7545,7 @@ class DAPSourceResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -7340,16 +7557,23 @@ class DAPSourceResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -7388,7 +7612,7 @@ class DAPSourceResponseBody(DAPObject):
             raise ValueError("mimeType is not defined")
         return self.mimeType
     
-    def get_mime_type_or_defaut(self, default=None):
+    def get_mime_type_or_default(self, default=None):
         if self.mimeType is __undefined__:
             return default
         return self.mimeType
@@ -7469,8 +7693,8 @@ class DAPThreadsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPThreadsResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPThreadsResponse(seq, "response", request_seq, success, "threads", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -7478,6 +7702,7 @@ class DAPThreadsResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -7489,16 +7714,23 @@ class DAPThreadsResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -7534,7 +7766,7 @@ class DAPThreadsResponseBody(DAPObject):
         
         # property: threads
         if "threads" not in override:
-            self.serialize_scalar(me, "threads", self.threads)
+            self.serialize_scalar(me, "threads", self.threads, hint=DAPThread)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -7543,7 +7775,7 @@ class DAPThreadsResponseBody(DAPObject):
         # property: threads
         if "threads" not in override:
             used_args.append("threads")
-            args.append(cls.deserialize_scalar(me["threads"]))
+            args.append(cls.deserialize_scalar(me["threads"], hint=DAPThread))
 
 
 
@@ -7619,7 +7851,7 @@ class DAPTerminateThreadsArguments(DAPObject):
             raise ValueError("threadIds is not defined")
         return self.threadIds
     
-    def get_thread_ids_or_defaut(self, default=None):
+    def get_thread_ids_or_default(self, default=None):
         if self.threadIds is __undefined__:
             return default
         return self.threadIds
@@ -7659,24 +7891,32 @@ class DAPTerminateThreadsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, message=__undefined__, body=__undefined__):
-        return DAPTerminateThreadsResponse(seq, "response", request_seq, success, command, message=message, body=body)
+    def create(seq, request_seq, success, message=__undefined__, body=__undefined__):
+        return DAPTerminateThreadsResponse(seq, "response", request_seq, success, "launch", message=message, body=body)
     
     def __init__(self, seq, type, request_seq, success, command, message=__undefined__, body=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body)
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         return kwargs
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, [])
+        DAPResponse._serialize(self, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, [])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
 
 
 class DAPModulesRequest(DAPRequest):
@@ -7754,7 +7994,7 @@ class DAPModulesArguments(DAPObject):
             raise ValueError("startModule is not defined")
         return self.startModule
     
-    def get_start_module_or_defaut(self, default=None):
+    def get_start_module_or_default(self, default=None):
         if self.startModule is __undefined__:
             return default
         return self.startModule
@@ -7775,7 +8015,7 @@ class DAPModulesArguments(DAPObject):
             raise ValueError("moduleCount is not defined")
         return self.moduleCount
     
-    def get_module_count_or_defaut(self, default=None):
+    def get_module_count_or_default(self, default=None):
         if self.moduleCount is __undefined__:
             return default
         return self.moduleCount
@@ -7824,8 +8064,8 @@ class DAPModulesResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPModulesResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPModulesResponse(seq, "response", request_seq, success, "modules", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -7833,6 +8073,7 @@ class DAPModulesResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -7844,16 +8085,23 @@ class DAPModulesResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -7892,7 +8140,7 @@ class DAPModulesResponseBody(DAPObject):
             raise ValueError("totalModules is not defined")
         return self.totalModules
     
-    def get_total_modules_or_defaut(self, default=None):
+    def get_total_modules_or_default(self, default=None):
         if self.totalModules is __undefined__:
             return default
         return self.totalModules
@@ -7913,7 +8161,7 @@ class DAPModulesResponseBody(DAPObject):
         
         # property: modules
         if "modules" not in override:
-            self.serialize_scalar(me, "modules", self.modules)
+            self.serialize_scalar(me, "modules", self.modules, hint=DAPModule)
         # property: totalModules
         if "totalModules" not in override:
             if self.totalModules is not __undefined__:
@@ -7926,7 +8174,7 @@ class DAPModulesResponseBody(DAPObject):
         # property: modules
         if "modules" not in override:
             used_args.append("modules")
-            args.append(cls.deserialize_scalar(me["modules"]))
+            args.append(cls.deserialize_scalar(me["modules"], hint=DAPModule))
         # property: totalModules
         if "totalModules" not in override:
             used_args.append("totalModules")
@@ -8009,8 +8257,8 @@ class DAPLoadedSourcesResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPLoadedSourcesResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPLoadedSourcesResponse(seq, "response", request_seq, success, "loadedSources", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -8018,6 +8266,7 @@ class DAPLoadedSourcesResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -8029,16 +8278,23 @@ class DAPLoadedSourcesResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -8074,7 +8330,7 @@ class DAPLoadedSourcesResponseBody(DAPObject):
         
         # property: sources
         if "sources" not in override:
-            self.serialize_scalar(me, "sources", self.sources)
+            self.serialize_scalar(me, "sources", self.sources, hint=DAPSource)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -8083,7 +8339,7 @@ class DAPLoadedSourcesResponseBody(DAPObject):
         # property: sources
         if "sources" not in override:
             used_args.append("sources")
-            args.append(cls.deserialize_scalar(me["sources"]))
+            args.append(cls.deserialize_scalar(me["sources"], hint=DAPSource))
 
 
 
@@ -8174,7 +8430,7 @@ class DAPEvaluateArguments(DAPObject):
             raise ValueError("frameId is not defined")
         return self.frameId
     
-    def get_frame_id_or_defaut(self, default=None):
+    def get_frame_id_or_default(self, default=None):
         if self.frameId is __undefined__:
             return default
         return self.frameId
@@ -8195,7 +8451,7 @@ class DAPEvaluateArguments(DAPObject):
             raise ValueError("context is not defined")
         return self.context
     
-    def get_context_or_defaut(self, default=None):
+    def get_context_or_default(self, default=None):
         if self.context is __undefined__:
             return default
         return self.context
@@ -8216,7 +8472,7 @@ class DAPEvaluateArguments(DAPObject):
             raise ValueError("format is not defined")
         return self.format
     
-    def get_format_or_defaut(self, default=None):
+    def get_format_or_default(self, default=None):
         if self.format is __undefined__:
             return default
         return self.format
@@ -8281,8 +8537,8 @@ class DAPEvaluateResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPEvaluateResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPEvaluateResponse(seq, "response", request_seq, success, "evaluate", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -8290,6 +8546,7 @@ class DAPEvaluateResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -8301,16 +8558,23 @@ class DAPEvaluateResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -8360,7 +8624,7 @@ class DAPEvaluateResponseBody(DAPObject):
             raise ValueError("type is not defined")
         return self.type
     
-    def get_type_or_defaut(self, default=None):
+    def get_type_or_default(self, default=None):
         if self.type is __undefined__:
             return default
         return self.type
@@ -8381,7 +8645,7 @@ class DAPEvaluateResponseBody(DAPObject):
             raise ValueError("presentationHint is not defined")
         return self.presentationHint
     
-    def get_presentation_hint_or_defaut(self, default=None):
+    def get_presentation_hint_or_default(self, default=None):
         if self.presentationHint is __undefined__:
             return default
         return self.presentationHint
@@ -8409,7 +8673,7 @@ class DAPEvaluateResponseBody(DAPObject):
             raise ValueError("namedVariables is not defined")
         return self.namedVariables
     
-    def get_named_variables_or_defaut(self, default=None):
+    def get_named_variables_or_default(self, default=None):
         if self.namedVariables is __undefined__:
             return default
         return self.namedVariables
@@ -8430,7 +8694,7 @@ class DAPEvaluateResponseBody(DAPObject):
             raise ValueError("indexedVariables is not defined")
         return self.indexedVariables
     
-    def get_indexed_variables_or_defaut(self, default=None):
+    def get_indexed_variables_or_default(self, default=None):
         if self.indexedVariables is __undefined__:
             return default
         return self.indexedVariables
@@ -8600,7 +8864,7 @@ class DAPSetExpressionArguments(DAPObject):
             raise ValueError("frameId is not defined")
         return self.frameId
     
-    def get_frame_id_or_defaut(self, default=None):
+    def get_frame_id_or_default(self, default=None):
         if self.frameId is __undefined__:
             return default
         return self.frameId
@@ -8621,7 +8885,7 @@ class DAPSetExpressionArguments(DAPObject):
             raise ValueError("format is not defined")
         return self.format
     
-    def get_format_or_defaut(self, default=None):
+    def get_format_or_default(self, default=None):
         if self.format is __undefined__:
             return default
         return self.format
@@ -8684,8 +8948,8 @@ class DAPSetExpressionResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPSetExpressionResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPSetExpressionResponse(seq, "response", request_seq, success, "setExpression", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -8693,6 +8957,7 @@ class DAPSetExpressionResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -8704,16 +8969,23 @@ class DAPSetExpressionResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -8764,7 +9036,7 @@ class DAPSetExpressionResponseBody(DAPObject):
             raise ValueError("type is not defined")
         return self.type
     
-    def get_type_or_defaut(self, default=None):
+    def get_type_or_default(self, default=None):
         if self.type is __undefined__:
             return default
         return self.type
@@ -8785,7 +9057,7 @@ class DAPSetExpressionResponseBody(DAPObject):
             raise ValueError("presentationHint is not defined")
         return self.presentationHint
     
-    def get_presentation_hint_or_defaut(self, default=None):
+    def get_presentation_hint_or_default(self, default=None):
         if self.presentationHint is __undefined__:
             return default
         return self.presentationHint
@@ -8806,7 +9078,7 @@ class DAPSetExpressionResponseBody(DAPObject):
             raise ValueError("variablesReference is not defined")
         return self.variablesReference
     
-    def get_variables_reference_or_defaut(self, default=None):
+    def get_variables_reference_or_default(self, default=None):
         if self.variablesReference is __undefined__:
             return default
         return self.variablesReference
@@ -8827,7 +9099,7 @@ class DAPSetExpressionResponseBody(DAPObject):
             raise ValueError("namedVariables is not defined")
         return self.namedVariables
     
-    def get_named_variables_or_defaut(self, default=None):
+    def get_named_variables_or_default(self, default=None):
         if self.namedVariables is __undefined__:
             return default
         return self.namedVariables
@@ -8848,7 +9120,7 @@ class DAPSetExpressionResponseBody(DAPObject):
             raise ValueError("indexedVariables is not defined")
         return self.indexedVariables
     
-    def get_indexed_variables_or_defaut(self, default=None):
+    def get_indexed_variables_or_default(self, default=None):
         if self.indexedVariables is __undefined__:
             return default
         return self.indexedVariables
@@ -9022,8 +9294,8 @@ class DAPStepInTargetsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPStepInTargetsResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPStepInTargetsResponse(seq, "response", request_seq, success, "stepInTargets", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -9031,6 +9303,7 @@ class DAPStepInTargetsResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -9042,16 +9315,23 @@ class DAPStepInTargetsResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -9087,7 +9367,7 @@ class DAPStepInTargetsResponseBody(DAPObject):
         
         # property: targets
         if "targets" not in override:
-            self.serialize_scalar(me, "targets", self.targets)
+            self.serialize_scalar(me, "targets", self.targets, hint=DAPStepInTarget)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9096,7 +9376,7 @@ class DAPStepInTargetsResponseBody(DAPObject):
         # property: targets
         if "targets" not in override:
             used_args.append("targets")
-            args.append(cls.deserialize_scalar(me["targets"]))
+            args.append(cls.deserialize_scalar(me["targets"], hint=DAPStepInTarget))
 
 
 
@@ -9190,7 +9470,7 @@ class DAPGotoTargetsArguments(DAPObject):
             raise ValueError("column is not defined")
         return self.column
     
-    def get_column_or_defaut(self, default=None):
+    def get_column_or_default(self, default=None):
         if self.column is __undefined__:
             return default
         return self.column
@@ -9244,8 +9524,8 @@ class DAPGotoTargetsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPGotoTargetsResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPGotoTargetsResponse(seq, "response", request_seq, success, "gotoTargets", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -9253,6 +9533,7 @@ class DAPGotoTargetsResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -9264,16 +9545,23 @@ class DAPGotoTargetsResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -9309,7 +9597,7 @@ class DAPGotoTargetsResponseBody(DAPObject):
         
         # property: targets
         if "targets" not in override:
-            self.serialize_scalar(me, "targets", self.targets)
+            self.serialize_scalar(me, "targets", self.targets, hint=DAPGotoTarget)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9318,7 +9606,7 @@ class DAPGotoTargetsResponseBody(DAPObject):
         # property: targets
         if "targets" not in override:
             used_args.append("targets")
-            args.append(cls.deserialize_scalar(me["targets"]))
+            args.append(cls.deserialize_scalar(me["targets"], hint=DAPGotoTarget))
 
 
 
@@ -9401,7 +9689,7 @@ class DAPCompletionsArguments(DAPObject):
             raise ValueError("frameId is not defined")
         return self.frameId
     
-    def get_frame_id_or_defaut(self, default=None):
+    def get_frame_id_or_default(self, default=None):
         if self.frameId is __undefined__:
             return default
         return self.frameId
@@ -9436,7 +9724,7 @@ class DAPCompletionsArguments(DAPObject):
             raise ValueError("line is not defined")
         return self.line
     
-    def get_line_or_defaut(self, default=None):
+    def get_line_or_default(self, default=None):
         if self.line is __undefined__:
             return default
         return self.line
@@ -9499,8 +9787,8 @@ class DAPCompletionsResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPCompletionsResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPCompletionsResponse(seq, "response", request_seq, success, "completions", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -9508,6 +9796,7 @@ class DAPCompletionsResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -9519,16 +9808,23 @@ class DAPCompletionsResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -9564,7 +9860,7 @@ class DAPCompletionsResponseBody(DAPObject):
         
         # property: targets
         if "targets" not in override:
-            self.serialize_scalar(me, "targets", self.targets)
+            self.serialize_scalar(me, "targets", self.targets, hint=DAPCompletionItem)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -9573,7 +9869,7 @@ class DAPCompletionsResponseBody(DAPObject):
         # property: targets
         if "targets" not in override:
             used_args.append("targets")
-            args.append(cls.deserialize_scalar(me["targets"]))
+            args.append(cls.deserialize_scalar(me["targets"], hint=DAPCompletionItem))
 
 
 
@@ -9672,8 +9968,8 @@ class DAPExceptionInfoResponse(DAPResponse):
     
     """
     @staticmethod
-    def create(seq, request_seq, success, command, body, message=__undefined__):
-        return DAPExceptionInfoResponse(seq, "response", request_seq, success, command, body=body, message=message)
+    def create(seq, request_seq, success, body, message=__undefined__):
+        return DAPExceptionInfoResponse(seq, "response", request_seq, success, "exceptionInfo", body=body, message=message)
     
     def __init__(self, seq, type, request_seq, success, command, body, message=__undefined__):
         DAPResponse.__init__(self, seq, type, request_seq, success, command, message, body=body)
@@ -9681,6 +9977,7 @@ class DAPExceptionInfoResponse(DAPResponse):
     
     def as_current_kwargs(self):
         kwargs = {}
+        kwargs["command"] = self.get_command()
         kwargs["body"] = self.get_body()
         return kwargs
     
@@ -9692,16 +9989,23 @@ class DAPExceptionInfoResponse(DAPResponse):
         return self
     
     def _serialize(self, me, override):
-        DAPResponse._serialize(self, me, ['body'])
+        DAPResponse._serialize(self, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            self.serialize_scalar(me, "command", self.command)
         # property: body
         if "body" not in override:
             me["body"] = self.body.serialize()
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
-        DAPResponse._deserialize(args, kwargs, used_args, me, ['body'])
+        DAPResponse._deserialize(args, kwargs, used_args, me, ['body', 'command'])
         
+        # property: command
+        if "command" not in override:
+            used_args.append("command")
+            args.append(cls.deserialize_scalar(me["command"]))
         # property: body
         if "body" not in override:
             used_args.append("body")
@@ -9745,7 +10049,7 @@ class DAPExceptionInfoResponseBody(DAPObject):
             raise ValueError("description is not defined")
         return self.description
     
-    def get_description_or_defaut(self, default=None):
+    def get_description_or_default(self, default=None):
         if self.description is __undefined__:
             return default
         return self.description
@@ -9773,7 +10077,7 @@ class DAPExceptionInfoResponseBody(DAPObject):
             raise ValueError("details is not defined")
         return self.details
     
-    def get_details_or_defaut(self, default=None):
+    def get_details_or_default(self, default=None):
         if self.details is __undefined__:
             return default
         return self.details
@@ -9933,7 +10237,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsConfigurationDoneRequest is not defined")
         return self.supportsConfigurationDoneRequest
     
-    def get_supports_configuration_done_request_or_defaut(self, default=None):
+    def get_supports_configuration_done_request_or_default(self, default=None):
         if self.supportsConfigurationDoneRequest is __undefined__:
             return default
         return self.supportsConfigurationDoneRequest
@@ -9954,7 +10258,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsFunctionBreakpoints is not defined")
         return self.supportsFunctionBreakpoints
     
-    def get_supports_function_breakpoints_or_defaut(self, default=None):
+    def get_supports_function_breakpoints_or_default(self, default=None):
         if self.supportsFunctionBreakpoints is __undefined__:
             return default
         return self.supportsFunctionBreakpoints
@@ -9975,7 +10279,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsConditionalBreakpoints is not defined")
         return self.supportsConditionalBreakpoints
     
-    def get_supports_conditional_breakpoints_or_defaut(self, default=None):
+    def get_supports_conditional_breakpoints_or_default(self, default=None):
         if self.supportsConditionalBreakpoints is __undefined__:
             return default
         return self.supportsConditionalBreakpoints
@@ -9996,7 +10300,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsHitConditionalBreakpoints is not defined")
         return self.supportsHitConditionalBreakpoints
     
-    def get_supports_hit_conditional_breakpoints_or_defaut(self, default=None):
+    def get_supports_hit_conditional_breakpoints_or_default(self, default=None):
         if self.supportsHitConditionalBreakpoints is __undefined__:
             return default
         return self.supportsHitConditionalBreakpoints
@@ -10017,7 +10321,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsEvaluateForHovers is not defined")
         return self.supportsEvaluateForHovers
     
-    def get_supports_evaluate_for_hovers_or_defaut(self, default=None):
+    def get_supports_evaluate_for_hovers_or_default(self, default=None):
         if self.supportsEvaluateForHovers is __undefined__:
             return default
         return self.supportsEvaluateForHovers
@@ -10038,7 +10342,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("exceptionBreakpointFilters is not defined")
         return self.exceptionBreakpointFilters
     
-    def get_exception_breakpoint_filters_or_defaut(self, default=None):
+    def get_exception_breakpoint_filters_or_default(self, default=None):
         if self.exceptionBreakpointFilters is __undefined__:
             return default
         return self.exceptionBreakpointFilters
@@ -10059,7 +10363,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsStepBack is not defined")
         return self.supportsStepBack
     
-    def get_supports_step_back_or_defaut(self, default=None):
+    def get_supports_step_back_or_default(self, default=None):
         if self.supportsStepBack is __undefined__:
             return default
         return self.supportsStepBack
@@ -10080,7 +10384,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsSetVariable is not defined")
         return self.supportsSetVariable
     
-    def get_supports_set_variable_or_defaut(self, default=None):
+    def get_supports_set_variable_or_default(self, default=None):
         if self.supportsSetVariable is __undefined__:
             return default
         return self.supportsSetVariable
@@ -10101,7 +10405,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsRestartFrame is not defined")
         return self.supportsRestartFrame
     
-    def get_supports_restart_frame_or_defaut(self, default=None):
+    def get_supports_restart_frame_or_default(self, default=None):
         if self.supportsRestartFrame is __undefined__:
             return default
         return self.supportsRestartFrame
@@ -10122,7 +10426,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsGotoTargetsRequest is not defined")
         return self.supportsGotoTargetsRequest
     
-    def get_supports_goto_targets_request_or_defaut(self, default=None):
+    def get_supports_goto_targets_request_or_default(self, default=None):
         if self.supportsGotoTargetsRequest is __undefined__:
             return default
         return self.supportsGotoTargetsRequest
@@ -10143,7 +10447,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsStepInTargetsRequest is not defined")
         return self.supportsStepInTargetsRequest
     
-    def get_supports_step_in_targets_request_or_defaut(self, default=None):
+    def get_supports_step_in_targets_request_or_default(self, default=None):
         if self.supportsStepInTargetsRequest is __undefined__:
             return default
         return self.supportsStepInTargetsRequest
@@ -10164,7 +10468,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsCompletionsRequest is not defined")
         return self.supportsCompletionsRequest
     
-    def get_supports_completions_request_or_defaut(self, default=None):
+    def get_supports_completions_request_or_default(self, default=None):
         if self.supportsCompletionsRequest is __undefined__:
             return default
         return self.supportsCompletionsRequest
@@ -10185,7 +10489,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsModulesRequest is not defined")
         return self.supportsModulesRequest
     
-    def get_supports_modules_request_or_defaut(self, default=None):
+    def get_supports_modules_request_or_default(self, default=None):
         if self.supportsModulesRequest is __undefined__:
             return default
         return self.supportsModulesRequest
@@ -10206,7 +10510,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("additionalModuleColumns is not defined")
         return self.additionalModuleColumns
     
-    def get_additional_module_columns_or_defaut(self, default=None):
+    def get_additional_module_columns_or_default(self, default=None):
         if self.additionalModuleColumns is __undefined__:
             return default
         return self.additionalModuleColumns
@@ -10227,7 +10531,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportedChecksumAlgorithms is not defined")
         return self.supportedChecksumAlgorithms
     
-    def get_supported_checksum_algorithms_or_defaut(self, default=None):
+    def get_supported_checksum_algorithms_or_default(self, default=None):
         if self.supportedChecksumAlgorithms is __undefined__:
             return default
         return self.supportedChecksumAlgorithms
@@ -10248,7 +10552,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsRestartRequest is not defined")
         return self.supportsRestartRequest
     
-    def get_supports_restart_request_or_defaut(self, default=None):
+    def get_supports_restart_request_or_default(self, default=None):
         if self.supportsRestartRequest is __undefined__:
             return default
         return self.supportsRestartRequest
@@ -10269,7 +10573,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsExceptionOptions is not defined")
         return self.supportsExceptionOptions
     
-    def get_supports_exception_options_or_defaut(self, default=None):
+    def get_supports_exception_options_or_default(self, default=None):
         if self.supportsExceptionOptions is __undefined__:
             return default
         return self.supportsExceptionOptions
@@ -10290,7 +10594,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsValueFormattingOptions is not defined")
         return self.supportsValueFormattingOptions
     
-    def get_supports_value_formatting_options_or_defaut(self, default=None):
+    def get_supports_value_formatting_options_or_default(self, default=None):
         if self.supportsValueFormattingOptions is __undefined__:
             return default
         return self.supportsValueFormattingOptions
@@ -10311,7 +10615,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsExceptionInfoRequest is not defined")
         return self.supportsExceptionInfoRequest
     
-    def get_supports_exception_info_request_or_defaut(self, default=None):
+    def get_supports_exception_info_request_or_default(self, default=None):
         if self.supportsExceptionInfoRequest is __undefined__:
             return default
         return self.supportsExceptionInfoRequest
@@ -10332,7 +10636,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportTerminateDebuggee is not defined")
         return self.supportTerminateDebuggee
     
-    def get_support_terminate_debuggee_or_defaut(self, default=None):
+    def get_support_terminate_debuggee_or_default(self, default=None):
         if self.supportTerminateDebuggee is __undefined__:
             return default
         return self.supportTerminateDebuggee
@@ -10353,7 +10657,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsDelayedStackTraceLoading is not defined")
         return self.supportsDelayedStackTraceLoading
     
-    def get_supports_delayed_stack_trace_loading_or_defaut(self, default=None):
+    def get_supports_delayed_stack_trace_loading_or_default(self, default=None):
         if self.supportsDelayedStackTraceLoading is __undefined__:
             return default
         return self.supportsDelayedStackTraceLoading
@@ -10374,7 +10678,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsLoadedSourcesRequest is not defined")
         return self.supportsLoadedSourcesRequest
     
-    def get_supports_loaded_sources_request_or_defaut(self, default=None):
+    def get_supports_loaded_sources_request_or_default(self, default=None):
         if self.supportsLoadedSourcesRequest is __undefined__:
             return default
         return self.supportsLoadedSourcesRequest
@@ -10395,7 +10699,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsLogPoints is not defined")
         return self.supportsLogPoints
     
-    def get_supports_log_points_or_defaut(self, default=None):
+    def get_supports_log_points_or_default(self, default=None):
         if self.supportsLogPoints is __undefined__:
             return default
         return self.supportsLogPoints
@@ -10416,7 +10720,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsTerminateThreadsRequest is not defined")
         return self.supportsTerminateThreadsRequest
     
-    def get_supports_terminate_threads_request_or_defaut(self, default=None):
+    def get_supports_terminate_threads_request_or_default(self, default=None):
         if self.supportsTerminateThreadsRequest is __undefined__:
             return default
         return self.supportsTerminateThreadsRequest
@@ -10437,7 +10741,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsSetExpression is not defined")
         return self.supportsSetExpression
     
-    def get_supports_set_expression_or_defaut(self, default=None):
+    def get_supports_set_expression_or_default(self, default=None):
         if self.supportsSetExpression is __undefined__:
             return default
         return self.supportsSetExpression
@@ -10458,7 +10762,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsTerminateRequest is not defined")
         return self.supportsTerminateRequest
     
-    def get_supports_terminate_request_or_defaut(self, default=None):
+    def get_supports_terminate_request_or_default(self, default=None):
         if self.supportsTerminateRequest is __undefined__:
             return default
         return self.supportsTerminateRequest
@@ -10479,7 +10783,7 @@ class DAPCapabilities(DAPObject):
             raise ValueError("supportsDataBreakpoints is not defined")
         return self.supportsDataBreakpoints
     
-    def get_supports_data_breakpoints_or_defaut(self, default=None):
+    def get_supports_data_breakpoints_or_default(self, default=None):
         if self.supportsDataBreakpoints is __undefined__:
             return default
         return self.supportsDataBreakpoints
@@ -10789,7 +11093,7 @@ class DAPExceptionBreakpointsFilter(DAPObject):
             raise ValueError("default is not defined")
         return self.default
     
-    def get_default_or_defaut(self, default=None):
+    def get_default_or_default(self, default=None):
         if self.default is __undefined__:
             return default
         return self.default
@@ -10891,7 +11195,7 @@ class DAPMessage(DAPObject):
             raise ValueError("variables is not defined")
         return self.variables
     
-    def get_variables_or_defaut(self, default=None):
+    def get_variables_or_default(self, default=None):
         if self.variables is __undefined__:
             return default
         return self.variables
@@ -10912,7 +11216,7 @@ class DAPMessage(DAPObject):
             raise ValueError("sendTelemetry is not defined")
         return self.sendTelemetry
     
-    def get_send_telemetry_or_defaut(self, default=None):
+    def get_send_telemetry_or_default(self, default=None):
         if self.sendTelemetry is __undefined__:
             return default
         return self.sendTelemetry
@@ -10933,7 +11237,7 @@ class DAPMessage(DAPObject):
             raise ValueError("showUser is not defined")
         return self.showUser
     
-    def get_show_user_or_defaut(self, default=None):
+    def get_show_user_or_default(self, default=None):
         if self.showUser is __undefined__:
             return default
         return self.showUser
@@ -10954,7 +11258,7 @@ class DAPMessage(DAPObject):
             raise ValueError("url is not defined")
         return self.url
     
-    def get_url_or_defaut(self, default=None):
+    def get_url_or_default(self, default=None):
         if self.url is __undefined__:
             return default
         return self.url
@@ -10975,7 +11279,7 @@ class DAPMessage(DAPObject):
             raise ValueError("urlLabel is not defined")
         return self.urlLabel
     
-    def get_url_label_or_defaut(self, default=None):
+    def get_url_label_or_default(self, default=None):
         if self.urlLabel is __undefined__:
             return default
         return self.urlLabel
@@ -11164,7 +11468,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("path is not defined")
         return self.path
     
-    def get_path_or_defaut(self, default=None):
+    def get_path_or_default(self, default=None):
         if self.path is __undefined__:
             return default
         return self.path
@@ -11185,7 +11489,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("isOptimized is not defined")
         return self.isOptimized
     
-    def get_is_optimized_or_defaut(self, default=None):
+    def get_is_optimized_or_default(self, default=None):
         if self.isOptimized is __undefined__:
             return default
         return self.isOptimized
@@ -11206,7 +11510,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("isUserCode is not defined")
         return self.isUserCode
     
-    def get_is_user_code_or_defaut(self, default=None):
+    def get_is_user_code_or_default(self, default=None):
         if self.isUserCode is __undefined__:
             return default
         return self.isUserCode
@@ -11227,7 +11531,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("version is not defined")
         return self.version
     
-    def get_version_or_defaut(self, default=None):
+    def get_version_or_default(self, default=None):
         if self.version is __undefined__:
             return default
         return self.version
@@ -11248,7 +11552,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("symbolStatus is not defined")
         return self.symbolStatus
     
-    def get_symbol_status_or_defaut(self, default=None):
+    def get_symbol_status_or_default(self, default=None):
         if self.symbolStatus is __undefined__:
             return default
         return self.symbolStatus
@@ -11269,7 +11573,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("symbolFilePath is not defined")
         return self.symbolFilePath
     
-    def get_symbol_file_path_or_defaut(self, default=None):
+    def get_symbol_file_path_or_default(self, default=None):
         if self.symbolFilePath is __undefined__:
             return default
         return self.symbolFilePath
@@ -11290,7 +11594,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("dateTimeStamp is not defined")
         return self.dateTimeStamp
     
-    def get_date_time_stamp_or_defaut(self, default=None):
+    def get_date_time_stamp_or_default(self, default=None):
         if self.dateTimeStamp is __undefined__:
             return default
         return self.dateTimeStamp
@@ -11311,7 +11615,7 @@ we recommend to re-use attributes from the 'recommended' list below first, and o
             raise ValueError("addressRange is not defined")
         return self.addressRange
     
-    def get_address_range_or_defaut(self, default=None):
+    def get_address_range_or_default(self, default=None):
         if self.addressRange is __undefined__:
             return default
         return self.addressRange
@@ -11471,7 +11775,7 @@ It is only used if the underlying UI actually supports this level of customizati
             raise ValueError("format is not defined")
         return self.format
     
-    def get_format_or_defaut(self, default=None):
+    def get_format_or_default(self, default=None):
         if self.format is __undefined__:
             return default
         return self.format
@@ -11492,7 +11796,7 @@ It is only used if the underlying UI actually supports this level of customizati
             raise ValueError("type is not defined")
         return self.type
     
-    def get_type_or_defaut(self, default=None):
+    def get_type_or_default(self, default=None):
         if self.type is __undefined__:
             return default
         return self.type
@@ -11513,7 +11817,7 @@ It is only used if the underlying UI actually supports this level of customizati
             raise ValueError("width is not defined")
         return self.width
     
-    def get_width_or_defaut(self, default=None):
+    def get_width_or_default(self, default=None):
         if self.width is __undefined__:
             return default
         return self.width
@@ -11610,7 +11914,7 @@ For now it only specifies the columns to be shown in the modules view.
         
         # property: columns
         if "columns" not in override:
-            self.serialize_scalar(me, "columns", self.columns)
+            self.serialize_scalar(me, "columns", self.columns, hint=DAPColumnDescriptor)
     
     @classmethod
     def _deserialize(cls, args, kwargs, used_args, me, override):
@@ -11619,7 +11923,7 @@ For now it only specifies the columns to be shown in the modules view.
         # property: columns
         if "columns" not in override:
             used_args.append("columns")
-            args.append(cls.deserialize_scalar(me["columns"]))
+            args.append(cls.deserialize_scalar(me["columns"], hint=DAPColumnDescriptor))
 
 
 class DAPThread(DAPObject):
@@ -11723,7 +12027,7 @@ class DAPSource(DAPObject):
             raise ValueError("name is not defined")
         return self.name
     
-    def get_name_or_defaut(self, default=None):
+    def get_name_or_default(self, default=None):
         if self.name is __undefined__:
             return default
         return self.name
@@ -11744,7 +12048,7 @@ class DAPSource(DAPObject):
             raise ValueError("path is not defined")
         return self.path
     
-    def get_path_or_defaut(self, default=None):
+    def get_path_or_default(self, default=None):
         if self.path is __undefined__:
             return default
         return self.path
@@ -11765,7 +12069,7 @@ class DAPSource(DAPObject):
             raise ValueError("sourceReference is not defined")
         return self.sourceReference
     
-    def get_source_reference_or_defaut(self, default=None):
+    def get_source_reference_or_default(self, default=None):
         if self.sourceReference is __undefined__:
             return default
         return self.sourceReference
@@ -11786,7 +12090,7 @@ class DAPSource(DAPObject):
             raise ValueError("presentationHint is not defined")
         return self.presentationHint
     
-    def get_presentation_hint_or_defaut(self, default=None):
+    def get_presentation_hint_or_default(self, default=None):
         if self.presentationHint is __undefined__:
             return default
         return self.presentationHint
@@ -11807,7 +12111,7 @@ class DAPSource(DAPObject):
             raise ValueError("origin is not defined")
         return self.origin
     
-    def get_origin_or_defaut(self, default=None):
+    def get_origin_or_default(self, default=None):
         if self.origin is __undefined__:
             return default
         return self.origin
@@ -11828,7 +12132,7 @@ class DAPSource(DAPObject):
             raise ValueError("sources is not defined")
         return self.sources
     
-    def get_sources_or_defaut(self, default=None):
+    def get_sources_or_default(self, default=None):
         if self.sources is __undefined__:
             return default
         return self.sources
@@ -11849,7 +12153,7 @@ class DAPSource(DAPObject):
             raise ValueError("adapterData is not defined")
         return self.adapterData
     
-    def get_adapter_data_or_defaut(self, default=None):
+    def get_adapter_data_or_default(self, default=None):
         if self.adapterData is __undefined__:
             return default
         return self.adapterData
@@ -11870,7 +12174,7 @@ class DAPSource(DAPObject):
             raise ValueError("checksums is not defined")
         return self.checksums
     
-    def get_checksums_or_defaut(self, default=None):
+    def get_checksums_or_default(self, default=None):
         if self.checksums is __undefined__:
             return default
         return self.checksums
@@ -11991,7 +12295,7 @@ class DAPSubsource(DAPObject):
             raise ValueError("sources is not defined")
         return self.sources
     
-    def get_sources_or_defaut(self, default=None):
+    def get_sources_or_default(self, default=None):
         if self.sources is __undefined__:
             return default
         return self.sources
@@ -12061,7 +12365,7 @@ class DAPSubsourceElement(DAPObject):
             raise ValueError("line is not defined")
         return self.line
     
-    def get_line_or_defaut(self, default=None):
+    def get_line_or_default(self, default=None):
         if self.line is __undefined__:
             return default
         return self.line
@@ -12082,7 +12386,7 @@ class DAPSubsourceElement(DAPObject):
             raise ValueError("Source is not defined")
         return self.Source
     
-    def get_source_or_defaut(self, default=None):
+    def get_source_or_default(self, default=None):
         if self.Source is __undefined__:
             return default
         return self.Source
@@ -12196,7 +12500,7 @@ class DAPStackFrame(DAPObject):
             raise ValueError("source is not defined")
         return self.source
     
-    def get_source_or_defaut(self, default=None):
+    def get_source_or_default(self, default=None):
         if self.source is __undefined__:
             return default
         return self.source
@@ -12217,7 +12521,7 @@ class DAPStackFrame(DAPObject):
             raise ValueError("subsource is not defined")
         return self.subsource
     
-    def get_subsource_or_defaut(self, default=None):
+    def get_subsource_or_default(self, default=None):
         if self.subsource is __undefined__:
             return default
         return self.subsource
@@ -12252,7 +12556,7 @@ class DAPStackFrame(DAPObject):
             raise ValueError("endLine is not defined")
         return self.endLine
     
-    def get_end_line_or_defaut(self, default=None):
+    def get_end_line_or_default(self, default=None):
         if self.endLine is __undefined__:
             return default
         return self.endLine
@@ -12273,7 +12577,7 @@ class DAPStackFrame(DAPObject):
             raise ValueError("endColumn is not defined")
         return self.endColumn
     
-    def get_end_column_or_defaut(self, default=None):
+    def get_end_column_or_default(self, default=None):
         if self.endColumn is __undefined__:
             return default
         return self.endColumn
@@ -12294,7 +12598,7 @@ class DAPStackFrame(DAPObject):
             raise ValueError("moduleId is not defined")
         return self.moduleId
     
-    def get_module_id_or_defaut(self, default=None):
+    def get_module_id_or_default(self, default=None):
         if self.moduleId is __undefined__:
             return default
         return self.moduleId
@@ -12315,7 +12619,7 @@ class DAPStackFrame(DAPObject):
             raise ValueError("subsourceElement is not defined")
         return self.subsourceElement
     
-    def get_subsource_element_or_defaut(self, default=None):
+    def get_subsource_element_or_default(self, default=None):
         if self.subsourceElement is __undefined__:
             return default
         return self.subsourceElement
@@ -12336,7 +12640,7 @@ class DAPStackFrame(DAPObject):
             raise ValueError("presentationHint is not defined")
         return self.presentationHint
     
-    def get_presentation_hint_or_defaut(self, default=None):
+    def get_presentation_hint_or_default(self, default=None):
         if self.presentationHint is __undefined__:
             return default
         return self.presentationHint
@@ -12514,7 +12818,7 @@ class DAPScope(DAPObject):
             raise ValueError("namedVariables is not defined")
         return self.namedVariables
     
-    def get_named_variables_or_defaut(self, default=None):
+    def get_named_variables_or_default(self, default=None):
         if self.namedVariables is __undefined__:
             return default
         return self.namedVariables
@@ -12535,7 +12839,7 @@ class DAPScope(DAPObject):
             raise ValueError("indexedVariables is not defined")
         return self.indexedVariables
     
-    def get_indexed_variables_or_defaut(self, default=None):
+    def get_indexed_variables_or_default(self, default=None):
         if self.indexedVariables is __undefined__:
             return default
         return self.indexedVariables
@@ -12563,7 +12867,7 @@ class DAPScope(DAPObject):
             raise ValueError("source is not defined")
         return self.source
     
-    def get_source_or_defaut(self, default=None):
+    def get_source_or_default(self, default=None):
         if self.source is __undefined__:
             return default
         return self.source
@@ -12584,7 +12888,7 @@ class DAPScope(DAPObject):
             raise ValueError("line is not defined")
         return self.line
     
-    def get_line_or_defaut(self, default=None):
+    def get_line_or_default(self, default=None):
         if self.line is __undefined__:
             return default
         return self.line
@@ -12605,7 +12909,7 @@ class DAPScope(DAPObject):
             raise ValueError("column is not defined")
         return self.column
     
-    def get_column_or_defaut(self, default=None):
+    def get_column_or_default(self, default=None):
         if self.column is __undefined__:
             return default
         return self.column
@@ -12626,7 +12930,7 @@ class DAPScope(DAPObject):
             raise ValueError("endLine is not defined")
         return self.endLine
     
-    def get_end_line_or_defaut(self, default=None):
+    def get_end_line_or_default(self, default=None):
         if self.endLine is __undefined__:
             return default
         return self.endLine
@@ -12647,7 +12951,7 @@ class DAPScope(DAPObject):
             raise ValueError("endColumn is not defined")
         return self.endColumn
     
-    def get_end_column_or_defaut(self, default=None):
+    def get_end_column_or_default(self, default=None):
         if self.endColumn is __undefined__:
             return default
         return self.endColumn
@@ -12817,7 +13121,7 @@ The client can use this optional information to present the children in a paged 
             raise ValueError("type is not defined")
         return self.type
     
-    def get_type_or_defaut(self, default=None):
+    def get_type_or_default(self, default=None):
         if self.type is __undefined__:
             return default
         return self.type
@@ -12838,7 +13142,7 @@ The client can use this optional information to present the children in a paged 
             raise ValueError("presentationHint is not defined")
         return self.presentationHint
     
-    def get_presentation_hint_or_defaut(self, default=None):
+    def get_presentation_hint_or_default(self, default=None):
         if self.presentationHint is __undefined__:
             return default
         return self.presentationHint
@@ -12859,7 +13163,7 @@ The client can use this optional information to present the children in a paged 
             raise ValueError("evaluateName is not defined")
         return self.evaluateName
     
-    def get_evaluate_name_or_defaut(self, default=None):
+    def get_evaluate_name_or_default(self, default=None):
         if self.evaluateName is __undefined__:
             return default
         return self.evaluateName
@@ -12887,7 +13191,7 @@ The client can use this optional information to present the children in a paged 
             raise ValueError("namedVariables is not defined")
         return self.namedVariables
     
-    def get_named_variables_or_defaut(self, default=None):
+    def get_named_variables_or_default(self, default=None):
         if self.namedVariables is __undefined__:
             return default
         return self.namedVariables
@@ -12908,7 +13212,7 @@ The client can use this optional information to present the children in a paged 
             raise ValueError("indexedVariables is not defined")
         return self.indexedVariables
     
-    def get_indexed_variables_or_defaut(self, default=None):
+    def get_indexed_variables_or_default(self, default=None):
         if self.indexedVariables is __undefined__:
             return default
         return self.indexedVariables
@@ -13029,7 +13333,7 @@ class DAPVariablePresentationHint(DAPObject):
             raise ValueError("kind is not defined")
         return self.kind
     
-    def get_kind_or_defaut(self, default=None):
+    def get_kind_or_default(self, default=None):
         if self.kind is __undefined__:
             return default
         return self.kind
@@ -13050,7 +13354,7 @@ class DAPVariablePresentationHint(DAPObject):
             raise ValueError("attributes is not defined")
         return self.attributes
     
-    def get_attributes_or_defaut(self, default=None):
+    def get_attributes_or_default(self, default=None):
         if self.attributes is __undefined__:
             return default
         return self.attributes
@@ -13071,7 +13375,7 @@ class DAPVariablePresentationHint(DAPObject):
             raise ValueError("visibility is not defined")
         return self.visibility
     
-    def get_visibility_or_defaut(self, default=None):
+    def get_visibility_or_default(self, default=None):
         if self.visibility is __undefined__:
             return default
         return self.visibility
@@ -13165,7 +13469,7 @@ class DAPSourceBreakpoint(DAPObject):
             raise ValueError("column is not defined")
         return self.column
     
-    def get_column_or_defaut(self, default=None):
+    def get_column_or_default(self, default=None):
         if self.column is __undefined__:
             return default
         return self.column
@@ -13186,7 +13490,7 @@ class DAPSourceBreakpoint(DAPObject):
             raise ValueError("condition is not defined")
         return self.condition
     
-    def get_condition_or_defaut(self, default=None):
+    def get_condition_or_default(self, default=None):
         if self.condition is __undefined__:
             return default
         return self.condition
@@ -13207,7 +13511,7 @@ class DAPSourceBreakpoint(DAPObject):
             raise ValueError("hitCondition is not defined")
         return self.hitCondition
     
-    def get_hit_condition_or_defaut(self, default=None):
+    def get_hit_condition_or_default(self, default=None):
         if self.hitCondition is __undefined__:
             return default
         return self.hitCondition
@@ -13228,7 +13532,7 @@ class DAPSourceBreakpoint(DAPObject):
             raise ValueError("logMessage is not defined")
         return self.logMessage
     
-    def get_log_message_or_defaut(self, default=None):
+    def get_log_message_or_default(self, default=None):
         if self.logMessage is __undefined__:
             return default
         return self.logMessage
@@ -13332,7 +13636,7 @@ class DAPFunctionBreakpoint(DAPObject):
             raise ValueError("condition is not defined")
         return self.condition
     
-    def get_condition_or_defaut(self, default=None):
+    def get_condition_or_default(self, default=None):
         if self.condition is __undefined__:
             return default
         return self.condition
@@ -13353,7 +13657,7 @@ class DAPFunctionBreakpoint(DAPObject):
             raise ValueError("hitCondition is not defined")
         return self.hitCondition
     
-    def get_hit_condition_or_defaut(self, default=None):
+    def get_hit_condition_or_default(self, default=None):
         if self.hitCondition is __undefined__:
             return default
         return self.hitCondition
@@ -13467,7 +13771,7 @@ class DAPDataBreakpoint(DAPObject):
             raise ValueError("accessType is not defined")
         return self.accessType
     
-    def get_access_type_or_defaut(self, default=None):
+    def get_access_type_or_default(self, default=None):
         if self.accessType is __undefined__:
             return default
         return self.accessType
@@ -13488,7 +13792,7 @@ class DAPDataBreakpoint(DAPObject):
             raise ValueError("condition is not defined")
         return self.condition
     
-    def get_condition_or_defaut(self, default=None):
+    def get_condition_or_default(self, default=None):
         if self.condition is __undefined__:
             return default
         return self.condition
@@ -13509,7 +13813,7 @@ class DAPDataBreakpoint(DAPObject):
             raise ValueError("hitCondition is not defined")
         return self.hitCondition
     
-    def get_hit_condition_or_defaut(self, default=None):
+    def get_hit_condition_or_default(self, default=None):
         if self.hitCondition is __undefined__:
             return default
         return self.hitCondition
@@ -13612,7 +13916,7 @@ class DAPBreakpoint(DAPObject):
             raise ValueError("id is not defined")
         return self.id
     
-    def get_id_or_defaut(self, default=None):
+    def get_id_or_default(self, default=None):
         if self.id is __undefined__:
             return default
         return self.id
@@ -13640,7 +13944,7 @@ class DAPBreakpoint(DAPObject):
             raise ValueError("message is not defined")
         return self.message
     
-    def get_message_or_defaut(self, default=None):
+    def get_message_or_default(self, default=None):
         if self.message is __undefined__:
             return default
         return self.message
@@ -13661,7 +13965,7 @@ class DAPBreakpoint(DAPObject):
             raise ValueError("source is not defined")
         return self.source
     
-    def get_source_or_defaut(self, default=None):
+    def get_source_or_default(self, default=None):
         if self.source is __undefined__:
             return default
         return self.source
@@ -13682,7 +13986,7 @@ class DAPBreakpoint(DAPObject):
             raise ValueError("line is not defined")
         return self.line
     
-    def get_line_or_defaut(self, default=None):
+    def get_line_or_default(self, default=None):
         if self.line is __undefined__:
             return default
         return self.line
@@ -13703,7 +14007,7 @@ class DAPBreakpoint(DAPObject):
             raise ValueError("column is not defined")
         return self.column
     
-    def get_column_or_defaut(self, default=None):
+    def get_column_or_default(self, default=None):
         if self.column is __undefined__:
             return default
         return self.column
@@ -13724,7 +14028,7 @@ class DAPBreakpoint(DAPObject):
             raise ValueError("endLine is not defined")
         return self.endLine
     
-    def get_end_line_or_defaut(self, default=None):
+    def get_end_line_or_default(self, default=None):
         if self.endLine is __undefined__:
             return default
         return self.endLine
@@ -13745,7 +14049,7 @@ class DAPBreakpoint(DAPObject):
             raise ValueError("endColumn is not defined")
         return self.endColumn
     
-    def get_end_column_or_defaut(self, default=None):
+    def get_end_column_or_default(self, default=None):
         if self.endColumn is __undefined__:
             return default
         return self.endColumn
@@ -13955,7 +14259,7 @@ The possible goto targets can be determined via the 'gotoTargets' request.
             raise ValueError("column is not defined")
         return self.column
     
-    def get_column_or_defaut(self, default=None):
+    def get_column_or_default(self, default=None):
         if self.column is __undefined__:
             return default
         return self.column
@@ -13976,7 +14280,7 @@ The possible goto targets can be determined via the 'gotoTargets' request.
             raise ValueError("endLine is not defined")
         return self.endLine
     
-    def get_end_line_or_defaut(self, default=None):
+    def get_end_line_or_default(self, default=None):
         if self.endLine is __undefined__:
             return default
         return self.endLine
@@ -13997,7 +14301,7 @@ The possible goto targets can be determined via the 'gotoTargets' request.
             raise ValueError("endColumn is not defined")
         return self.endColumn
     
-    def get_end_column_or_defaut(self, default=None):
+    def get_end_column_or_default(self, default=None):
         if self.endColumn is __undefined__:
             return default
         return self.endColumn
@@ -14112,7 +14416,7 @@ class DAPCompletionItem(DAPObject):
             raise ValueError("text is not defined")
         return self.text
     
-    def get_text_or_defaut(self, default=None):
+    def get_text_or_default(self, default=None):
         if self.text is __undefined__:
             return default
         return self.text
@@ -14133,7 +14437,7 @@ class DAPCompletionItem(DAPObject):
             raise ValueError("type is not defined")
         return self.type
     
-    def get_type_or_defaut(self, default=None):
+    def get_type_or_default(self, default=None):
         if self.type is __undefined__:
             return default
         return self.type
@@ -14154,7 +14458,7 @@ class DAPCompletionItem(DAPObject):
             raise ValueError("start is not defined")
         return self.start
     
-    def get_start_or_defaut(self, default=None):
+    def get_start_or_default(self, default=None):
         if self.start is __undefined__:
             return default
         return self.start
@@ -14175,7 +14479,7 @@ class DAPCompletionItem(DAPObject):
             raise ValueError("length is not defined")
         return self.length
     
-    def get_length_or_defaut(self, default=None):
+    def get_length_or_default(self, default=None):
         if self.length is __undefined__:
             return default
         return self.length
@@ -14374,7 +14678,7 @@ class DAPValueFormat(DAPObject):
             raise ValueError("hex is not defined")
         return self.hex
     
-    def get_hex_or_defaut(self, default=None):
+    def get_hex_or_default(self, default=None):
         if self.hex is __undefined__:
             return default
         return self.hex
@@ -14450,7 +14754,7 @@ class DAPStackFrameFormat(DAPValueFormat):
             raise ValueError("parameters is not defined")
         return self.parameters
     
-    def get_parameters_or_defaut(self, default=None):
+    def get_parameters_or_default(self, default=None):
         if self.parameters is __undefined__:
             return default
         return self.parameters
@@ -14471,7 +14775,7 @@ class DAPStackFrameFormat(DAPValueFormat):
             raise ValueError("parameterTypes is not defined")
         return self.parameterTypes
     
-    def get_parameter_types_or_defaut(self, default=None):
+    def get_parameter_types_or_default(self, default=None):
         if self.parameterTypes is __undefined__:
             return default
         return self.parameterTypes
@@ -14492,7 +14796,7 @@ class DAPStackFrameFormat(DAPValueFormat):
             raise ValueError("parameterNames is not defined")
         return self.parameterNames
     
-    def get_parameter_names_or_defaut(self, default=None):
+    def get_parameter_names_or_default(self, default=None):
         if self.parameterNames is __undefined__:
             return default
         return self.parameterNames
@@ -14513,7 +14817,7 @@ class DAPStackFrameFormat(DAPValueFormat):
             raise ValueError("parameterValues is not defined")
         return self.parameterValues
     
-    def get_parameter_values_or_defaut(self, default=None):
+    def get_parameter_values_or_default(self, default=None):
         if self.parameterValues is __undefined__:
             return default
         return self.parameterValues
@@ -14534,7 +14838,7 @@ class DAPStackFrameFormat(DAPValueFormat):
             raise ValueError("line is not defined")
         return self.line
     
-    def get_line_or_defaut(self, default=None):
+    def get_line_or_default(self, default=None):
         if self.line is __undefined__:
             return default
         return self.line
@@ -14555,7 +14859,7 @@ class DAPStackFrameFormat(DAPValueFormat):
             raise ValueError("module is not defined")
         return self.module
     
-    def get_module_or_defaut(self, default=None):
+    def get_module_or_default(self, default=None):
         if self.module is __undefined__:
             return default
         return self.module
@@ -14576,7 +14880,7 @@ class DAPStackFrameFormat(DAPValueFormat):
             raise ValueError("includeAll is not defined")
         return self.includeAll
     
-    def get_include_all_or_defaut(self, default=None):
+    def get_include_all_or_default(self, default=None):
         if self.includeAll is __undefined__:
             return default
         return self.includeAll
@@ -14690,7 +14994,7 @@ class DAPExceptionOptions(DAPObject):
             raise ValueError("path is not defined")
         return self.path
     
-    def get_path_or_defaut(self, default=None):
+    def get_path_or_default(self, default=None):
         if self.path is __undefined__:
             return default
         return self.path
@@ -14793,7 +15097,7 @@ class DAPExceptionPathSegment(DAPObject):
             raise ValueError("negate is not defined")
         return self.negate
     
-    def get_negate_or_defaut(self, default=None):
+    def get_negate_or_default(self, default=None):
         if self.negate is __undefined__:
             return default
         return self.negate
@@ -14880,7 +15184,7 @@ class DAPExceptionDetails(DAPObject):
             raise ValueError("message is not defined")
         return self.message
     
-    def get_message_or_defaut(self, default=None):
+    def get_message_or_default(self, default=None):
         if self.message is __undefined__:
             return default
         return self.message
@@ -14901,7 +15205,7 @@ class DAPExceptionDetails(DAPObject):
             raise ValueError("typeName is not defined")
         return self.typeName
     
-    def get_type_name_or_defaut(self, default=None):
+    def get_type_name_or_default(self, default=None):
         if self.typeName is __undefined__:
             return default
         return self.typeName
@@ -14922,7 +15226,7 @@ class DAPExceptionDetails(DAPObject):
             raise ValueError("fullTypeName is not defined")
         return self.fullTypeName
     
-    def get_full_type_name_or_defaut(self, default=None):
+    def get_full_type_name_or_default(self, default=None):
         if self.fullTypeName is __undefined__:
             return default
         return self.fullTypeName
@@ -14943,7 +15247,7 @@ class DAPExceptionDetails(DAPObject):
             raise ValueError("evaluateName is not defined")
         return self.evaluateName
     
-    def get_evaluate_name_or_defaut(self, default=None):
+    def get_evaluate_name_or_default(self, default=None):
         if self.evaluateName is __undefined__:
             return default
         return self.evaluateName
@@ -14964,7 +15268,7 @@ class DAPExceptionDetails(DAPObject):
             raise ValueError("stackTrace is not defined")
         return self.stackTrace
     
-    def get_stack_trace_or_defaut(self, default=None):
+    def get_stack_trace_or_default(self, default=None):
         if self.stackTrace is __undefined__:
             return default
         return self.stackTrace
@@ -14985,7 +15289,7 @@ class DAPExceptionDetails(DAPObject):
             raise ValueError("innerException is not defined")
         return self.innerException
     
-    def get_inner_exception_or_defaut(self, default=None):
+    def get_inner_exception_or_default(self, default=None):
         if self.innerException is __undefined__:
             return default
         return self.innerException
@@ -15067,112 +15371,186 @@ class DAPExceptionDetails(DAPObject):
 
 @staticmethod
 def _determine_root_factory(data):
-    if data["type"] == "request" and data["command"] == "attach":
-        return DAPAttachRequest
-    if data["type"] == "event" and data["event"] == "breakpoint":
-        return DAPBreakpointEvent
-    if data["type"] == "event" and data["event"] == "capabilities":
-        return DAPCapabilitiesEvent
-    if data["type"] == "request" and data["command"] == "completions":
-        return DAPCompletionsRequest
-    if data["type"] == "request" and data["command"] == "configurationDone":
-        return DAPConfigurationDoneRequest
-    if data["type"] == "request" and data["command"] == "continue":
-        return DAPContinueRequest
-    if data["type"] == "event" and data["event"] == "continued":
-        return DAPContinuedEvent
-    if data["type"] == "request" and data["command"] == "dataBreakpointInfo":
-        return DAPDataBreakpointInfoRequest
-    if data["type"] == "request" and data["command"] == "disconnect":
-        return DAPDisconnectRequest
-    if data["type"] == "request" and data["command"] == "evaluate":
-        return DAPEvaluateRequest
-    if data["type"] == "request" and data["command"] == "exceptionInfo":
-        return DAPExceptionInfoRequest
-    if data["type"] == "event" and data["event"] == "exited":
-        return DAPExitedEvent
-    if data["type"] == "request" and data["command"] == "goto":
-        return DAPGotoRequest
-    if data["type"] == "request" and data["command"] == "gotoTargets":
-        return DAPGotoTargetsRequest
-    if data["type"] == "request" and data["command"] == "initialize":
-        return DAPInitializeRequest
-    if data["type"] == "event" and data["event"] == "initialized":
-        return DAPInitializedEvent
-    if data["type"] == "request" and data["command"] == "launch":
-        return DAPLaunchRequest
-    if data["type"] == "event" and data["event"] == "loadedSource":
-        return DAPLoadedSourceEvent
-    if data["type"] == "request" and data["command"] == "loadedSources":
-        return DAPLoadedSourcesRequest
-    if data["type"] == "event" and data["event"] == "module":
-        return DAPModuleEvent
-    if data["type"] == "request" and data["command"] == "modules":
-        return DAPModulesRequest
-    if data["type"] == "request" and data["command"] == "next":
-        return DAPNextRequest
-    if data["type"] == "event" and data["event"] == "output":
-        return DAPOutputEvent
-    if data["type"] == "request" and data["command"] == "pause":
-        return DAPPauseRequest
-    if data["type"] == "event" and data["event"] == "process":
-        return DAPProcessEvent
-    if data["type"] == "response":
-        return DAPResponse
-    if data["type"] == "request" and data["command"] == "restartFrame":
-        return DAPRestartFrameRequest
-    if data["type"] == "request" and data["command"] == "restart":
-        return DAPRestartRequest
-    if data["type"] == "request" and data["command"] == "reverseContinue":
-        return DAPReverseContinueRequest
-    if data["type"] == "request" and data["command"] == "runInTerminal":
-        return DAPRunInTerminalRequest
-    if data["type"] == "request" and data["command"] == "scopes":
-        return DAPScopesRequest
-    if data["type"] == "request" and data["command"] == "setBreakpoints":
-        return DAPSetBreakpointsRequest
-    if data["type"] == "request" and data["command"] == "setDataBreakpoints":
-        return DAPSetDataBreakpointsRequest
-    if data["type"] == "request" and data["command"] == "setExceptionBreakpoints":
-        return DAPSetExceptionBreakpointsRequest
-    if data["type"] == "request" and data["command"] == "setExpression":
-        return DAPSetExpressionRequest
-    if data["type"] == "request" and data["command"] == "setFunctionBreakpoints":
-        return DAPSetFunctionBreakpointsRequest
-    if data["type"] == "request" and data["command"] == "setStepGranularity":
-        return DAPSetStepGranularityRequest
-    if data["type"] == "request" and data["command"] == "setVariable":
-        return DAPSetVariableRequest
-    if data["type"] == "request" and data["command"] == "source":
-        return DAPSourceRequest
-    if data["type"] == "request" and data["command"] == "stackTrace":
-        return DAPStackTraceRequest
-    if data["type"] == "request" and data["command"] == "stepBack":
-        return DAPStepBackRequest
-    if data["type"] == "request" and data["command"] == "stepIn":
-        return DAPStepInRequest
-    if data["type"] == "request" and data["command"] == "stepInTargets":
-        return DAPStepInTargetsRequest
-    if data["type"] == "request" and data["command"] == "stepOut":
-        return DAPStepOutRequest
-    if data["type"] == "event" and data["event"] == "stopped":
-        return DAPStoppedEvent
-    if data["type"] == "request" and data["command"] == "terminate":
-        return DAPTerminateRequest
-    if data["type"] == "request" and data["command"] == "terminateThreads":
-        return DAPTerminateThreadsRequest
-    if data["type"] == "event" and data["event"] == "terminated":
-        return DAPTerminatedEvent
-    if data["type"] == "event" and data["event"] == "thread":
-        return DAPThreadEvent
-    if data["type"] == "request" and data["command"] == "threads":
-        return DAPThreadsRequest
+    if data["type"] == "response" and data["command"] == "variables":
+        return DAPVariablesResponse
     if data["type"] == "request" and data["command"] == "variables":
         return DAPVariablesRequest
+    if data["type"] == "response" and data["command"] == "threads":
+        return DAPThreadsResponse
+    if data["type"] == "request" and data["command"] == "threads":
+        return DAPThreadsRequest
+    if data["type"] == "event" and data["event"] == "thread":
+        return DAPThreadEvent
+    if data["type"] == "event" and data["event"] == "terminated":
+        return DAPTerminatedEvent
+    if data["type"] == "response" and data["command"] == "launch":
+        return DAPTerminateThreadsResponse
+    if data["type"] == "request" and data["command"] == "terminateThreads":
+        return DAPTerminateThreadsRequest
+    if data["type"] == "response" and data["command"] == "terminate":
+        return DAPTerminateResponse
+    if data["type"] == "request" and data["command"] == "terminate":
+        return DAPTerminateRequest
+    if data["type"] == "event" and data["event"] == "stopped":
+        return DAPStoppedEvent
+    if data["type"] == "response" and data["command"] == "stepOut":
+        return DAPStepOutResponse
+    if data["type"] == "request" and data["command"] == "stepOut":
+        return DAPStepOutRequest
+    if data["type"] == "response" and data["command"] == "stepInTargets":
+        return DAPStepInTargetsResponse
+    if data["type"] == "request" and data["command"] == "stepInTargets":
+        return DAPStepInTargetsRequest
+    if data["type"] == "response" and data["command"] == "stepIn":
+        return DAPStepInResponse
+    if data["type"] == "request" and data["command"] == "stepIn":
+        return DAPStepInRequest
+    if data["type"] == "response" and data["command"] == "stepBack":
+        return DAPStepBackResponse
+    if data["type"] == "request" and data["command"] == "stepBack":
+        return DAPStepBackRequest
+    if data["type"] == "response" and data["command"] == "stackTrace":
+        return DAPStackTraceResponse
+    if data["type"] == "request" and data["command"] == "stackTrace":
+        return DAPStackTraceRequest
+    if data["type"] == "response" and data["command"] == "sourceReference":
+        return DAPSourceResponse
+    if data["type"] == "request" and data["command"] == "source":
+        return DAPSourceRequest
+    if data["type"] == "response" and data["command"] == "setVariable":
+        return DAPSetVariableResponse
+    if data["type"] == "request" and data["command"] == "setVariable":
+        return DAPSetVariableRequest
+    if data["type"] == "response" and data["command"] == "setStepGranularity":
+        return DAPSetStepGranularityResponse
+    if data["type"] == "request" and data["command"] == "setStepGranularity":
+        return DAPSetStepGranularityRequest
+    if data["type"] == "response" and data["command"] == "setFunctionBreakpoints":
+        return DAPSetFunctionBreakpointsResponse
+    if data["type"] == "request" and data["command"] == "setFunctionBreakpoints":
+        return DAPSetFunctionBreakpointsRequest
+    if data["type"] == "response" and data["command"] == "setExpression":
+        return DAPSetExpressionResponse
+    if data["type"] == "request" and data["command"] == "setExpression":
+        return DAPSetExpressionRequest
+    if data["type"] == "response" and data["command"] == "setExceptionBreakpoints":
+        return DAPSetExceptionBreakpointsResponse
+    if data["type"] == "request" and data["command"] == "setExceptionBreakpoints":
+        return DAPSetExceptionBreakpointsRequest
+    if data["type"] == "response" and data["command"] == "setDataBreakpoints":
+        return DAPSetDataBreakpointsResponse
+    if data["type"] == "request" and data["command"] == "setDataBreakpoints":
+        return DAPSetDataBreakpointsRequest
+    if data["type"] == "response" and data["command"] == "setBreakpoints":
+        return DAPSetBreakpointsResponse
+    if data["type"] == "request" and data["command"] == "setBreakpoints":
+        return DAPSetBreakpointsRequest
+    if data["type"] == "response" and data["command"] == "scopes":
+        return DAPScopesResponse
+    if data["type"] == "request" and data["command"] == "scopes":
+        return DAPScopesRequest
+    if data["type"] == "response" and data["command"] == "runInTerminal":
+        return DAPRunInTerminalResponse
+    if data["type"] == "request" and data["command"] == "runInTerminal":
+        return DAPRunInTerminalRequest
+    if data["type"] == "response" and data["command"] == "reverseContinue":
+        return DAPReverseContinueResponse
+    if data["type"] == "request" and data["command"] == "reverseContinue":
+        return DAPReverseContinueRequest
+    if data["type"] == "response" and data["command"] == "restart":
+        return DAPRestartResponse
+    if data["type"] == "request" and data["command"] == "restart":
+        return DAPRestartRequest
+    if data["type"] == "response" and data["command"] == "restartFrame":
+        return DAPRestartFrameResponse
+    if data["type"] == "request" and data["command"] == "restartFrame":
+        return DAPRestartFrameRequest
+    if data["type"] == "event" and data["event"] == "process":
+        return DAPProcessEvent
+    if data["type"] == "response" and data["command"] == "pause":
+        return DAPPauseResponse
+    if data["type"] == "request" and data["command"] == "pause":
+        return DAPPauseRequest
+    if data["type"] == "event" and data["event"] == "output":
+        return DAPOutputEvent
+    if data["type"] == "response" and data["command"] == "next":
+        return DAPNextResponse
+    if data["type"] == "request" and data["command"] == "next":
+        return DAPNextRequest
+    if data["type"] == "response" and data["command"] == "modules":
+        return DAPModulesResponse
+    if data["type"] == "request" and data["command"] == "modules":
+        return DAPModulesRequest
+    if data["type"] == "event" and data["event"] == "module":
+        return DAPModuleEvent
+    if data["type"] == "response" and data["command"] == "loadedSources":
+        return DAPLoadedSourcesResponse
+    if data["type"] == "request" and data["command"] == "loadedSources":
+        return DAPLoadedSourcesRequest
+    if data["type"] == "event" and data["event"] == "loadedSource":
+        return DAPLoadedSourceEvent
+    if data["type"] == "response" and data["command"] == "launch":
+        return DAPLaunchResponse
+    if data["type"] == "request" and data["command"] == "launch":
+        return DAPLaunchRequest
+    if data["type"] == "event" and data["event"] == "initialized":
+        return DAPInitializedEvent
+    if data["type"] == "response" and data["command"] == "initialize":
+        return DAPInitializeResponse
+    if data["type"] == "request" and data["command"] == "initialize":
+        return DAPInitializeRequest
+    if data["type"] == "response" and data["command"] == "gotoTargets":
+        return DAPGotoTargetsResponse
+    if data["type"] == "request" and data["command"] == "gotoTargets":
+        return DAPGotoTargetsRequest
+    if data["type"] == "response" and data["command"] == "goto":
+        return DAPGotoResponse
+    if data["type"] == "request" and data["command"] == "goto":
+        return DAPGotoRequest
+    if data["type"] == "event" and data["event"] == "exited":
+        return DAPExitedEvent
+    if data["type"] == "response" and data["command"] == "exceptionInfo":
+        return DAPExceptionInfoResponse
+    if data["type"] == "request" and data["command"] == "exceptionInfo":
+        return DAPExceptionInfoRequest
+    if data["type"] == "response" and data["command"] == "evaluate":
+        return DAPEvaluateResponse
+    if data["type"] == "request" and data["command"] == "evaluate":
+        return DAPEvaluateRequest
+    if data["type"] == "response" and data["command"] == "disconnect":
+        return DAPDisconnectResponse
+    if data["type"] == "request" and data["command"] == "disconnect":
+        return DAPDisconnectRequest
+    if data["type"] == "response" and data["command"] == "dataBreakpointInfo":
+        return DAPDataBreakpointInfoResponse
+    if data["type"] == "request" and data["command"] == "dataBreakpointInfo":
+        return DAPDataBreakpointInfoRequest
+    if data["type"] == "event" and data["event"] == "continued":
+        return DAPContinuedEvent
+    if data["type"] == "response" and data["command"] == "continue":
+        return DAPContinueResponse
+    if data["type"] == "request" and data["command"] == "continue":
+        return DAPContinueRequest
+    if data["type"] == "response" and data["command"] == "configurationDone":
+        return DAPConfigurationDoneResponse
+    if data["type"] == "request" and data["command"] == "configurationDone":
+        return DAPConfigurationDoneRequest
+    if data["type"] == "response" and data["command"] == "completions":
+        return DAPCompletionsResponse
+    if data["type"] == "request" and data["command"] == "completions":
+        return DAPCompletionsRequest
+    if data["type"] == "event" and data["event"] == "capabilities":
+        return DAPCapabilitiesEvent
+    if data["type"] == "event" and data["event"] == "breakpoint":
+        return DAPBreakpointEvent
+    if data["type"] == "response" and data["command"] == "attach":
+        return DAPAttachResponse
+    if data["type"] == "request" and data["command"] == "attach":
+        return DAPAttachRequest
     raise ValueError("unknown entity to factory binding " + str(data))
 
 
 DAPObject.determine_root_factory = _determine_root_factory
 
 
-__all__ = _fix_all(['DAPSetExpressionRequest', 'DAPSetDataBreakpointsResponseBody', 'DAPSetVariableResponseBody', 'DAPInitializeResponse', 'DAPModulesViewDescriptor', 'DAPContinuedEvent', 'DAPSetFunctionBreakpointsResponseBody', 'DAPSourceResponseBody', 'DAPDataBreakpointInfoResponse', 'DAPSetExpressionResponse', 'DAPSetStepGranularityArguments', 'DAPStepInArguments', 'DAPExceptionDetails', 'DAPAttachRequestArguments', 'DAPStoppedEvent', 'DAPInitializeRequest', 'DAPDataBreakpoint', 'DAPModulesArguments', 'DAPEvaluateRequest', 'DAPOutputEvent', 'DAPContinuedEventBody', 'DAPRunInTerminalRequestArguments', 'DAPColumnDescriptor', 'DAPStepInTargetsResponse', 'DAPGotoTarget', 'DAPSetStepGranularityResponse', 'DAPBreakpointEventBody', 'DAPEvaluateArguments', 'DAPRestartArguments', 'DAPSetBreakpointsRequest', 'DAPThreadsResponseBody', 'DAPReverseContinueArguments', 'DAPStoppedEventBody', 'DAPStackFrame', 'DAPRequest', 'DAPStepInTargetsResponseBody', 'DAPStackTraceResponse', 'DAPLoadedSourcesRequest', 'DAPLoadedSourcesResponse', 'DAPSubsource', 'DAPSetExceptionBreakpointsArguments', 'DAPModulesRequest', 'DAPTerminateResponse', 'DAPSetExpressionArguments', 'DAPCompletionsResponseBody', 'DAPExitedEvent', 'DAPLoadedSourcesResponseBody', 'DAPExceptionBreakMode', 'DAPRunInTerminalResponseBody', 'DAPCapabilities', 'DAPTerminateThreadsArguments', 'DAPVariablesResponse', 'DAPInitializeRequestArguments', 'DAPExitedEventBody', 'DAPRunInTerminalRequestArgumentsEnv', 'DAPScopesArguments', 'DAPPauseResponse', 'DAPNextArguments', 'DAPDataBreakpointInfoResponseBody', 'DAPEvent', 'DAPTerminatedEventBody', 'DAPAttachResponse', 'DAPCapabilitiesEventBody', 'DAPDataBreakpointAccessType', 'DAPCompletionsResponse', 'DAPExceptionBreakpointsFilter', 'DAPErrorResponse', 'DAPInitializedEvent', 'DAPExceptionInfoArguments', 'DAPSourceBreakpoint', 'DAPEvaluateResponseBody', 'DAPSourceArguments', 'DAPRunInTerminalResponse', 'DAPSetFunctionBreakpointsRequest', 'DAPDataBreakpointInfoRequest', 'DAPRestartFrameRequest', 'DAPLoadedSourceEventBody', 'DAPThreadEvent', 'DAPCompletionsArguments', 'DAPStepInTarget', 'DAPScope', 'DAPStackFrameFormat', 'DAPVariablePresentationHint', 'DAPSetFunctionBreakpointsResponse', 'DAPNextResponse', 'DAPBreakpoint', 'DAPAttachRequest', 'DAPSetBreakpointsResponse', 'DAPDataBreakpointInfoArguments', 'DAPScopesRequest', 'DAPSetVariableRequest', 'DAPSetDataBreakpointsArguments', 'DAPSetBreakpointsResponseBody', 'DAPTerminateThreadsRequest', 'DAPConfigurationDoneResponse', 'DAPVariable', 'DAPChecksumAlgorithm', 'DAPStepOutResponse', 'DAPSubsourceElement', 'DAPTerminateArguments', 'DAPCompletionItemType', 'DAPStepInRequest', 'DAPLaunchResponse', 'DAPProcessEvent', 'DAPContinueRequest', 'DAPStepBackRequest', 'DAPErrorResponseBody', 'DAPLoadedSourcesArguments', 'DAPGotoRequest', 'DAPVariablesResponseBody', 'DAPModulesResponse', 'DAPSetExpressionResponseBody', 'DAPTerminatedEvent', 'DAPSourceRequest', 'DAPTerminateThreadsResponse', 'DAPStackTraceRequest', 'DAPSetStepGranularityResponseBody', 'DAPProtocolMessage', 'DAPContinueResponse', 'DAPStackTraceResponseBody', 'DAPSourceResponse', 'DAPLoadedSourceEvent', 'DAPProcessEventBody', 'DAPTerminateRequest', 'DAPConfigurationDoneArguments', 'DAPStackTraceArguments', 'DAPStepBackArguments', 'DAPLaunchRequestArguments', 'DAPFunctionBreakpoint', 'DAPMessageVariables', 'DAPGotoTargetsResponse', 'DAPEvaluateResponse', 'DAPOutputEventBody', 'DAPDisconnectRequest', 'DAPThreadsRequest', 'DAPResponse', 'DAPGotoTargetsRequest', 'DAPModule', 'DAPScopesResponse', 'DAPStepInTargetsRequest', 'DAPValueFormat', 'DAPConfigurationDoneRequest', 'DAPReverseContinueRequest', 'DAPContinueArguments', 'DAPMessage', 'DAPNextRequest', 'DAPStepInResponse', 'DAPGotoResponse', 'DAPGotoTargetsArguments', 'DAPExceptionOptions', 'DAPRestartRequest', 'DAPExceptionInfoResponse', 'DAPRestartResponse', 'DAPRunInTerminalRequest', 'DAPSetStepGranularityRequest', 'DAPStepOutRequest', 'DAPThreadsResponse', 'DAPSetExceptionBreakpointsResponse', 'DAPCompletionsRequest', 'DAPBreakpointEvent', 'DAPModuleEvent', 'DAPStepInTargetsArguments', 'DAPThread', 'DAPRestartFrameResponse', 'DAPPauseRequest', 'DAPVariablesRequest', 'DAPSetBreakpointsArguments', 'DAPPauseArguments', 'DAPContinueResponseBody', 'DAPChecksum', 'DAPCompletionItem', 'DAPSetDataBreakpointsRequest', 'DAPSetExceptionBreakpointsRequest', 'DAPExceptionInfoRequest', 'DAPModulesResponseBody', 'DAPSource', 'DAPGotoTargetsResponseBody', 'DAPDisconnectArguments', 'DAPStepBackResponse', 'DAPSetVariableArguments', 'DAPExceptionInfoResponseBody', 'DAPDisconnectResponse', 'DAPModuleEventBody', 'DAPThreadEventBody', 'DAPScopesResponseBody', 'DAPCapabilitiesEvent', 'DAPSetDataBreakpointsResponse', 'DAPVariablesArguments', 'DAPGotoArguments', 'DAPRestartFrameArguments', 'DAPExceptionPathSegment', 'DAPSetFunctionBreakpointsArguments', 'DAPStepOutArguments', 'DAPReverseContinueResponse', 'DAPSetVariableResponse', 'DAPLaunchRequest'])
+__all__ = _fix_all(['DAPContinuedEvent', 'DAPStepBackRequest', 'DAPSetFunctionBreakpointsResponseBody', 'DAPStackTraceResponse', 'DAPEvaluateRequest', 'DAPSetStepGranularityArguments', 'DAPModulesRequest', 'DAPStepInTargetsArguments', 'DAPFunctionBreakpoint', 'DAPProtocolMessage', 'DAPRequest', 'DAPTerminateArguments', 'DAPThreadsResponseBody', 'DAPScopesArguments', 'DAPInitializeResponse', 'DAPModulesResponseBody', 'DAPLoadedSourcesResponse', 'DAPRunInTerminalRequestArgumentsEnv', 'DAPConfigurationDoneRequest', 'DAPTerminateThreadsArguments', 'DAPDisconnectRequest', 'DAPConfigurationDoneResponse', 'DAPSetDataBreakpointsResponseBody', 'DAPLoadedSourcesArguments', 'DAPModuleEvent', 'DAPDisconnectArguments', 'DAPLoadedSourcesRequest', 'DAPAttachRequest', 'DAPThreadEvent', 'DAPModuleEventBody', 'DAPStepInTargetsResponseBody', 'DAPPauseRequest', 'DAPPauseArguments', 'DAPCapabilitiesEventBody', 'DAPInitializeRequestArguments', 'DAPExceptionDetails', 'DAPOutputEventBody', 'DAPStepBackArguments', 'DAPExceptionOptions', 'DAPInitializeRequest', 'DAPEvaluateResponseBody', 'DAPBreakpoint', 'DAPCompletionItem', 'DAPColumnDescriptor', 'DAPStepInTarget', 'DAPLoadedSourceEvent', 'DAPTerminatedEventBody', 'DAPVariablesRequest', 'DAPStackTraceResponseBody', 'DAPStoppedEvent', 'DAPCapabilities', 'DAPGotoTargetsResponseBody', 'DAPAttachResponse', 'DAPExitedEventBody', 'DAPGotoArguments', 'DAPStepBackResponse', 'DAPExceptionInfoArguments', 'DAPContinueResponseBody', 'DAPThreadEventBody', 'DAPContinuedEventBody', 'DAPExceptionInfoResponseBody', 'DAPVariablesResponseBody', 'DAPErrorResponse', 'DAPConfigurationDoneArguments', 'DAPChecksumAlgorithm', 'DAPRunInTerminalResponse', 'DAPRunInTerminalRequestArguments', 'DAPProcessEventBody', 'DAPSetExceptionBreakpointsRequest', 'DAPStepInTargetsResponse', 'DAPContinueRequest', 'DAPSetExpressionRequest', 'DAPRestartArguments', 'DAPVariablesArguments', 'DAPEvaluateArguments', 'DAPVariablesResponse', 'DAPDataBreakpointInfoResponseBody', 'DAPSourceRequest', 'DAPReverseContinueRequest', 'DAPGotoTargetsArguments', 'DAPDisconnectResponse', 'DAPContinueArguments', 'DAPGotoTargetsRequest', 'DAPSourceArguments', 'DAPSetVariableArguments', 'DAPDataBreakpointAccessType', 'DAPInitializedEvent', 'DAPSetDataBreakpointsResponse', 'DAPNextRequest', 'DAPScopesResponse', 'DAPMessage', 'DAPRestartFrameRequest', 'DAPCompletionItemType', 'DAPNextArguments', 'DAPVariablePresentationHint', 'DAPStepInRequest', 'DAPGotoResponse', 'DAPSource', 'DAPEvent', 'DAPGotoTargetsResponse', 'DAPStepInArguments', 'DAPTerminatedEvent', 'DAPExceptionBreakMode', 'DAPSetBreakpointsResponseBody', 'DAPLoadedSourceEventBody', 'DAPStepOutRequest', 'DAPThreadsResponse', 'DAPModulesArguments', 'DAPSetExpressionResponseBody', 'DAPGotoTarget', 'DAPSetExceptionBreakpointsArguments', 'DAPTerminateResponse', 'DAPDataBreakpointInfoRequest', 'DAPScope', 'DAPLaunchRequest', 'DAPSetFunctionBreakpointsResponse', 'DAPDataBreakpointInfoResponse', 'DAPStackFrameFormat', 'DAPSetBreakpointsArguments', 'DAPCompletionsRequest', 'DAPSetExpressionResponse', 'DAPSetStepGranularityResponse', 'DAPOutputEvent', 'DAPStackTraceRequest', 'DAPEvaluateResponse', 'DAPValueFormat', 'DAPSetFunctionBreakpointsArguments', 'DAPRestartFrameResponse', 'DAPLaunchResponse', 'DAPGotoRequest', 'DAPScopesRequest', 'DAPRestartResponse', 'DAPExceptionInfoRequest', 'DAPStepOutResponse', 'DAPDataBreakpointInfoArguments', 'DAPSetDataBreakpointsRequest', 'DAPRestartFrameArguments', 'DAPModule', 'DAPSubsource', 'DAPThread', 'DAPErrorResponseBody', 'DAPScopesResponseBody', 'DAPCompletionsArguments', 'DAPSourceResponse', 'DAPNextResponse', 'DAPDataBreakpoint', 'DAPSourceBreakpoint', 'DAPStepInResponse', 'DAPExitedEvent', 'DAPStackFrame', 'DAPModulesViewDescriptor', 'DAPSetExceptionBreakpointsResponse', 'DAPVariable', 'DAPSetVariableResponse', 'DAPSetStepGranularityRequest', 'DAPContinueResponse', 'DAPSetStepGranularityResponseBody', 'DAPSetExpressionArguments', 'DAPSetBreakpointsRequest', 'DAPStackTraceArguments', 'DAPCompletionsResponse', 'DAPReverseContinueArguments', 'DAPRunInTerminalRequest', 'DAPProcessEvent', 'DAPExceptionPathSegment', 'DAPLaunchRequestArguments', 'DAPStepInTargetsRequest', 'DAPSetVariableRequest', 'DAPReverseContinueResponse', 'DAPExceptionInfoResponse', 'DAPTerminateThreadsResponse', 'DAPChecksum', 'DAPStepOutArguments', 'DAPLoadedSourcesResponseBody', 'DAPAttachRequestArguments', 'DAPRunInTerminalResponseBody', 'DAPPauseResponse', 'DAPSetVariableResponseBody', 'DAPSubsourceElement', 'DAPTerminateRequest', 'DAPExceptionBreakpointsFilter', 'DAPSetDataBreakpointsArguments', 'DAPSetBreakpointsResponse', 'DAPCapabilitiesEvent', 'DAPResponse', 'DAPMessageVariables', 'DAPBreakpointEventBody', 'DAPSourceResponseBody', 'DAPTerminateThreadsRequest', 'DAPCompletionsResponseBody', 'DAPBreakpointEvent', 'DAPRestartRequest', 'DAPSetFunctionBreakpointsRequest', 'DAPModulesResponse', 'DAPThreadsRequest', 'DAPStoppedEventBody'])

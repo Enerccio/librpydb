@@ -58,3 +58,13 @@ def to_str(raw):
         return raw.decode("utf-8")
     else:
         return raw
+
+
+class Counter(object):
+    def __init__(self):
+        self.state = 0
+
+    def get(self):
+        s = self.state
+        self.state += 1
+        return s
