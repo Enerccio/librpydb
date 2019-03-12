@@ -479,19 +479,19 @@ class RenpyThread(_DebuggerComponent):
 
     def continue_execution(self):
         self.debugger._continue_with_the_execution()
-        DAPContinueRequest.create(self.debugger.rq_counter.get(), DAPContinueArguments.create(self.thread_id))
+        DAPContinueRequest.create(self.debugger.rq_counter.get(), DAPContinueArguments.create(self.thread_id)).send(self.debugger.socket)
 
     def step(self):
         self.debugger._continue_with_the_execution()
-        DAPNextRequest.create(self.debugger.rq_counter.get(), DAPNextArguments.create(self.thread_id))
+        DAPNextRequest.create(self.debugger.rq_counter.get(), DAPNextArguments.create(self.thread_id)).send(self.debugger.socket)
 
     def step_in(self):
         self.debugger._continue_with_the_execution()
-        DAPStepInRequest.create(self.debugger.rq_counter.get(), DAPStepInArguments.create(self.thread_id))
+        DAPStepInRequest.create(self.debugger.rq_counter.get(), DAPStepInArguments.create(self.thread_id)).send(self.debugger.socket)
 
     def step_out(self):
         self.debugger._continue_with_the_execution()
-        DAPStepOutRequest.create(self.debugger.rq_counter.get(), DAPStepOutArguments.create(self.thread_id))
+        DAPStepOutRequest.create(self.debugger.rq_counter.get(), DAPStepOutArguments.create(self.thread_id)).send(self.debugger.socket)
 
 
 class StackFrame(_DebuggerComponent):
